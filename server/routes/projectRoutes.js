@@ -255,7 +255,6 @@ router.get("/slug/:slug", async (req, res) => {
 });
 
 /**
- * GET /api/admin/projects/:id
  * Fetch a project by its generated projectId (legacy support)
  */
 
@@ -286,10 +285,10 @@ router.get("/", async (req, res) => {
 });
 
 /**
- * PATCH /api/admin/projects/:id
+ * PATCH /api/admin/projects/
  * Toggle project visibility
  */
-router.patch("/:id", async (req, res) => {
+router.patch("/project-id/:id", async (req, res) => {
   try {
     const { visible } = req.body;
     await Project.findByIdAndUpdate(req.params.id, { visible });
@@ -305,7 +304,7 @@ router.patch("/:id", async (req, res) => {
  * Get distinct property types based on category (Residential, Commercial, etc.)
  */
 // routes/projectRoutes.js
-router.put("/:id", async (req, res) => {
+router.put("/project-id/:id", async (req, res) => {
   try {
     const updateData = { ...req.body };
     const existingProject = await Project.findById(req.params.id);
@@ -428,11 +427,11 @@ router.put("/:id", async (req, res) => {
 });
 
 /**
- * DELETE /api/admin/projects/:id
+ * DELETE /api/admin/projects/
  * Hard delete a project (admin only)
  */
 
-router.delete("/:id", async (req, res) => {
+router.delete("/project-id/:id", async (req, res) => {
   try {
     const project = await Project.findById(req.params.id);
     if (!project) {

@@ -131,9 +131,10 @@ const ControlProjects = () => {
 
   const toggleVisibility = async (id, current) => {
     try {
-      await axios.patch(`${API_BASE}/api/admin/projects/${id}`, {
+      await axios.patch(`${API_BASE}/api/admin/projects/project-id/${id}`, {
         visible: !current,
       });
+
       toast.success("Visibility updated");
       fetchProjects();
     } catch {
@@ -144,7 +145,8 @@ const ControlProjects = () => {
   const deleteProject = async (id) => {
     if (!window.confirm("Delete this project?")) return;
     try {
-      await axios.delete(`${API_BASE}/api/admin/projects/${id}`);
+      await axios.delete(`${API_BASE}/api/admin/projects/project-id/${id}`);
+
       toast.success(
         "Project and all associated resources have been deleted successfully."
       );
@@ -1590,8 +1592,13 @@ const ControlProjects = () => {
                       updatedFormData.gallery = uploadedGallery;
                     }
                     // 🛡 Normalize isSKDPick
-                    updatedFormData.isSKDPick =
-                      updatedFormData.isSKDPick === "YES" ? "YES" : "NO";
+                    // updatedFormData.isSKDPick =
+                    //   updatedFormData.isSKDPick === "YES" ? "YES" : "NO";
+                    // updatedFormData.isSKDPick =
+                    //   updatedFormData.isSKDPick === "YES" ||
+                    //   updatedFormData.isSKDPick === true
+                    //     ? "YES"
+                    //     : "NO";
 
                     // 🛡 Normalize price fields
                     updatedFormData.pricingPlans = (
@@ -1630,12 +1637,36 @@ const ControlProjects = () => {
                     }
 
                     // Final PUT request to update the project
+                    // await axios.put(
+                    //   `${API_BASE}/api/admin/projects/${selectedProject._id}`,
+                    //   updatedFormData
+                    // );
+                    updatedFormData.isSKDPick =
+                      updatedFormData.isSKDPick === "YES" ||
+                      updatedFormData.isSKDPick === true
+                        ? "YES"
+                        : "NO";
+
                     await axios.put(
-                      `${API_BASE}/api/admin/projects/${selectedProject._id}`,
+                      `${API_BASE}/api/admin/projects/project-id/${selectedProject._id}`,
                       updatedFormData
                     );
 
                     toast.success("Project updated");
+
+                    if (
+                      res.data?.project?.slug &&
+                      updatedFormData.slug !== res.data.project.slug
+                    ) {
+                      toast.info(
+                        `Slug adjusted to "${res.data.project.slug}" to avoid conflict`
+                      );
+                      alert(
+                        `Slug adjusted to "${res.data.project.slug}" to avoid conflict`
+                      );
+                      updatedFormData.slug = res.data.project.slug; // Optional: update local copy if shown in UI
+                    }
+
                     fetchProjects();
                     setShowModal(false);
                     setEditMode(false);
