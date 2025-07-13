@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700&display=swap");
+
+body {
+  font-family: "Urbanist", sans-serif;
+}
+
+.lead-form-section {
+  background-color: #f9f9f9;
+  color: #111;
+}
+
+.golden-text {
+  color: #d4af37; /* Muted elegant gold */
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.custom-input {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  background-color: white;
+  color: #000;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-input::placeholder {
+  color: #888;
+  font-weight: 400;
+}
+
+.custom-input:focus {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+  outline: none;
+}
+
+.custom-btn {
+  background-color: #000;
+  color: #fff;
+  padding: 13px 50px;
+  font-weight: 600;
+  font-size: 17px;
+  border: none;
+  border-radius: 40px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.custom-btn:hover {
+  background-color: #d4af37;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+}
+
+textarea.custom-input {
+  resize: vertical;
+}

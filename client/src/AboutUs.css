@@ -1,0 +1,144 @@
+.aboutus-page {
+  font-family: "Segoe UI", sans-serif;
+  scroll-behavior: smooth;
+  background-color: #f8f9fa;
+  color: #111;
+}
+
+.aboutus-page h2 {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.aboutus-page .card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.aboutus-hero-section {
+  background: linear-gradient(
+      to right,
+      #eeeeee00,
+      rgba(246, 246, 246, 0.766),
+      rgba(0, 0, 0, 0)
+    ),
+    url("/About-us.jpg") center center / cover no-repeat;
+  color: rgb(119, 115, 115);
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.aboutus-hero-section h1 {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.aboutus-hero-section p.lead {
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.aboutus-mission-section {
+  background-color: #faf8f83a;
+  padding-top: 40px;
+  margin-top: 5px;
+}
+
+.aboutus-mission-box,
+.aboutus-vision-box {
+  background-color: #ffffff;
+  padding: 2rem;
+  border: 1px solid #e3e3e3;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.aboutus-mission-box:hover,
+.aboutus-vision-box:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transform: translateY(-3px);
+}
+
+.aboutus-founder-section {
+  background: url("/md_sir.jpg") center/cover no-repeat;
+  position: relative;
+  color: white;
+  min-height: 500px;
+}
+
+.aboutus-founder-section .aboutus-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.79) 0%,
+    rgba(0, 0, 0, 0.289) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 1;
+}
+
+.aboutus-founder-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+.aboutus-founder-section h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.aboutus-founder-section p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.aboutus-testimonial {
+  background-color: #ffffff;
+  padding: 1.75rem;
+  border-left: 4px solid #ffc107;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.aboutus-testimonial:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+.aboutus-testimonial p {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #222;
+}
+
+.aboutus-testimonial .fw-semibold {
+  font-size: 0.95rem;
+  color: #555;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .aboutus-hero-section {
+    padding: 4rem 1rem;
+  }
+
+  .aboutus-founder-section {
+    background-position: top;
+  }
+
+  .aboutus-testimonial {
+    padding: 1.5rem;
+  }
+}

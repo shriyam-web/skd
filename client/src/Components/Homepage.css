@@ -1,0 +1,364 @@
+:root {
+  --yellow: #ffc107;
+  --nav-blue: #002d62;
+}
+.custom-navbar {
+  background-color: transparent !important;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+  z-index: 10000;
+  position: absolute; /* or fixed */
+}
+.marginniche {
+  padding-bottom: 300px;
+}
+
+/* Optional shadow when scrolling */
+.custom-navbar.scrolled {
+  background-color: #111 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* ========= HERO SECTION ========= */
+.homepage-hero {
+  background: linear-gradient(90deg, #2b2b2b 0%, #3c3a3a 40%, #c5a253 100%);
+  color: #fff;
+  height: 45vh;
+  padding: 7rem 1rem 2rem;
+  text-align: center;
+  position: relative;
+  margin-top: -80px;
+  z-index: 100;
+  /* padding: 11rem 1rem 2rem; 👈 Updated this line */
+}
+
+.hero-heading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  z-index: 2;
+}
+
+.highlights {
+  color: #e3dfdf;
+  margin-left: 15px;
+}
+
+.highlight {
+  color: var(--yellow);
+  margin-left: 8px;
+}
+
+/* ========= SOCIAL ICONS ========= */
+.social-icons {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 999;
+}
+
+.social-icons a {
+  color: #999;
+  font-size: 1.4rem;
+  transition: 0.3s;
+  padding: 6px;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2);
+}
+
+.social-icons a:hover:nth-child(1) {
+  color: #1877f2;
+}
+.social-icons a:hover:nth-child(2) {
+  color: #e1306c;
+}
+.social-icons a:hover:nth-child(3) {
+  color: #1da1f2;
+}
+.social-icons a:hover:nth-child(4) {
+  color: #ff0000;
+}
+.social-icons a:hover:nth-child(5) {
+  color: #0a66c2;
+}
+
+/* ========= SEARCH CARD ========= */
+.search-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  max-width: 1100px;
+  width: 100%;
+  z-index: 2;
+}
+
+.search-card form input {
+  padding: 10px;
+  font-size: 1rem;
+}
+
+/* ========= TABS ========= */
+.search-tabs .nav-link {
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  padding: 0.6rem 1.2rem;
+}
+
+.search-tabs .nav-link.active {
+  border-bottom-color: var(--nav-blue);
+  color: var(--nav-blue);
+}
+
+.post-property {
+  color: #0a6d0a !important;
+}
+
+.free-tag,
+.top-tag {
+  padding: 1px 4px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  margin-left: 4px;
+  color: #fff;
+}
+
+.free-tag {
+  background: #0a6d0a;
+}
+
+.top-tag {
+  background: #9f1111;
+}
+
+/* ========= SEARCH BAR ========= */
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.search-bar .skd-category-select {
+  border: 1px solid #ced4da;
+  border-radius: 50px 0 0 50px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+  /* max-width: 200px; */
+}
+
+.search-bar .form-control {
+  border: none;
+  border-top: 1px solid #ced4da;
+  border-bottom: 1px solid #ced4da;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  border-radius: 0;
+}
+
+.search-bar .form-control:focus {
+  box-shadow: none;
+}
+
+.search-bar .btn {
+  border-radius: 0 50px 50px 0;
+  background: #e0aa06 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  transition: background 0.3s ease;
+}
+
+.search-bar .btn:hover {
+  background: var(--nav-blue) !important;
+}
+
+/* ========= MOBILE RESPONSIVENESS ========= */
+@media (max-width: 768px) {
+  .search-card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .search-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .search-tabs .nav-link {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .free-tag,
+  .top-tag {
+    font-size: 0.6rem;
+    padding: 1px 3px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .search-bar .category-select,
+  .search-bar .form-control,
+  .search-bar .btn {
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  .search-bar .btn {
+    margin-top: 0.3rem;
+    font-size: 1rem;
+  }
+
+  .search-card form input {
+    font-size: 0.95rem;
+  }
+
+  .search-card form .form-group {
+    margin-bottom: 0.5rem;
+  }
+
+  .homepage-hero .hero-heading {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .search-card .help-text {
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 0.8rem;
+  }
+  .search-bar {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  .search-bar .category-select,
+  .search-bar .form-control,
+  .search-bar .btn {
+    width: 100%;
+    border-radius: 10px;
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .search-bar .skd-category-select {
+    border: 1px solid #ced4da;
+    width: 100% !important;
+    /* width: 100px; */
+  }
+
+  .search-bar .form-control {
+    border: 1px solid #ced4da;
+  }
+
+  .search-bar .btn {
+    background: #ffc107;
+    color: #000;
+    font-weight: 600;
+    border: none;
+  }
+}
+@media (max-width: 768px) {
+  .search-card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .search-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .search-tabs .nav-link {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .free-tag,
+  .top-tag {
+    font-size: 0.6rem;
+    padding: 1px 3px;
+  }
+
+  /* HERO text resizing */
+  .homepage-hero .hero-heading {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  /* Help text styling */
+  .search-card .help-text {
+    font-size: 0.85rem;
+    text-align: center;
+    margin-bottom: 0.8rem;
+  }
+
+  /* FORM GROUP */
+  .search-card form .form-group {
+    margin-bottom: 0.5rem;
+  }
+
+  .search-card form input {
+    font-size: 0.95rem;
+  }
+
+  /* SEARCH BAR LAYOUT */
+  .search-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: stretch;
+    margin-top: 1rem;
+  }
+
+  /* DROPDOWN */
+  .search-bar .category-select {
+    width: 200%;
+    border-radius: 10px;
+    padding: 0.65rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+    appearance: none; /* Optional: remove browser styling */
+    box-sizing: border-box;
+  }
+
+  /* INPUT */
+  .search-bar .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 10px;
+    width: 100%;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+  }
+
+  /* SEARCH BUTTON */
+  .search-bar .btn {
+    border: none;
+    border-radius: 10px;
+    background: #ffc107;
+    color: #000;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    width: 100%;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+  }
+}

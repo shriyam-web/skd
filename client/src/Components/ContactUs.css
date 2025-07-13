@@ -1,0 +1,41 @@
+.contact-page {
+  font-family: "Segoe UI", sans-serif;
+}
+
+.contact-hero {
+  background-color: #333;
+  height: 30vh;
+}
+
+.contact-info p {
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.map-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+  z-index: 0;
+}
+
+.map-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,178 @@
+.maintenance-card {
+  background: linear-gradient(135deg, #1f1f1f, #2c2c2c);
+  border-radius: 16px;
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.15);
+  border: 1px solid #ffc107;
+  max-width: 600px;
+  margin: auto;
+  color: #f8f9fa;
+  transition: 0.3s ease-in-out;
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.maintenance-card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, #ffcc00, #ff0066, #ffcc00);
+  border-radius: 20px;
+  z-index: -1;
+  animation: borderPulse 4s linear infinite;
+  filter: blur(10px);
+  opacity: 0.3;
+}
+
+.glassy-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  border: 1px solid #000000;
+  color: #fff;
+  transition: all 0.4s ease;
+  max-width: 650px;
+  margin: auto;
+  animation: fadeIn 0.8s ease-out;
+}
+
+.maintenance-toggle {
+  width: 65px;
+  height: 32px;
+  border-radius: 50px;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.maintenance-toggle.on {
+  background: linear-gradient(to right, #ff6a00, #ee0979);
+  box-shadow: 0 0 15px rgba(255, 110, 0, 0.7),
+    0 0 5px rgba(255, 255, 255, 0.2) inset;
+}
+
+.maintenance-toggle.off {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  box-shadow: 0 0 12px rgba(0, 136, 255, 0.6),
+    0 0 5px rgba(255, 255, 255, 0.2) inset;
+}
+
+.toggle-knob {
+  height: 24px;
+  width: 24px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.maintenance-toggle.on .toggle-knob {
+  transform: translateX(30px);
+}
+
+.maintenance-toggle.off .toggle-knob {
+  transform: translateX(0);
+}
+
+.bounce-knob {
+  animation: bounce 0.4s ease;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.mode-label {
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+.mode-switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.glow-icon {
+  animation: glow 1.5s ease-in-out infinite alternate;
+  font-size: 1.8rem;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #ffcc00, 0 0 10px #ffcc00;
+  }
+  to {
+    text-shadow: 0 0 20px #ffcc00, 0 0 30px #ffaa00;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes borderPulse {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.maintenance-toggle.pending {
+  opacity: 0.6;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.maintenance-toggle[disabled] {
+  pointer-events: none;
+  opacity: 0.6;
+}
+.lock-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 1.1rem;
+}
+.form-check-input {
+  max-width: 6px !important;
+  width: 6px;
+  height: 100%;
+}

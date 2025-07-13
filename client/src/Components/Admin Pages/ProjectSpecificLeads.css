@@ -1,0 +1,221 @@
+.project-leads-page .table {
+  table-layout: fixed !important;
+  /* table-layout: auto !important; */
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.project-leads-page .table th,
+.project-leads-page .table td {
+  vertical-align: middle;
+  word-break: break-word;
+  white-space: normal;
+  padding: 8px;
+  font-size: 0.88rem;
+}
+
+/* Sticky Header */
+.project-leads-page thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #f8f9fa !important;
+  color: #212529;
+  font-weight: 600;
+}
+
+.allprojectheading {
+  color: white;
+}
+
+/* Column Widths */
+.project-leads-page th:nth-child(1),
+.project-leads-page td:nth-child(1) {
+  width: 30px; /* # */
+}
+
+.project-leads-page th:nth-child(2),
+.project-leads-page .name-col {
+  max-width: 110px;
+  min-width: 100px;
+}
+
+.project-leads-page th:nth-child(3),
+.project-leads-page .email-col {
+  max-width: 160px;
+  min-width: 130px;
+}
+
+.project-leads-page th:nth-child(4),
+.project-leads-page td:nth-child(4) {
+  max-width: 110px;
+  min-width: 90px;
+}
+
+.project-leads-page th:nth-child(5),
+.project-leads-page td:nth-child(5) {
+  max-width: 120px;
+  min-width: 100px;
+}
+
+/* 🧠 Remark column grows dynamically */
+.project-leads-page th:nth-child(6),
+.project-leads-page .remark-col {
+  min-width: 200px;
+  width: auto;
+  white-space: normal;
+  line-height: 1.4;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  flex-grow: 1;
+  cursor: help;
+}
+
+/* Status */
+.project-leads-page th:nth-child(7),
+.project-leads-page td:nth-child(7) {
+  max-width: 100px;
+  text-align: center;
+}
+
+/* Star column */
+.project-leads-page th:nth-child(8),
+.project-leads-page td:nth-child(8) {
+  width: 50px;
+  text-align: center;
+}
+
+/* Date */
+.project-leads-page th:nth-child(9),
+.project-leads-page td:nth-child(9) {
+  max-width: 140px;
+  font-size: 0.75rem;
+}
+
+/* Actions column */
+.project-leads-page th:nth-child(10),
+.project-leads-page .actions-col {
+  min-width: 160px;
+  max-width: 200px;
+  /* max-width: 60px; */
+}
+
+/* Action buttons layout */
+.project-leads-page .actions-col {
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 100%;
+  gap: 6px;
+}
+
+.project-leads-page .actions-col .btn {
+  width: 100%;
+  font-size: 0.75rem;
+  padding: 6px 8px;
+  min-height: 34px;
+  white-space: nowrap;
+}
+
+/* Status button */
+.project-leads-page .btn-success,
+.project-leads-page .btn-outline-secondary {
+  width: 100%;
+  padding: 4px 6px;
+  font-size: 0.75rem;
+}
+
+/* Star button */
+.project-leads-page td:nth-child(8) .btn {
+  padding: 4px;
+  font-size: 1rem;
+}
+
+/* Row background highlights */
+.project-leads-page .table-success {
+  background-color: #d4edda !important;
+}
+.project-leads-page .table-warning {
+  background-color: #fff3cd !important;
+}
+.project-leads-page .table-secondary {
+  background-color: #e2e3e5 !important;
+}
+
+/* Left border for starred rows */
+.project-leads-page .border-start.border-warning {
+  border-left: 4px solid #ffc107 !important;
+}
+
+/* Select & Input Styles */
+.project-leads-page select.form-select {
+  max-width: 220px;
+}
+.project-leads-page input.form-control {
+  max-width: 100%;
+}
+
+/* Scrollable table wrapper */
+.project-leads-page .table-responsive {
+  max-height: 52vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: 10px;
+}
+
+/* Badge tweaks */
+.project-leads-page .badge {
+  font-size: 0.75rem;
+  padding: 0.4em 0.7em;
+}
+
+/* 📱 Mobile Tweaks */
+@media (max-width: 768px) {
+  .project-leads-page .table th,
+  .project-leads-page .table td {
+    font-size: 0.75rem;
+    padding: 6px;
+  }
+
+  .project-leads-page .actions-col .btn {
+    font-size: 0.7rem;
+    padding: 5px;
+  }
+
+  .project-leads-page th:nth-child(3),
+  .project-leads-page td:nth-child(3) {
+    max-width: 120px;
+  }
+
+  .project-leads-page th:nth-child(5),
+  .project-leads-page td:nth-child(5) {
+    max-width: 100px;
+  }
+
+  .project-leads-page th:nth-child(9),
+  .project-leads-page td:nth-child(9) {
+    max-width: 100px;
+  }
+
+  .project-leads-page .actions-col {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}
+/* Fix actions column not stretching full height */
+.project-leads-page td.actions-col {
+  height: 100%;
+  vertical-align: stretch !important;
+  display: table-cell;
+}
+
+/* Make inner div fill full height */
+.project-leads-page .actions-col > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

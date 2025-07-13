@@ -1,0 +1,188 @@
+Prime Locations Section .prime-section {
+  background-color: #0a0a0a;
+  padding: 60px 20px;
+  text-align: center;
+  color: white;
+}
+
+.prime-heading {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #f4c430;
+  margin-bottom: 40px;
+  letter-spacing: 1.5px;
+}
+
+.prime-grid {
+  display: grid;
+  grid-template-columns: repeat;
+
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.prime-card {
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 0 transparent;
+  cursor: pointer;
+}
+
+.prime-card:hover {
+  background-color: #f4c430;
+  color: #000;
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(244, 196, 48, 0.2);
+  border-color: transparent;
+}
+
+.prime-icon-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.map-icon {
+  color: #f4c430;
+  transition: color 0.3s ease;
+}
+
+.prime-card:hover .map-icon {
+  color: #000;
+}
+
+.prime-title {
+  margin: 0;
+}
+
+.prime-subtitle {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.prime-card:hover .prime-subtitle {
+  color: #000;
+}
+
+@media (max-width: 576px) {
+  .prime-heading {
+    font-size: 1.6rem;
+  }
+
+  .prime-icon-title {
+    font-size: 0.95rem;
+  }
+
+  .prime-subtitle {
+    font-size: 0.75rem;
+  }
+}
+
+.prime-section {
+  background-color: #f9f9f9; /* Light background */
+  padding: 60px 20px;
+  text-align: center;
+  color: #111; /* Darker text for light background */
+}
+
+.prime-heading {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #c59d1f; /* Deep gold */
+  margin-bottom: 40px;
+  letter-spacing: 1.5px;
+}
+
+/* Grid for the location cards */
+.prime-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Individual location card */
+.prime-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 0 transparent;
+  cursor: pointer;
+  color: #333;
+}
+
+.prime-card:hover {
+  background-color: #c59d1f;
+  color: #fff;
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(197, 157, 31, 0.25);
+  border-color: transparent;
+}
+
+/* Title with map icon */
+.prime-icon-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  /* color: #333; */
+}
+
+.map-icon {
+  color: #c59d1f;
+  transition: color 0.3s ease;
+}
+
+.prime-card:hover .map-icon {
+  color: #fff;
+}
+
+.prime-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+/* Subtitle text below title */
+.prime-subtitle {
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.prime-card:hover .prime-subtitle {
+  color: #fff;
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .prime-heading {
+    font-size: 1.6rem;
+  }
+
+  .prime-icon-title {
+    font-size: 0.95rem;
+  }
+
+  .prime-subtitle {
+    font-size: 0.75rem;
+  }
+}

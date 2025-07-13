@@ -1,0 +1,126 @@
+.support-widget {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 9999;
+}
+
+.support-widget .support-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.support-widget .support-toggle {
+  background: linear-gradient(135deg, #ffd700, #ffb700);
+  color: black !important;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 50px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: relative;
+  animation: pulse 1.8s infinite !important;
+}
+
+.support-widget .support-toggle .icon {
+  font-size: 1.2rem;
+}
+
+.support-widget .blink-text {
+  animation: blink 1.2s infinite !important;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1 !important;
+  }
+  50% {
+    opacity: 0.2 !important;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7) !important;
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0) !important;
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0) !important;
+  }
+}
+
+.support-widget .support-options {
+  margin-top: 10px;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+  min-width: 220px;
+  animation: fadeIn 0.3s ease-in-out !important;
+}
+
+.support-widget .support-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: #333 !important;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.support-widget .support-option:hover {
+  background-color: #f5f5f5 !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0 !important;
+    transform: translateY(10px) !important;
+  }
+  to {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+.support-widget .glow-ring {
+  position: relative;
+  z-index: 1;
+}
+
+.support-widget .glow-ring::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 40%;
+  background: rgba(255, 193, 7, 0.3);
+  animation: ring-glow 2s infinite ease-out;
+  z-index: -1;
+}
+
+@keyframes ring-glow {
+  0% {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+}

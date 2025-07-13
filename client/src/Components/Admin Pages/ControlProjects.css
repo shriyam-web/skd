@@ -1,0 +1,194 @@
+.admin-control-projects-page .control-projects-search {
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  background: #2d2c2c;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.admin-control-projects-page .control-projects-table td .badge {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.75rem;
+  padding: 5px 8px;
+}
+
+.admin-control-projects-page td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.admin-control-projects-page table td,
+.admin-control-projects-page table th {
+  vertical-align: middle;
+}
+
+.admin-control-projects-page .project-id-badge {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.admin-control-projects-page .control-projects-search::placeholder {
+  color: #aaa;
+}
+
+.admin-control-projects-page .control-projects-table thead th {
+  background: #444 !important;
+  color: #f0f0f0;
+  white-space: nowrap;
+}
+.admin-control-projects-page .control-projects-table td,
+.admin-control-projects-page .control-projects-table th {
+  vertical-align: middle !important;
+}
+.admin-control-projects-page .ellipsis {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 22px;
+}
+.custom-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.custom-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background: #666;
+  border-radius: 22px;
+  transition: 0.4s;
+}
+.custom-slider:before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+.custom-switch input:checked + .custom-slider {
+  background: #0d6efd;
+}
+.custom-switch input:checked + .custom-slider:before {
+  transform: translateX(26px);
+}
+
+.project-modal .modal-content {
+  background: #1d1d1d;
+  color: #eee;
+  border-radius: 10px;
+}
+.project-modal .modal-header,
+.project-modal .modal-footer {
+  border: none;
+  background: #222;
+}
+.project-modal .modal-header .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+.modal-img-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-logo {
+  max-width: 150px;
+  max-height: 120px;
+  object-fit: contain;
+}
+.modal-banner {
+  max-width: 280px;
+  max-height: 180px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.thumb-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.thumb {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #444;
+}
+
+.admin-control-projects-page .table-wrapper {
+  overflow-x: auto;
+  width: 100%;
+  scrollbar-width: thin;
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .modal-content,
+  .modal-content * {
+    visibility: visible !important;
+  }
+
+  .modal-content {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: white;
+    color: black;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .modal-header .btn-close,
+  .btn {
+    display: none !important;
+  }
+}
+@media print {
+  .page-break {
+    page-break-after: always;
+  }
+}
+.pdf-export-area * {
+  font-family: "Segoe UI", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.admin-control-projects-page .control-projects-table {
+  table-layout: fixed;
+  min-width: 1000px;
+}
+
+.admin-control-projects-page .control-projects-table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #444;
+  color: #f0f0f0;
+  z-index: 2;
+  white-space: nowrap;
+}

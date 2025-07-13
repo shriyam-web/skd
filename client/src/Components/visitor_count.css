@@ -1,0 +1,53 @@
+.visitor-widget {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 16px 24px;
+  border-radius: 12px;
+  text-align: center;
+  display: inline-block;
+  font-family: "Segoe UI", "Roboto", sans-serif;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  min-width: 150px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+.visitor-widget:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.177);
+}
+
+.visitor-widget .label {
+  font-size: 0.75rem;
+  letter-spacing: 1.2px;
+  color: #aaa;
+  /* margin-bottom: 6px; */
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.visitor-widget .value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffcc00; /* Clean gold tone */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.visitor-widget .loading {
+  color: #ccc;
+  font-weight: 500;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+}

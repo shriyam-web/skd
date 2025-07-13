@@ -1,0 +1,45 @@
+.footer-link:hover {
+  color: #ffc107 !important;
+  transition: color 0.3s ease;
+}
+.bg-darks {
+  background-color: rgba(0, 0, 0, 0.262) !important;
+}
+.scroll-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  background-color: #ffc107; 
+  color: #000;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.scroll-to-top:hover {
+  background-color: #ffca2c;
+  transform: translateY(-3px);
+}
+
+.footer-icon {
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+.footer-link {
+  transition: color 0.2s;
+}
+
+
+.footer-icon:hover {
+  color: #ffc107;
+  transform: scale(1.1);
+}
+.footer-copy {
+  color: #cccccc; 
+}

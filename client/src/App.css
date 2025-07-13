@@ -1,0 +1,217 @@
+/* ===========  GLOBAL  =========== */
+body {
+  /* background: white !important; */
+  font-family: "Poppins", sans-serif;
+
+  /* background-color: #262626 !important; */
+  /* color: white; */
+}
+
+/* ===========  NAVBAR  =========== */
+.skd-navbar {
+  font-size: 0.85rem;
+  letter-spacing: 0.4px;
+  top: 0;
+  z-index: 1030;
+  animation: fadeIn 0.8s;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+.skd-navbar {
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* .skd-transparent-navbar {
+  background: transparent !important;
+  background-color: transparent !important;
+  transition: 0.3s;
+  box-shadow: none !important;
+} */
+
+.skd-transparent-navbar {
+  background-color: #13131355 !important;
+  /* background: #13131355 !important; */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.skd-scrolled-navbar {
+  background: linear-gradient(90deg, #3c3a3a 0%, #3c3a3a 50%, #c5a253 100%);
+  border-bottom: 1px solid #ffd70040;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* logo */
+.skd-logo-size {
+  height: 50px;
+  /* margin-top: -21px; */
+  /* shadow: 2px 2px #111; */
+}
+
+/* MAIN LINKS */
+.skd-menu-item {
+  color: #fff !important;
+  font-weight: 800;
+  font-style: normal;
+  padding: 8px 12px;
+  border-radius: 4px;
+  position: relative;
+  transition: 0.3s;
+}
+.skd-menu-item:hover {
+  background: #ffd700;
+  color: #000 !important;
+}
+.skd-menu-item::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  position: absolute;
+  bottom: 2px;
+  left: 10%;
+  background: #ffd700;
+  transition: width 0.3s;
+}
+.skd-menu-item:hover::after {
+  width: 80%;
+}
+
+/* custom caret */
+.skd-navbar .dropdown-toggle::after {
+  display: none;
+}
+.skd-navbar .dropdown-toggle.skd-menu-item::before {
+  content: "▼";
+  font-size: 0.55rem;
+  /* font-size: 1rem; */
+  margin-right: 2px;
+  color: #fff;
+}
+
+/* ADMIN */
+.skd-admin-link {
+  background: #e7a83c;
+  font-weight: 700;
+  transition: 0.3s;
+}
+.skd-admin-link:hover {
+  background: #ff5733;
+  color: #fff !important;
+}
+
+/* ===========  DROPDOWNS (desktop)  =========== */
+.skd-navbar .dropdown-menu {
+  background: #f2f2f2;
+  border: 0;
+  border-radius: 8px;
+  min-width: 220px;
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: pop 0.2s;
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.skd-navbar .dropdown-item {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 10px 16px;
+  color: #111;
+  transition: 0.3s;
+}
+.skd-navbar .dropdown-item:hover {
+  background: #e0e0e0;
+  color: #000;
+}
+
+/* nested hover submenu (desktop ≥992) */
+@media (min-width: 992px) {
+  .skd-dropdown-submenu {
+    position: relative;
+  }
+  .skd-dropdown-submenu > .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+    display: none;
+    background: #f9f9f9;
+    min-width: 240px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  .skd-dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+    position: absolute;
+  }
+  .skd-dropdown-submenu > .dropdown-item::after {
+    content: "▶";
+    float: right;
+    font-size: 0.7rem;
+    color: #888;
+  }
+}
+
+/* ===========  MOBILE  (<992)  =========== */
+@media (max-width: 991.98px) {
+  .skd-navbar .navbar-collapse {
+    background: linear-gradient(90deg, #000 0%, #0d0d0d 50%, #c5a253 100%);
+    padding: 1rem;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .skd-navbar .dropdown-menu {
+    position: static !important;
+    box-shadow: none;
+  }
+  .skd-dropdown-submenu > .dropdown-menu {
+    position: relative !important;
+    margin: 0.3rem 0 0.3rem 1rem;
+    border-left: 2px solid #ccc;
+    background: #fff;
+    border-radius: 0;
+  }
+  .skd-dropdown-submenu > .dropdown-item::after {
+    content: "▼";
+    float: right;
+    font-size: 0.65rem;
+  }
+  .skd-dropdown-submenu > .dropdown-menu .dropdown-item {
+    padding-left: 1.5rem;
+  }
+  .skd-logo-size {
+    height: 40px;
+    width: 261px;
+  }
+}
+
+/* Adjust nested project items (mobile) */
+@media (max-width: 991.98px) {
+  .collapse.list-unstyled li {
+    padding-left: 1rem;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .collapse.list-unstyled a.dropdown-item {
+    font-size: 0.9rem;
+  }
+
+  /* Remove duplicate carets if any */
+  .dropdown-item.dropdown-toggle::after {
+    display: none !important;
+  }
+}

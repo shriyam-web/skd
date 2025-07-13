@@ -1,0 +1,127 @@
+.table {
+  table-layout: fixed !important;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+  white-space: normal;
+  word-break: break-word;
+  padding: 10px;
+  font-size: 0.95rem;
+}
+
+
+thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #f8f9fa !important;
+  color: #212529;
+  font-weight: bold;
+}
+
+
+th:nth-child(1),
+td:nth-child(1) {
+  width: 40px; 
+}
+
+th:nth-child(2),
+td.name-col {
+  width: 120px;
+}
+
+th:nth-child(3),
+td.email-col {
+  width: 150px;
+}
+
+th:nth-child(4) {
+  width: 110px;
+}
+
+th:nth-child(5) {
+  width: 100px;
+}
+
+th:nth-child(6),
+td.message-col {
+  width: 200px;
+}
+
+th:nth-child(7) {
+  width: 130px;
+}
+
+th:nth-child(8) {
+  width: 90px;
+}
+
+th:nth-child(9),
+td.actions-col {
+  width: 240px;
+}
+
+
+td.actions-col {
+  padding: 10px 8px;
+  white-space: normal;
+}
+
+td.actions-col .btn {
+  width: 100%;
+  min-height: 32px;
+  font-size: 0.8rem;
+}
+
+.actions-col.d-flex {
+  flex-direction: column;
+  gap: 6px;
+  align-items: stretch;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 0.4em 0.7em;
+}
+
+.table-responsive {
+  max-height: 60vh;
+  overflow-y: auto;
+  border-radius: 10px;
+}
+
+
+.table-success {
+  background-color: #d4edda !important;
+}
+
+.table-warning {
+  background-color: #fff3cd !important;
+}
+
+.table-secondary {
+  background-color: #e2e3e5 !important;
+}
+
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+
+  td.actions-col .btn {
+    font-size: 0.75rem;
+    padding: 6px 8px;
+  }
+
+  .actions-col.d-flex {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+}

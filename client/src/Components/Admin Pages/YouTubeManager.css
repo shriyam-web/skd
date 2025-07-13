@@ -1,0 +1,63 @@
+/* -----------  SCROLLABLE GRID LAYOUT  ----------- */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+  padding-right: 10px; /* avoid scrollbar overlap */
+  max-height: 67vh; /* set max visible area */
+  overflow-y: auto; /* scroll if content exceeds */
+  margin-bottom: 4px;
+  scroll-behavior: smooth;
+}
+
+/* Optional: hide scrollbar for cleaner look */
+.video-grid::-webkit-scrollbar {
+  width: 6px;
+}
+.video-grid::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 6px;
+}
+.video-grid::-webkit-scrollbar-track {
+  background: #222;
+}
+
+/* -----------  VIDEO CARD STYLING ----------- */
+.video-card {
+  background: #1c1c1c;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  padding: 16px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.55);
+}
+
+.video-card iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 8px;
+}
+
+.video-card h5 {
+  font-size: 1.05rem;
+  margin: 12px 0 6px;
+  color: #f5f5f5;
+}
+
+.video-card p {
+  font-size: 0.9rem;
+  color: #c9c9c9;
+  margin-bottom: 12px;
+}
+
+/* Full width delete button on small screens */
+@media (max-width: 576px) {
+  .video-card button {
+    width: 100%;
+  }
+}

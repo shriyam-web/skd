@@ -1,0 +1,293 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+.adminblog-create {
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  scrollbar-width: thin;
+  min-height: 90vh;
+  overflow: hidden;
+}
+
+.adminblog-table {
+  border-collapse: separate !important;
+  border-spacing: 0 10px !important;
+  height: 100px !important;
+  scrollbar-width: thin;
+}
+.adminblog-table tbody tr {
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  scrollbar-width: thin;
+}
+
+.blog-table-container {
+  min-height: 555px;
+  max-height: 560px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  border-radius: 8px;
+}
+
+.adminblog-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  background-color: transparent;
+}
+
+.adminblog-table-head {
+  background-color: #2b2b2b !important;
+  color: #f0c040;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.adminblog-table th,
+.adminblog-table td {
+  padding: 16px 20px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #333;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.adminblog-table thead th {
+  background-color: #1a1919 !important;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 14px 18px;
+  border: none;
+  text-transform: uppercase;
+  border-top: 2px solid #3b3b3b;
+  border-bottom: 2px solid #3b3b3b;
+}
+
+.adminblog-table tbody tr {
+  background-color: #1f1f1f;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.adminblog-table tbody tr:hover {
+  background-color: #2a2a2a;
+}
+
+.adminblog-table tbody td {
+  color: #ddd;
+  padding: 16px 18px;
+  border: none;
+  background-color: inherit;
+}
+
+.adminblog-table tbody tr td:first-child {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.adminblog-table tbody tr td:last-child {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.adminblog-table thead th:first-child {
+  border-top-left-radius: 12px;
+}
+.adminblog-table thead th:last-child {
+  border-top-right-radius: 12px;
+}
+.adminblog-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 12px;
+}
+.adminblog-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 12px;
+}
+
+.adminblog-table tbody td {
+  color: #e6e6e6;
+  background-color: #333232;
+}
+
+.adminblog-table tbody tr:hover {
+  background-color: #2a2a2a;
+  transition: background 0.3s ease;
+}
+
+.adminblog-table .btn-info,
+.adminblog-table .btn-danger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+.adminblog-table .btn-info:hover {
+  background-color: #17a2b8;
+  color: #fff;
+}
+.adminblog-table .btn-danger:hover {
+  background-color: #e55360;
+  color: #fff;
+}
+
+.adminblog-create-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+
+}
+
+.adminblog-create .form-control {
+  background-color: #1a1a1a;
+  color: #fff;
+  border: 1px solid #444;
+}
+.adminblog-create .form-control::placeholder {
+  color: #888;
+}
+.adminblog-create .form-label {
+  color: #ccc;
+}
+
+.adminblog-create .btn-warning {
+  border: none;
+  background-color: #ffc107;
+  color: #000;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.adminblog-create .btn-warning:hover {
+  background-color: #ffdb58;
+  color: #000;
+}
+
+.adminblog-editor {
+  min-height: 250px;
+  border: 1px solid #555;
+  padding: 12px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  color: #000000;
+}
+.adminblog-editor p,
+.adminblog-editor h1,
+.adminblog-editor h2 {
+  color: #fff;
+}
+
+.modal-header .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+.adminblog-toolbar-scroll {
+  position: sticky;
+  scrollbar-width: thin;
+  top: 0;
+  z-index: 10;
+  background-color: #201c1c;
+
+  padding-top: 1rem;
+  border-bottom: 1px solid #444;
+
+}
+
+.adminblog-toolbar-scroll button,
+.adminblog-toolbar-scroll select {
+  border: none;
+  background: #2c2c2c;
+  color: #f0c040;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+  cursor: pointer;
+  height: 50px;
+}
+.adminblog-toolbar-scroll button:hover,
+.adminblog-toolbar-scroll select:hover {
+  background-color: #444;
+  color: #fff;
+  transform: scale(1.05);
+}
+.adminblog-toolbar-scroll select {
+
+  font-size: 0.95rem;
+  min-width: 140px;
+ 
+}
+
+.custom-blog-modal {
+  max-width: 95vw;
+  width: 100%;
+}
+
+.modal-content {
+  background-color: #1a1a1a;
+  color: #fff;
+  border-radius: 10px;
+}
+.modal-header,
+.modal-footer {
+  border-color: #333;
+}
+.modal-title {
+  color: #f0c040;
+}
+
+.modal-body .btn-success {
+  background-color: #28a745;
+  font-weight: 600;
+  border: none;
+}
+.modal-body .btn-success:hover {
+  background-color: #34d058;
+}
+.modal-footer .btn-danger {
+  background-color: #dc3545;
+  border: none;
+  font-weight: 600;
+}
+.modal-footer .btn-danger:hover {
+  background-color: #e55360;
+}
+
+@media (max-width: 768px) {
+  .adminblog-toolbar-scroll {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .adminblog-toolbar-scroll select {
+    width: 100%;
+  }
+}
+.adminblog-toolbar-scroll select {
+  width: auto !important; 
+  flex: 0 0 auto; 
+  height: 50px !important;
+}
+
+.tiptap {
+  background-color: #ffffff;
+  color: #2a2929;
+  min-height: 250px;
+  padding: 0.5rem;
+  border-radius: 6px;
+
+  line-height: 1.7;
+  font-size: 1rem;
+}

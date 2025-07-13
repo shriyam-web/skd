@@ -1,0 +1,9 @@
+/* src/components/WorldMap.css */
+
+.world-map {
+  z-index: 1; /* sits underneath the overlay */
+}
+
+.leaflet-control-attribution {
+  display: none !important;
+}

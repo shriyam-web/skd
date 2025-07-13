@@ -1,0 +1,76 @@
+.custom-thead {
+  background-color: #212529 !important;
+  color: white !important;
+  text-align: center;
+  vertical-align: middle;
+}
+td.d-flex {
+  align-items: stretch;
+}
+.comment-row {
+  background-color: #f8f9fa;
+  vertical-align: middle;
+}
+
+.comment-row td {
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+.comment-row td .btn {
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.comment-row:hover {
+  background-color: #e9ecef;
+}
+.scrollable-table-container2 {
+  overflow-y: auto;
+}
+.custom-table-wrapper {
+  border: 2px solid #dee2e6;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.custom-scrollable-table {
+  max-height: 600px;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.custom-table-head th {
+  background-color: #212529;
+  color: white;
+}
+
+.custom-comment-row:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.custom-comment-row:hover {
+  background-color: #e9ecef;
+}
+
+.admin-reply-box {
+  background-color: #f1f1f1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: left;
+}

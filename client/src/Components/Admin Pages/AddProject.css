@@ -1,0 +1,236 @@
+/* ------------------------------------------------------
+   🌟 SKD Admin Panel | Add Project Form Styles (v3)
+   Golden Sticky Progress Bar • Enhanced Readability •
+   ------------------------------------------------------ */
+
+.skd-add-project-wrapper {
+  max-width: 1024px;
+  margin: 4rem auto;
+  padding: 2.5rem;
+  background-color: #ffffff;
+
+  border-radius: 24px;
+  /* box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06); */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  z-index: 1;
+}
+
+/* 👇 Sticky Progress Bar */
+.skd-sticky-progress {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #b1b0b0ee;
+  padding: 0.75rem 1rem;
+  /* box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05); */
+  border-radius: 0 0 12px 12px;
+}
+
+.completion-bar-container {
+  width: 100%;
+  height: 12px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.completion-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ffd700, #d4af37);
+  border-radius: 8px;
+  transition: width 0.6s ease;
+}
+
+.completion-bar-label {
+  text-align: right;
+  margin-top: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #444;
+}
+.note {
+  color: #444;
+  /* padding-top: -10px !important; */
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+/* Headings */
+.skd-add-project-wrapper h3 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  /* text-align: center; */
+  color: #747272;
+  margin-bottom: 2.2rem;
+}
+
+.skd-add-project-wrapper h5 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  margin: 2.5rem 0 1rem;
+  position: relative;
+  padding-left: 26px;
+}
+
+.skd-add-project-wrapper h5::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6rem;
+  width: 18px;
+  height: 4px;
+  background: #d4af37;
+  border-radius: 2px;
+}
+
+/* Form Controls */
+.skd-add-project-wrapper .form-control,
+.skd-add-project-wrapper .form-select {
+  border-radius: 14px;
+  padding: 14px 18px;
+  border: 1px solid #ddd;
+  background: #fcfcfc;
+  font-size: 1rem;
+  /* transition: border-color 0.3s, box-shadow 0.3s; */
+}
+
+.skd-add-project-wrapper .form-control:focus,
+.skd-add-project-wrapper .form-select:focus {
+  border-color: #d4af37;
+  /* box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25); */
+  background: #fff;
+}
+
+.skd-add-project-wrapper textarea.form-control {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.skd-add-project-wrapper input[type="file"] {
+  background-color: #f8f8f8;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+
+/* Buttons */
+.skd-add-project-wrapper .btn-success {
+  background: linear-gradient(135deg, #ffd700, #d4af37);
+  border: none;
+  padding: 12px 32px;
+  border-radius: 32px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: 0.3s ease-in-out;
+}
+
+.skd-add-project-wrapper .btn-success:hover {
+  background: linear-gradient(135deg, #ffcc00, #b8941b);
+  transform: translateY(-1px);
+  /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15); */
+  color: #fff;
+}
+
+.skd-add-project-wrapper .btn-secondary,
+.skd-add-project-wrapper .btn-outline-primary {
+  border-radius: 30px;
+  font-weight: 600;
+  padding: 8px 20px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.skd-add-project-wrapper .btn-outline-primary {
+  color: #d4af37;
+  border: 2px solid #d4af37;
+  background-color: transparent;
+}
+
+.skd-add-project-wrapper .btn-outline-primary:hover {
+  background: #d4af37;
+  color: #fff;
+}
+
+/* Repeater Item Styles */
+.skd-add-project-wrapper .repeater-item {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid #e4e4e4;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.skd-add-project-wrapper .repeater-item:hover {
+  border-color: #d4af37;
+}
+
+.skd-add-project-wrapper .btn-link.text-danger {
+  color: #dc3545 !important;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+.skd-add-project-wrapper .btn-link.text-danger:hover {
+  color: #a71d2a !important;
+}
+
+/* Switch Toggle */
+#ap-visible-switch.form-check-input {
+  width: 52px;
+  height: 28px;
+  background-color: #ccc;
+  border-radius: 28px;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+}
+#ap-visible-switch:checked {
+  background-color: #28a745;
+}
+#ap-visible-switch + label {
+  margin-left: 12px;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .skd-add-project-wrapper {
+    padding: 1.5rem 1rem;
+  }
+
+  .skd-add-project-wrapper h3 {
+    font-size: 1.9rem;
+  }
+
+  .skd-add-project-wrapper h5 {
+    font-size: 1.15rem;
+  }
+
+  .completion-bar-label {
+    font-size: 0.85rem;
+    text-align: center;
+  }
+}
+.completion-red {
+  background: linear-gradient(90deg, #ff4d4f, #ff7875);
+}
+.completion-blue {
+  background: linear-gradient(90deg, #1890ff, #40a9ff);
+}
+.completion-green-light {
+  background: linear-gradient(90deg, #95de64, #73d13d);
+}
+.completion-green-dark {
+  background: linear-gradient(90deg, #52c41a, #237804);
+}
+.btn-outline-success {
+  border: 2px solid #28a745;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 30px;
+}
