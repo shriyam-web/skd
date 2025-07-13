@@ -68,20 +68,20 @@ router.get("/", async (req, res) => {
 });
 
 // ✅ DELETE a map entry by ID
-router.delete("/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const deleted = await MapEntry.findByIdAndDelete(id);
+// router.delete("/:id", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const deleted = await MapEntry.findByIdAndDelete(id);
 
-    if (!deleted) {
-      return res.status(404).json({ message: "Map entry not found" });
-    }
+//     if (!deleted) {
+//       return res.status(404).json({ message: "Map entry not found" });
+//     }
 
-    res.status(200).json({ message: "Map entry deleted successfully" });
-  } catch (err) {
-    console.error("Error deleting map entry:", err);
-    res.status(500).json({ message: "Server error", error: err });
-  }
-});
+//     res.status(200).json({ message: "Map entry deleted successfully" });
+//   } catch (err) {
+//     console.error("Error deleting map entry:", err);
+//     res.status(500).json({ message: "Server error", error: err });
+//   }
+// });
 
 module.exports = router;
