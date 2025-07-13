@@ -1,0 +1,13 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Runtime
+node_modules
+.env
+
+# Optional
+# uploads/
+# .DS_Store
+# .vscode/
