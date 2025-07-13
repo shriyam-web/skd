@@ -20,48 +20,44 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.resolve(__dirname, "../client/dist", "index.html"));
   });
 }
+console.log("→ Mounting /api/admin");
+app.use("/api/admin", require("./routes/adminRoutes"));
 
-// Routes
-const adminRoutes = require("./routes/adminRoutes");
-app.use("/api/admin", adminRoutes);
+console.log("→ Mounting /api/lead");
+app.use("/api/lead", require("./routes/leadRoutes"));
 
-const leadRoutes = require("./routes/leadRoutes");
-app.use("/api/lead", leadRoutes); // Correct base path
+console.log("→ Mounting /api");
+app.use("/api", require("./routes/visitorRoutes"));
 
-const visitorRoutes = require("./routes/visitorRoutes"); // ✅ Correct path
-app.use("/api", visitorRoutes); // ✅ Mounts /api prefix
+console.log("→ Mounting /api/admin/projects");
+app.use("/api/admin/projects", require("./routes/projectRoutes"));
 
-const projectRoutes = require("./routes/projectRoutes");
-app.use("/api/admin/projects", projectRoutes);
+console.log("→ Mounting /api/project-enquiry");
+app.use("/api/project-enquiry", require("./routes/projectEnquiryRoutes"));
 
-const projectEnquiryRoutes = require("./routes/projectEnquiryRoutes");
-app.use("/api/project-enquiry", projectEnquiryRoutes);
+console.log("→ Mounting /api/career");
+app.use("/api/career", require("./routes/careerRoutes"));
 
-const careerRoutes = require("./routes/careerRoutes");
-app.use("/api/career", careerRoutes);
-
+console.log("→ Mounting /uploads/resumes");
 app.use("/uploads/resumes", express.static("uploads/resumes"));
-// app.use("/uploads/resumes", express.static("uploads/resumes"));
 
-const mapEntryRoutes = require("./routes/mapEntryRoutes");
-app.use("/api/map-manager", mapEntryRoutes); //✅
+console.log("→ Mounting /api/map-manager");
+app.use("/api/map-manager", require("./routes/mapEntryRoutes"));
 
-const galleryRoute = require("./routes/adminGallery");
-app.use("/api/admin/gallery", galleryRoute); // ✅ CORRECT
+console.log("→ Mounting /api/admin/gallery");
+app.use("/api/admin/gallery", require("./routes/adminGallery"));
 
-const blogRoutes = require("./routes/blogRoutes");
-app.use("/api/blogs", blogRoutes);
+console.log("→ Mounting /api/blogs");
+app.use("/api/blogs", require("./routes/blogRoutes"));
 
-const siteConfigRoutes = require("./routes/siteConfigRoutes");
-app.use("/api/site-config", siteConfigRoutes);
+console.log("→ Mounting /api/site-config");
+app.use("/api/site-config", require("./routes/siteConfigRoutes"));
 
-// prefix: /api/admin/dashboard-stats
-const adminStatsRoute = require("./routes/adminStats");
-app.use("/api/admin/dashboard-stats", adminStatsRoute);
+console.log("→ Mounting /api/admin/dashboard-stats");
+app.use("/api/admin/dashboard-stats", require("./routes/adminStats"));
 
+console.log("→ Mounting /api/admin/youtube");
 app.use("/api/admin/youtube", require("./routes/youtubeVideos"));
-// server.js  (only the relevant part shown)
-// app.use("/api/admin/projects", require("./routes/projectRoutes"));
 
 // DB Connection
 mongoose
