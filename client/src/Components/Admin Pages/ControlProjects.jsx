@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import html2pdf from "html2pdf.js";
 import { useRef } from "react";
-import formatIndianPrice from "../utils/formatIndianPrice.js";
+// import formatIndianPrice from "../utils/formatIndianPrice.js";
 import {
   Table,
   Button,
