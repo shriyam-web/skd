@@ -31,13 +31,33 @@ const ControlProjects = () => {
   const pdfRef = useRef();
 
   function dataURLtoFile(dataurl, filename) {
+    if (typeof dataurl !== "string" || !dataurl.startsWith("data:")) {
+      console.error("Invalid data URL input:", dataurl);
+      toast.error("Invalid image data.");
+      return null;
+    }
+
     try {
-      const arr = dataurl.split(",");
-      const mime = arr[0].match(/:(.*?);/)[1];
-      const bstr = atob(arr[1]);
-      let n = bstr.length;
-      const u8arr = new Uint8Array(n);
-      while (n--) u8arr[n] = bstr.charCodeAt(n);
+      const [header, base64Data] = dataurl.split(",");
+
+      if (!header || !base64Data) {
+        throw new Error("Malformed data URL");
+      }
+
+      const mimeMatch = header.match(/data:(.*?);base64/);
+      if (!mimeMatch || !mimeMatch[1]) {
+        throw new Error("MIME type not found in data URL");
+      }
+
+      const mime = mimeMatch[1];
+      const binaryStr = atob(base64Data);
+      const len = binaryStr.length;
+      const u8arr = new Uint8Array(len);
+
+      for (let i = 0; i < len; i++) {
+        u8arr[i] = binaryStr.charCodeAt(i);
+      }
+
       return new File([u8arr], filename, { type: mime });
     } catch (error) {
       console.error("Error converting data URL to file:", error);
