@@ -6,7 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./AllProjects.css";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
-import formatIndianPrice from "../utils/formatPrice";
+import formatIndianPrice from "../utils/formatIndianPrice.js";
 import SupportWidget from "./SupportWidget";
 
 /* ──────────── config / constants (top‑level) ──────────── */

@@ -3,7 +3,7 @@ import axios from "axios";
 import { Card, Button, Form, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./AllProjects.css";
-import formatIndianPrice from "../utils/formatPrice";
+import formatIndianPrice from "../utils/formatIndianPrice.js";
 import DOMPurify from "dompurify";
 
 const AllProjects = () => {
