@@ -259,7 +259,7 @@ router.get("/slug/:slug", async (req, res) => {
  * Fetch a project by its generated projectId (legacy support)
  */
 
-router.get("/:id", async (req, res) => {
+router.get("/:id([a-zA-Z0-9-]+)", async (req, res) => {
   try {
     const project = await Project.findOne({ projectId: req.params.id });
     if (!project) {
