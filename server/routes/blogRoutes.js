@@ -56,26 +56,6 @@ router.get("/", async (req, res) => {
 });
 
 // GET SINGLE BLOG BY ID
-router.get("/:id", async (req, res) => {
-  try {
-    const blog = await Blog.findById(req.params.id);
-    if (!blog) return res.status(404).json({ error: "Blog not found" });
-
-    const relatedBlogs = await Blog.find({ _id: { $ne: blog._id } })
-      .sort({ timestamp: -1 })
-      .limit(4);
-
-    // Only approved comments shown
-    const approvedComments = blog.comments.filter((c) => c.approved);
-
-    res.json({
-      blog: { ...blog.toObject(), comments: approvedComments },
-      relatedBlogs,
-    });
-  } catch (err) {
-    res.status(500).json({ error: "Failed to fetch blog" });
-  }
-});
 
 // Admin replies to a comment
 router.post("/:blogId/comments/:commentId/reply", async (req, res) => {
@@ -288,6 +268,26 @@ router.delete("/:id", async (req, res) => {
     res.json({ message: "Blog deleted" });
   } catch (err) {
     res.status(500).json({ error: "Failed to delete blog" });
+  }
+});
+router.get("/:id", async (req, res) => {
+  try {
+    const blog = await Blog.findById(req.params.id);
+    if (!blog) return res.status(404).json({ error: "Blog not found" });
+
+    const relatedBlogs = await Blog.find({ _id: { $ne: blog._id } })
+      .sort({ timestamp: -1 })
+      .limit(4);
+
+    // Only approved comments shown
+    const approvedComments = blog.comments.filter((c) => c.approved);
+
+    res.json({
+      blog: { ...blog.toObject(), comments: approvedComments },
+      relatedBlogs,
+    });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to fetch blog" });
   }
 });
 
