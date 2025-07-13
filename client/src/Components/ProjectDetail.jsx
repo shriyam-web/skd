@@ -6,8 +6,6 @@ import LeadForm from "./LeadForm";
 import axios from "axios";
 import { TAG_META } from "./AllProjectsPage";
 import { Link } from "react-router-dom";
-// import { formatIndianPrice } from "C:/Users/victus/Desktop/mern_project/server/utils/formatPrice.js";
-
 import formatIndianPrice from "../utils/formatPrice";
 
 import {
