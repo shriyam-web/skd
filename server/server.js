@@ -61,7 +61,7 @@ app.use("/api/admin/dashboard-stats", adminStatsRoute);
 
 app.use("/api/admin/youtube", require("./routes/youtubeVideos"));
 // server.js  (only the relevant part shown)
-app.use("/api/admin/projects", require("./routes/projectRoutes"));
+// app.use("/api/admin/projects", require("./routes/projectRoutes"));
 
 // DB Connection
 mongoose
