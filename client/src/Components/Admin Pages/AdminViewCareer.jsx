@@ -18,7 +18,7 @@ const AdminViewCareer = () => {
   const [loading, setLoading] = useState(true);
   const [selectedPosition, setSelectedPosition] = useState("All");
   const [selectedApp, setSelectedApp] = useState(null);
-
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
   const remainingTime = useAutoLogout();
 
   const today = new Date();
@@ -30,7 +30,7 @@ const AdminViewCareer = () => {
   const fetchApplications = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5000/api/career/all");
+      const res = await axios.get(`${API_BASE}/api/career/all`);
       const sorted = res.data.sort(
         (a, b) => new Date(b.submittedAt) - new Date(a.submittedAt)
       );
@@ -76,7 +76,7 @@ const AdminViewCareer = () => {
 
   const toggleStatus = async (id, newStatus) => {
     try {
-      await axios.patch(`http://localhost:5000/api/career/${id}`, {
+      await axios.patch(`${API_BASE}/api/career/${id}`, {
         status: newStatus,
       });
       toast.success("Status updated");
@@ -88,7 +88,7 @@ const AdminViewCareer = () => {
 
   const toggleStar = async (id, newStar) => {
     try {
-      await axios.patch(`http://localhost:5000/api/career/${id}`, {
+      await axios.patch(`${API_BASE}/api/career/${id}`, {
         starred: newStar,
       });
       toast.success("Star toggled");
@@ -101,7 +101,7 @@ const AdminViewCareer = () => {
   const deleteApplication = async (id) => {
     if (window.confirm("Are you sure you want to delete this application?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/career/${id}`);
+        await axios.delete(`${API_BASE}/api/career/${id}`);
         toast.success("Deleted successfully");
         fetchApplications();
       } catch (err) {
@@ -121,7 +121,7 @@ const AdminViewCareer = () => {
   Qualification: ${app.qualification} (${app.percentage}%)
   Experience: ${app.experience} months
   Address: ${app.address}
-  Resume: ${app.resume ? `http://localhost:5000${app.resume}` : "N/A"}
+  Resume: ${app.resume ? `${API_BASE}${app.resume}` : "N/A"}
   Status: ${app.status || "Pending"}
   Starred: ${app.starred ? "⭐" : "No"}
   Submitted: ${new Date(app.submittedAt).toLocaleString("en-GB")}
@@ -170,7 +170,7 @@ const AdminViewCareer = () => {
         app.address,
         app.status,
         app.starred ? "⭐" : "No",
-        app.resume ? `http://localhost:5000${app.resume}` : "-",
+        app.resume ? `${API_BASE}${app.resume}` : "-",
         new Date(app.submittedAt).toLocaleString("en-GB"),
       ]),
       styles: { fontSize: 7 },
@@ -193,7 +193,7 @@ const AdminViewCareer = () => {
       Address: app.address,
       Status: app.status,
       Starred: app.starred ? "⭐" : "No",
-      Resume: app.resume ? `http://localhost:5000${app.resume}` : "-",
+      Resume: app.resume ? `${API_BASE}${app.resume}` : "-",
       Submitted: new Date(app.submittedAt).toLocaleString("en-GB"),
     }));
 
@@ -390,7 +390,7 @@ const AdminViewCareer = () => {
                   <p>
                     <strong>Resume:</strong>{" "}
                     <a
-                      href={`http://localhost:5000${selectedApp.resume}`}
+                      href={`${API_BASE}${selectedApp.resume}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn btn-sm btn-outline-success ms-2"

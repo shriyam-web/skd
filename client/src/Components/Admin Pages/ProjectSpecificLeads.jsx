@@ -18,6 +18,7 @@ const ProjectSpecificLeads = () => {
   const [error, setError] = useState("");
 
   const remainingTime = useAutoLogout();
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
   const today = new Date();
   const todayCount = leads.filter((lead) => {
@@ -28,9 +29,7 @@ const ProjectSpecificLeads = () => {
   const fetchLeads = async () => {
     try {
       setLoading(true);
-      const response = await axios.get(
-        "http://localhost:5000/api/project-enquiry/all"
-      );
+      const response = await axios.get(`${API_BASE}/api/project-enquiry/all`);
       const sorted = response.data.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
@@ -170,9 +169,7 @@ Date: ${new Date(lead.createdAt).toLocaleString("en-GB", {
     if (!window.confirm("Are you sure you want to delete this entry?")) return;
 
     try {
-      const res = await axios.delete(
-        `http://localhost:5000/api/project-enquiry/${id}`
-      );
+      const res = await axios.delete(`${API_BASE}/api/project-enquiry/${id}`);
       if (res.status === 200) {
         toast.success("Entry deleted");
         fetchLeads();
@@ -187,7 +184,7 @@ Date: ${new Date(lead.createdAt).toLocaleString("en-GB", {
 
   const toggleStatus = async (id, newStatus) => {
     try {
-      await axios.patch(`http://localhost:5000/api/project-enquiry/${id}`, {
+      await axios.patch(`${API_BASE}/api/project-enquiry/${id}`, {
         status: newStatus,
       });
       toast.success("Status updated");
@@ -200,7 +197,7 @@ Date: ${new Date(lead.createdAt).toLocaleString("en-GB", {
 
   const toggleStarred = async (id, newStarred) => {
     try {
-      await axios.patch(`http://localhost:5000/api/project-enquiry/${id}`, {
+      await axios.patch(`${API_BASE}/api/project-enquiry/${id}`, {
         starred: newStarred,
       });
       toast.success("Star updated");

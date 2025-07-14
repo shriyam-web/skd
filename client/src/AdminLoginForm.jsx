@@ -16,6 +16,7 @@ function AdminLoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { login } = useAuth();
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
   const handleClick = () => {
     navigate("/admin/signup");
@@ -23,13 +24,15 @@ function AdminLoginForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Basic validation
     if (!email || !password) {
       toast.error("Please fill in all fields");
       return;
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/admin/login", {
+      const response = await fetch(`${API_BASE}/api/admin/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,20 +40,21 @@ function AdminLoginForm() {
         body: JSON.stringify({ email, password }),
       });
 
-      const data = await res.json();
+      const result = await response.json();
 
-      if (res.ok) {
+      if (response.ok) {
         toast.success("Login successful");
+
         setTimeout(() => {
-          login(data.admin);
+          login(result.admin); // Auth context/localStorage logic
           navigate("/admin/dashboard");
         }, 1500);
       } else {
-        toast.error(data.message);
+        toast.error(result?.message || "Login failed");
       }
-    } catch (error) {
-      toast.error("Something went wrong");
-      console.error(error);
+    } catch (err) {
+      console.error("Login request failed:", err);
+      toast.error("Something went wrong. Please try again.");
     }
   };
 

@@ -13,6 +13,7 @@ const AdminCommentModeration = () => {
   const [replyText, setReplyText] = useState("");
   const [showApproved, setShowApproved] = useState(false);
   const [approvedComments, setApprovedComments] = useState([]);
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
   const fetchPendingComments = async () => {
     try {

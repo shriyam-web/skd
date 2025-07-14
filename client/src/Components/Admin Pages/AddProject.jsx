@@ -115,12 +115,6 @@ const AddProject = () => {
     }));
   };
 
-  // const handleListChange = (index, value, field) => {
-  //   const updated = [...formData[field]];
-  //   updated[index] = value;
-  //   setFormData((prev) => ({ ...prev, [field]: updated }));
-  // };
-
   const addToList = (field) => {
     setFormData((prev) => ({ ...prev, [field]: [...prev[field], ""] }));
   };

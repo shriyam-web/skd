@@ -15,7 +15,7 @@ const AdminContactUsForm = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
-
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
   const today = new Date();
   const todayCount = leads.filter((lead) => {
     const createdDate = new Date(lead.createdAt);
@@ -28,7 +28,8 @@ const AdminContactUsForm = () => {
     if (!window.confirm("Are you sure you want to delete this lead?")) return;
 
     try {
-      const res = await axios.delete(`http://localhost:5000/api/lead/${id}`);
+      const res = await axios.delete(`${API_BASE}/api/lead/${id}`);
+
       alert("Lead deleted");
       fetchLeads();
 
@@ -48,7 +49,7 @@ const AdminContactUsForm = () => {
   const fetchLeads = async () => {
     try {
       setLoading(true);
-      const response = await axios.get("http://localhost:5000/api/lead/all");
+      const response = await axios.get(`${API_BASE}/api/lead/all`);
       const sorted = response.data.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
@@ -166,7 +167,7 @@ const AdminContactUsForm = () => {
     const newStatus = currentStatus === "Contacted" ? "Pending" : "Contacted";
 
     try {
-      await axios.put(`http://localhost:5000/api/lead/status/${id}`, {
+      await axios.put(`${API_BASE}/api/lead/status/${id}`, {
         status: newStatus,
       });
 
@@ -212,7 +213,7 @@ Starred: ${lead.starred ? "Yes ⭐" : "No"}
 
   const toggleStar = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/lead/star/${id}`);
+      await axios.put(`${API_BASE}/api/lead/star/${id}`);
       fetchLeads(); // refresh list
       toast.success("Star toggled");
     } catch (err) {

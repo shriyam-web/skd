@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 
 const LeadForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -59,7 +59,7 @@ const LeadForm = () => {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/api/lead/submit", {
+      const res = await fetch(`${API_BASE}/api/lead/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

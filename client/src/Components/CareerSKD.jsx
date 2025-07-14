@@ -11,7 +11,7 @@ const CareerSKD = () => {
   const [position, setPosition] = useState("");
   const [joinTime, setJoinTime] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
-
+  const API_BASE = import.meta.env.VITE_API_BASE_URL;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -73,7 +73,7 @@ const CareerSKD = () => {
         }
       }
 
-      await axios.post("http://localhost:5000/api/career", submissionData, {
+      await axios.post(`${API_BASE}/api/career`, submissionData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
