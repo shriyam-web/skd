@@ -35,24 +35,26 @@ const WorldMap = () => {
   const isMobile = window.innerWidth <= 768;
 
   return (
-    <MapContainer
-      center={[-200, 0]}
-      zoom={2}
-      scrollWheelZoom={false}
-      dragging={!isMobile}
-      touchZoom={!isMobile}
-      zoomControl={false} // ← this disables the + / - buttons
-      style={{ height: "100%", width: "100%" }}
-      className="world-map"
-    >
-      <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
-      <FitBounds locations={locations} />
-      {locations.map((loc, i) => (
-        <Marker key={i} position={loc.position}>
-          <Popup>{loc.name}</Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+    <>
+      <MapContainer
+        center={[-200, 0]}
+        zoom={2}
+        scrollWheelZoom={false}
+        dragging={!isMobile}
+        touchZoom={!isMobile}
+        zoomControl={false} // ← this disables the + / - buttons
+        style={{ height: "100%", width: "100%" }}
+        className="world-map"
+      >
+        <TileLayer url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png" />
+        <FitBounds locations={locations} />
+        {locations.map((loc, i) => (
+          <Marker key={i} position={loc.position}>
+            <Popup>{loc.name}</Popup>
+          </Marker>
+        ))}
+      </MapContainer>
+    </>
   );
 };
 

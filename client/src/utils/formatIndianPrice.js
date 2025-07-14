@@ -1,4 +1,4 @@
-export const formatIndianPrice = (price) => {
+const formatIndianPrice = (price) => {
   const formatter = new Intl.NumberFormat("en-IN", {
     minimumFractionDigits: 0,
     maximumFractionDigits: 2, // ✅ allow up to 2 decimals
