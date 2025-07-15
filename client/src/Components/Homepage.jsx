@@ -443,9 +443,9 @@ const Homepage = () => {
       {/* Rest of the site */}
       <SupportWidget />
       {/* <Stats /> */}
-      <div style={{ marginTop: "10px" }}>
-        <AllProjects />
-      </div>
+      {/* <div style={{ marginTop: "10px" }}> */}
+      <AllProjects />
+      {/* </div> */}
       <ViewYouTubeSeries />
       <OfficeBearers />
       <Collaborators />

@@ -234,7 +234,7 @@ const AllProjects = () => {
       )}
 
       {!loading && filteredProjects.length > 0 && (
-        <div className="text-center mt-4 pb-4">
+        <div className="text-center mt-3 pt-1">
           <Link to="/projects">
             <Button className="btn-viewall">View All Projects</Button>
           </Link>

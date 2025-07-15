@@ -309,6 +309,20 @@ const AllProjectsPage = () => {
                 </Form.Select>
               </Form.Group>
 
+              <Form.Group className="mb-3">
+                <Form.Label>Project Status</Form.Label>
+                <Form.Select
+                  value={selectedStatus}
+                  onChange={(e) => setSelectedStatus(e.target.value)}
+                >
+                  <option value="">All</option>
+                  <option value="READY_TO_MOVE">Ready to Move</option>
+                  <option value="UPCOMING">Upcoming</option>
+                  <option value="LAUNCHED">Launched</option>
+                  <option value="PRE_LAUNCH">Pre Launch</option>
+                </Form.Select>
+              </Form.Group>
+
               {/* sort */}
               <Form.Group className="mb-3">
                 <Form.Label>Sort By</Form.Label>
@@ -326,20 +340,6 @@ const AllProjectsPage = () => {
                 Reset Filters
               </Button>
             </div>
-
-            <Form.Group className="mb-3">
-              <Form.Label>Project Status</Form.Label>
-              <Form.Select
-                value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-              >
-                <option value="">All</option>
-                <option value="READY_TO_MOVE">Ready to Move</option>
-                <option value="UPCOMING">Upcoming</option>
-                <option value="LAUNCHED">Launched</option>
-                <option value="PRE_LAUNCH">Pre Launch</option>
-              </Form.Select>
-            </Form.Group>
           </div>
 
           {/* ––––– grid ––––– */}
