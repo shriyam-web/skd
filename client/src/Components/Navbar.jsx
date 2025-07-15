@@ -151,10 +151,10 @@ const Navbar = () => {
                             id={safeId}
                           >
                             {list.map((proj) => (
-                              <li key={proj._id}>
+                              <li key={proj.slug}>
                                 <Link
                                   className="dropdown-item skd-link"
-                                  to={`/projects/${proj.projectId}`}
+                                  to={`/projects/${proj.slug}`}
                                 >
                                   {proj.heading}
                                 </Link>
@@ -176,7 +176,7 @@ const Navbar = () => {
                               <li key={proj._id}>
                                 <Link
                                   className="dropdown-item skd-link"
-                                  to={`/projects/${proj.projectId}`}
+                                  to={`/projects/${proj.slug}`} // ✅ NEW
                                 >
                                   {proj.heading}
                                 </Link>

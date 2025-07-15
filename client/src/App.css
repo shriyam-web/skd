@@ -6,6 +6,19 @@ body {
   /* background-color: #262626 !important; */
   /* color: white; */
 }
+.dropdown-menu,
+.dropdown-item {
+  max-width: 90vw;
+  white-space: normal !important;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+@media (max-width: 768px) {
+  .skd-dropdown-submenu .dropdown-item {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}
 
 /* ===========  NAVBAR  =========== */
 .skd-navbar {

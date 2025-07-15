@@ -299,7 +299,12 @@ const ProjectDetail = () => {
       {/* ABOUT SECTION */}
       <section className="bg-light py-5">
         <Container>
-          <h2 className="  mt-2 mb-3 p-2">
+          <h2
+            className="  mt-2 mb-3 p-2"
+            style={{
+              lineHeight: "1.7",
+            }}
+          >
             <i className="fas fa-info-circle me-2"></i> About {project.heading}
           </h2>
           {/* ABOUT SECTION */}
