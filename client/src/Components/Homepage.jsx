@@ -172,7 +172,7 @@ const Homepage = () => {
   return (
     <>
       <Navbar />
-      <div className="homepage-hero marginniche">
+      <div className="homepage-hero">
         {/* Social Icons */}
         {/* <div className="social-icons">
           <a
@@ -212,8 +212,8 @@ const Homepage = () => {
           </a>
         </div> */}
 
-        <Container className="text-center mt-3">
-          <h1 className="hero-heading">
+        <Container className="text-center mt-3 ">
+          <h1 className="hero-heading ">
             Find
             <span className="highlights">
               {/* <span className="text-dark"> */}
@@ -443,7 +443,9 @@ const Homepage = () => {
       {/* Rest of the site */}
       <SupportWidget />
       {/* <Stats /> */}
-      <AllProjects />
+      <div style={{ marginTop: "10px" }}>
+        <AllProjects />
+      </div>
       <ViewYouTubeSeries />
       <OfficeBearers />
       <Collaborators />

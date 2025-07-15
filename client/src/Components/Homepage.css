@@ -8,9 +8,9 @@
   z-index: 10000;
   position: absolute; /* or fixed */
 }
-.marginniche {
+/* .marginniche {
   padding-bottom: 300px;
-}
+} */
 
 /* Optional shadow when scrolling */
 .custom-navbar.scrolled {
@@ -41,7 +41,7 @@
 
 .highlights {
   color: #e3dfdf;
-  margin-left: 15px;
+  margin-left: 10px;
 }
 
 .highlight {

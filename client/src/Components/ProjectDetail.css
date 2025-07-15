@@ -374,4 +374,9 @@ form .form-control:focus {
   body.modal-open {
     overflow: hidden !important;
   }
+  .connectivity-wrap span {
+    line-height: 1.6;
+    font-size: 0.8rem;
+    padding: 0.35rem 0.65rem;
+  }
 }
