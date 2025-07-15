@@ -201,6 +201,7 @@ const CareerSKD = () => {
                       type="date"
                       name="dob"
                       className="form-control"
+                      placeholder="Date of Birth"
                       required
                       onChange={handleChange}
                     />
@@ -309,6 +310,7 @@ const CareerSKD = () => {
                       name="resume"
                       accept=".pdf,.doc,.docx"
                       className="form-control"
+                      placeholder="Upload your resume"
                       required
                       onChange={(e) =>
                         setFormData((prev) => ({
