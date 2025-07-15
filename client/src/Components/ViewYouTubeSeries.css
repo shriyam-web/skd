@@ -235,7 +235,7 @@
     height: 200px;
   }
 
-  /* .scroll-btn {
-    display: none; 
-  } */
+  .scroll-btn {
+    display: none;
+  }
 }
