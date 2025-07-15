@@ -213,7 +213,7 @@ const ProjectDetail = () => {
           <Row className="g-3 text-center text-md-start">
             {/* Status */}
             {project.projectStatus && (
-              <Col xs={6} md={2}>
+              <Col xs={6} md={2} className="fast-fact-col">
                 <h6 className="fw-bold mb-1">Status</h6>
                 <span
                   className={`badge ${
@@ -229,14 +229,15 @@ const ProjectDetail = () => {
 
             {/* RERA */}
             {project.reraNumber && (
-              <Col xs={6} md={2}>
+              <Col xs={6} md={2} className="fast-fact-col">
                 <h6 className="fw-bold mb-1">RERA No.</h6>
                 <p className="mb-0">{project.reraNumber}</p>
               </Col>
             )}
+
             {/* Possession Date */}
             {project.possessionDate && (
-              <Col xs={6} md={2}>
+              <Col xs={6} md={2} className="fast-fact-col">
                 <h6 className="fw-bold mb-1">Possession</h6>
                 <p className="mb-0">
                   {new Date(project.possessionDate).toLocaleDateString(
@@ -252,7 +253,7 @@ const ProjectDetail = () => {
 
             {/* Property Type */}
             {project.propertyType && (
-              <Col xs={6} md={2}>
+              <Col xs={6} md={2} className="fast-fact-col">
                 <h6 className="fw-bold mb-1">Property Type</h6>
                 <p className="mb-0">{project.propertyType}</p>
               </Col>
@@ -260,7 +261,7 @@ const ProjectDetail = () => {
 
             {/* Developer Name */}
             {project.developerName && (
-              <Col xs={6} md={2}>
+              <Col xs={6} md={2} className="fast-fact-col">
                 <h6 className="fw-bold mb-1">Developer</h6>
                 <p className="mb-0">{project.developerName}</p>
               </Col>
@@ -268,7 +269,7 @@ const ProjectDetail = () => {
 
             {/* Property Nature */}
             {project.propertyNature && (
-              <Col xs={6} md={2}>
+              <Col xs={6} md={2} className="fast-fact-col">
                 <h6 className="fw-bold mb-1">Property Nature</h6>
                 <p className="mb-0">{project.propertyNature}</p>
               </Col>
@@ -278,7 +279,7 @@ const ProjectDetail = () => {
             {project.connectivity?.length > 0 && (
               <Col xs={12} md={12}>
                 <h6 className="fw-bold mb-2">Connectivity</h6>
-                <div className="d-flex flex-wrap gap-2">
+                <div className="connectivity-wrap">
                   {project.connectivity.map((c, i) => (
                     <span
                       key={i}
@@ -294,6 +295,7 @@ const ProjectDetail = () => {
           </Row>
         </Container>
       </section>
+
       {/* ABOUT SECTION */}
       <section className="bg-light py-5">
         <Container>
@@ -709,7 +711,11 @@ const ProjectDetail = () => {
                 }
                 alt="Zoomed"
                 className="w-100"
-                style={{ maxHeight: "85vh", objectFit: "contain" }}
+                style={{
+                  width: "100%",
+                  maxHeight: "90vh",
+                  objectFit: "contain",
+                }}
               />
 
               {/* Previous Button */}
