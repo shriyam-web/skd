@@ -8,6 +8,7 @@ import SupportWidget from "./SupportWidget";
 const MapBrowser = () => {
   const API = import.meta.env.VITE_API_BASE_URL;
   const [maps, setMaps] = useState([]);
+  const [showZoom, setShowZoom] = useState(false);
 
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedSector, setSelectedSector] = useState(null);
@@ -165,7 +166,17 @@ const MapBrowser = () => {
         {/* Stage 4: Final Map Display */}
         {activeMap && (
           <div className="map-display">
-            <img src={activeMap.imageUrl} alt="Map" className="map-img" />
+            <img
+              src={activeMap.imageUrl}
+              alt="Map"
+              className="map-img"
+              onClick={() => setShowZoom(true)} // 👈 enable zoom on click
+              style={{ cursor: "zoom-in" }}
+            />
+            <small className="text-muted d-block mt-2">
+              📍 Tap the map to zoom
+            </small>
+
             {activeMap.title && (
               <h4 className="map-title">{activeMap.title}</h4>
             )}
@@ -175,6 +186,25 @@ const MapBrowser = () => {
           </div>
         )}
       </div>
+      {showZoom && (
+        <div className="zoom-overlay" onClick={() => setShowZoom(false)}>
+          <button
+            className="zoom-close-btn"
+            onClick={(e) => {
+              e.stopPropagation(); // prevent overlay click from closing
+              setShowZoom(false);
+            }}
+          >
+            ✕
+          </button>
+          <img
+            src={activeMap?.imageUrl}
+            alt="Zoomed Map"
+            className="zoomed-map"
+          />
+        </div>
+      )}
+
       <SupportWidget />
       <Footer />
     </>

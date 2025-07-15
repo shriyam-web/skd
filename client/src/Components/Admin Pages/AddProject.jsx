@@ -989,6 +989,7 @@ const AddProject = () => {
                   onChange={(e) =>
                     handlePricingChange(pIdx, "description", e.target.value)
                   }
+                  placeholder="May accept dangerouslySetInnerHTML too."
                 />
               </Form.Group>
             </Card>
