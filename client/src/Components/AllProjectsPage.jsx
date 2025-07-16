@@ -489,7 +489,7 @@ const AllProjectsPage = () => {
                         <Link to={`/projects/${p.slug}`}>
                           <Button
                             variant="warning"
-                            className="w-100 fw-bold mb-0"
+                            className="w-100 fw-bold mb-0 mt-2"
                           >
                             View in Detail
                           </Button>
