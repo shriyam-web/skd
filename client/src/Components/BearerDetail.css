@@ -1,29 +1,27 @@
 .bearer-detail {
-  background: #f8f9fa;
+  background: #323030;
   margin: 0;
   margin-bottom: 0px;
   padding: 0;
-
 }
 
 .bearer-profile {
   display: flex;
   flex-wrap: wrap;
-  min-height: 70vh;
-  margin-bottom: 2rem;
+  min-height: 40vh;
+  margin-bottom: 1rem;
   background-color: #fff;
- 
+
   overflow: hidden;
 }
 
 .bearer-image {
   flex: 1 1 50%;
-  min-height: 400px;
+  min-height: 300px;
   background-size: cover;
   background-position: center;
   position: relative;
 }
-
 
 .bearer-image::after {
   content: "";
@@ -37,7 +35,8 @@
 
 .bearer-overlay {
   flex: 1 1 50%;
-  padding: 4rem 3rem;
+  /* padding: 4rem 3rem; */
+  padding: 2rem 2rem;
   background: #ffffff;
   color: #111;
   display: flex;
@@ -61,7 +60,7 @@
   font-size: 1.05rem;
   line-height: 1.8;
   margin-top: 1rem;
-  white-space: pre-line;
+  /* white-space: pre-line; */
 }
 
 @media (max-width: 768px) {

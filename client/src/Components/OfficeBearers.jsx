@@ -8,23 +8,25 @@ const bearers = [
     name: "Er. Pawan Kumar Mishra",
     title: "Managing Director",
     image: "/md.jpeg.jpg",
-    description: "Visionary leader with 15+ years in real estate innovation.",
+    description:
+      "Strategic vision and market expansion, with a strong focus on client-centric investment solutions and transparent real estate practices.",
     socials: {
-      linkedin: "#",
-      instagram: "#",
-      facebook: "#",
+      linkedin: "https://www.linkedin.com/in/erpawankumarmishra",
+      // instagram: "#",
+      // facebook: "#",
     },
     detailPage: "/team/pawan-mishra",
   },
   {
     name: "Mrs. Aarti Mishra",
     title: "Director",
-    image: "/dir.jpeg.jpg",
-    description: "Strategic planner and client relations expert.",
+    image: "/DirMamShort.jpg",
+    description:
+      "Strategic leadership and vision planning, with a strong focus on client relationships and ethical governance.",
     socials: {
-      linkedin: "#",
-      twitter: "#",
-      facebook: "#",
+      // linkedin: "#",
+      // twitter: "#",
+      // facebook: "#",
     },
     detailPage: "/team/aarti-mam",
   },
@@ -51,8 +53,7 @@ const OfficeBearers = () => {
                   <div className="ob-card-body">
                     <h5 className="ob-name">{bearer.name}</h5>
                     <p className="ob-title">{bearer.title}</p>
-                    <p className="ob-desc">{bearer.description}</p>
-
+                    <p className="ob-desc">{bearer.description} </p>
                     <div className="ob-socials d-flex justify-content-center gap-3 fs-5 mb-3">
                       {bearer.socials.linkedin && (
                         <a href={bearer.socials.linkedin} aria-label="LinkedIn">

@@ -443,7 +443,7 @@ const ProjectDetail = () => {
                     <Card.Body>
                       <h5 className="text-dark fw-bold mb-2">{plan.title}</h5>
                       <h4 className="text-success display-6 mb-4">
-                        {formatIndianPrice(plan.price)}
+                        {formatIndianPrice(plan.price)}*
                         {plan.priceType === "PER_UNIT" && plan.unit && (
                           <span className="text-muted small ms-1">
                             / {plan.unit}

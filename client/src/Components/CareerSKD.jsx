@@ -196,7 +196,7 @@ const CareerSKD = () => {
                       onChange={handleChange}
                     />
                   </div>
-                  <div className="col-md-6">
+                  {/* <div className="col-md-6">
                     <input
                       type="date"
                       name="dob"
@@ -205,7 +205,21 @@ const CareerSKD = () => {
                       required
                       onChange={handleChange}
                     />
+                  </div> */}
+                  <div className="col-md-6">
+                    <label htmlFor="dob" className="form-label">
+                      Date of Birth
+                    </label>
+                    <input
+                      type="date"
+                      id="dob"
+                      name="dob"
+                      className="form-control"
+                      required
+                      onChange={handleChange}
+                    />
                   </div>
+
                   <div className="col-md-6">
                     <select
                       name="position"
@@ -288,7 +302,7 @@ const CareerSKD = () => {
                     <input
                       type="text"
                       name="qualification"
-                      placeholder="Highest Qualification"
+                      placeholder="Highest Qualification Degree"
                       className="form-control"
                       required
                       onChange={handleChange}
@@ -305,6 +319,9 @@ const CareerSKD = () => {
                     />
                   </div>
                   <div className="col-md-6">
+                    <label htmlFor="resume" className="form-label">
+                      Upload Resume
+                    </label>
                     <input
                       type="file"
                       name="resume"

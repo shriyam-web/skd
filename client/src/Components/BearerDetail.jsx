@@ -21,7 +21,7 @@ Er. Pawan Mishra’s strategic vision and market expertise ensure that SKD Propw
   {
     name: "Mrs. Aarti Mishra",
     title: "Director",
-    image: "/dir.jpeg.jpg",
+    image: "/DirMam.jpg",
     hashId: "aarti-mam",
     bio: `Mrs. Aarti Mishra, the esteemed Director of SKD Propworld Pvt. Ltd., embodies the core values of trust, transparency, and excellence that define the company. As the wife of Managing Director Mr. Pawan Mishra, she brings a balanced perspective and unwavering support to the leadership team, contributing to the company’s continued growth and success.
 
@@ -49,8 +49,8 @@ const BearerDetail = () => {
     <>
       <Navbar />
       <div className="container-fluid py-5 bearer-detail">
-        <h2 className="text-center text-warning fw-bold mb-5">
-          MEET THE OFFICE BEARERS
+        <h2 className="text-center text-warnin fw-bold mb-5">
+          Meet The Office Bearers
         </h2>
 
         {profiles.map((profile) => (

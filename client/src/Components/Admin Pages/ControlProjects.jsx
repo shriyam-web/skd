@@ -270,7 +270,17 @@ const ControlProjects = () => {
 
   return (
     <>
-      <ToastContainer position="top-left" autoClose={3000} />
+      <ToastContainer
+        position="top-left"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       {loading ? (
         <div className="text-center my-4">⏳ Loading Projects...</div>
       ) : (
@@ -1668,7 +1678,7 @@ const ControlProjects = () => {
                         ? "YES"
                         : "NO";
 
-                    await axios.put(
+                    const res = await axios.put(
                       `${API_BASE}/api/admin/projects/project-id/${selectedProject._id}`,
                       updatedFormData
                     );

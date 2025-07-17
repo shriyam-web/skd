@@ -29,7 +29,9 @@
 .review-card {
   min-width: 280px;
   max-width: 320px;
-  background: #1a1a1a; /* Darker card */
+  /* background: #373737; */
+  background: linear-gradient(135deg, #2c2c2c, #373737, #4a4a4a);
+
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 6px 18px rgba(255, 255, 255, 0.05);

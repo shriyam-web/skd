@@ -29,11 +29,8 @@ const SupportWidget = () => {
             >
               <FaWhatsapp /> WhatsApp Chat
             </a>
-            <a
-              href="mailto:official.skdproperties@gmail.com"
-              className="support-option"
-            >
-              <FaEnvelope /> official.skdproperties@gmail.com
+            <a href="mailto:info@skdpropworld.com" className="support-option">
+              <FaEnvelope /> info@skdpropworld.com
             </a>
           </div>
         )}

@@ -9,7 +9,7 @@
   position: fixed;
   bottom: 100px;
   right: 25px;
-  background-color: #ffc107; 
+  background-color: #ffc107;
   color: #000;
   border: none;
   border-radius: 50%;
@@ -35,11 +35,10 @@
   transition: color 0.2s;
 }
 
-
 .footer-icon:hover {
   color: #ffc107;
   transform: scale(1.1);
 }
 .footer-copy {
-  color: #cccccc; 
+  color: #cccccc;
 }

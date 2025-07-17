@@ -163,7 +163,8 @@ const Footer = () => {
         <div className="text-center pt-3 mt-4 border-top border-secondary small footer-copy">
           <p title="Designed & Developed by Shriyam Parashar">
             &copy; {new Date().getFullYear()} SKD Propworld Private Limited. All
-            rights reserved.
+            rights reserved. <br />
+            <span className="">| Powered by v.1.5 |</span>
           </p>
         </div>
       </div>
