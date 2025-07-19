@@ -9,20 +9,23 @@ const sitemap = require("./routes/sitemap");
 
 const app = express();
 app.use(cors());
+
 // app.use(express.json());
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 
 // ⬇️ Serve frontend build in production
-// if (process.env.NODE_ENV === "production") {
-//   const __dirname = path.resolve();
-//   app.use(express.static(path.join(__dirname, "../client/dist")));
+if (process.env.NODE_ENV === "production") {
+  const __dirname = path.resolve();
+  app.use(express.static(path.join(__dirname, "../client/dist")));
 
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "../client/dist", "index.html"));
-//   });
-// }
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../client/dist", "index.html"));
+  });
+}
+app.use("/", sitemap); // <-- mount it
+
 console.log("→ Mounting /api/admin");
 app.use("/api/admin", require("./routes/adminRoutes"));
 
@@ -61,8 +64,6 @@ app.use("/api/admin/dashboard-stats", require("./routes/adminStats"));
 
 console.log("→ Mounting /api/admin/youtube");
 app.use("/api/admin/youtube", require("./routes/youtubeVideos"));
-
-app.use("/", sitemap); // <-- mount it
 
 // DB Connection
 mongoose
