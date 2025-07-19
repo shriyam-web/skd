@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
 const path = require("path");
+const { SitemapStream, streamToPromise } = require("sitemap");
+const { createGzip } = require("zlib");
+const sitemap = require("./routes/sitemap");
 
 const app = express();
 app.use(cors());
@@ -58,6 +61,8 @@ app.use("/api/admin/dashboard-stats", require("./routes/adminStats"));
 
 console.log("→ Mounting /api/admin/youtube");
 app.use("/api/admin/youtube", require("./routes/youtubeVideos"));
+
+app.use("/", sitemap); // <-- mount it
 
 // DB Connection
 mongoose
