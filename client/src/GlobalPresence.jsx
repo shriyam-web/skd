@@ -16,7 +16,6 @@ const countries = [
 const GlobalPresence = () => {
   return (
     <>
-      import {Helmet} from "react-helmet";
       <Helmet>
         {/* Primary Meta Tags */}
         <title>
