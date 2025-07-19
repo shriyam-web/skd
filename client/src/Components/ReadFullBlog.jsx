@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import SupportWidget from "./SupportWidget";
 // import { toast } from "react-toastify";
 // import { ToastContainer } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const ReadFullBlog = () => {
   const { id } = useParams();
@@ -65,6 +66,51 @@ const ReadFullBlog = () => {
 
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>{`${blog.title} | SKD PropWorld Blog`}</title>
+        <meta
+          name="description"
+          content={blog.content.replace(/<[^>]+>/g, "").slice(0, 150) + "..."}
+        />
+        <meta
+          name="keywords"
+          content={`${
+            blog.tags || "real estate, property, blog, YEIDA, Noida"
+          }`}
+        />
+        <meta name="author" content={blog.author || "SKD PropWorld"} />
+        <link
+          rel="canonical"
+          href={`https://skdpropworld.com/read-blog/${blog._id}`}
+        />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:title"
+          content={`${blog.title} | SKD PropWorld Blog`}
+        />
+        <meta
+          property="og:description"
+          content={blog.content.replace(/<[^>]+>/g, "").slice(0, 150) + "..."}
+        />
+        <meta
+          property="og:url"
+          content={`https://skdpropworld.com/read-blog/${blog._id}`}
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta
+          name="twitter:title"
+          content={`${blog.title} | SKD PropWorld Blog`}
+        />
+        <meta
+          name="twitter:description"
+          content={blog.content.replace(/<[^>]+>/g, "").slice(0, 150) + "..."}
+        />
+      </Helmet>
       <Navbar />
       <div className="readblog-container p-6">
         <div className="readblog-wrapper-flex">
@@ -79,6 +125,7 @@ const ReadFullBlog = () => {
                 src={blog.imageUrl}
                 alt={blog.title}
                 className="readblog-image"
+                loading="lazy"
               />
             )}
 
@@ -171,6 +218,7 @@ const ReadFullBlog = () => {
                       src={rel.imageUrl}
                       alt={rel.title}
                       className="readblog-suggested-img"
+                      loading="lazy"
                     />
                   )}
                   <h5 className="readblog-suggested-blog-title">{rel.title}</h5>

@@ -226,6 +226,7 @@ const MapManager = () => {
                       alt="Project Logo"
                       className="mapmgr-img-preview"
                       style={{ maxHeight: "80px", marginTop: "10px" }}
+                      loading="lazy"
                     />
                   )}
                 </>
@@ -362,6 +363,7 @@ const MapManager = () => {
                   src={imageUrl}
                   alt="Preview"
                   className="mapmgr-img-preview"
+                  loading="lazy"
                 />
               )}
               <label className="mapmgr-label">Title (optional)</label>
@@ -426,6 +428,7 @@ const MapManager = () => {
                     src={entry.imageUrl}
                     alt="map"
                     className="img-fluid mb-2"
+                    loading="lazy"
                   />
                   <Button
                     variant="danger"

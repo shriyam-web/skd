@@ -10,6 +10,7 @@ import {
   FaMapMarkerAlt,
   FaWhatsapp,
 } from "react-icons/fa";
+import { Helmet } from "react-helmet-async";
 import "./ContactUs.css";
 import Navbar from "./Navbar";
 import LeadForm from "./LeadForm";
@@ -19,6 +20,53 @@ import Footer from "../Footer";
 const ContactUs = () => {
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>
+          Contact SKD Propworld | Property Dealer in Noida, YEIDA, Greater Noida
+        </title>
+        <meta
+          name="title"
+          content="Contact SKD Propworld | Property Dealer in Noida, YEIDA, Greater Noida"
+        />
+        <meta
+          name="description"
+          content="Get in touch with SKD Propworld – your trusted real estate partner in Noida, Greater Noida, and YEIDA. Call, WhatsApp, or visit us today!"
+        />
+        <meta
+          name="keywords"
+          content="Contact SKD Propworld, Real Estate Agent Noida, Property Dealer YEIDA, Real Estate Greater Noida, WhatsApp SKD Propworld, Call SKD Propworld, Office Location SKD"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Contact SKD Propworld | Property Dealer in Noida, YEIDA, Greater Noida"
+        />
+        <meta
+          property="og:description"
+          content="Looking for property advice or want to visit our office? Reach out to SKD Propworld via phone, email, or WhatsApp. We’re here to help!"
+        />
+        <meta property="og:url" content="https://skdpropworld.com/contact" />
+        {/* og:image intentionally skipped */}
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta
+          name="twitter:title"
+          content="Contact SKD Propworld | Property Dealer in Noida, YEIDA, Greater Noida"
+        />
+        <meta
+          name="twitter:description"
+          content="Call, WhatsApp, or email SKD Propworld for all your property needs in Noida, YEIDA, and Greater Noida. Visit us today!"
+        />
+        {/* twitter:image intentionally skipped */}
+      </Helmet>
+
       <Navbar />
       <div className="contact-container">
         <div className="contact-left">

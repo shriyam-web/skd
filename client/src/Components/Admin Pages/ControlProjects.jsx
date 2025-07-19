@@ -829,7 +829,11 @@ const ControlProjects = () => {
                       <div className="thumb-grid">
                         {(formData.gallery || []).map((img, i) => (
                           <div key={i} className="position-relative">
-                            <Image src={img?.url || img} className="thumb" />
+                            <Image
+                              src={img?.url || img}
+                              className="thumb"
+                              loading="lazy"
+                            />
                             <Button
                               size="sm"
                               variant="danger"

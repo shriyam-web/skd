@@ -142,6 +142,7 @@ function AdminLoginForm() {
                 height: "160px",
                 objectFit: "contain",
               }}
+              loading="lazy"
             />
           </div>
         </div>

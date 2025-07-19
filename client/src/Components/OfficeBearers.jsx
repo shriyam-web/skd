@@ -2,6 +2,7 @@ import React from "react";
 import "./OfficeBearers.css";
 import SupportWidget from "./SupportWidget";
 import { Link } from "react-router-dom"; // ← add this at the top
+import { Helmet } from "react-helmet-async";
 
 const bearers = [
   {
@@ -35,6 +36,50 @@ const bearers = [
 const OfficeBearers = () => {
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>
+          YEIDA Property Experts | Leadership Team in Noida, Greater Noida &
+          Delhi
+        </title>
+        <meta
+          name="description"
+          content="Meet our trusted real estate leaders driving success across YEIDA, Noida, Greater Noida, and Delhi NCR – including Er. Pawan Kumar Mishra (MD) and Mrs. Aarti Mishra (Director)."
+        />
+        <meta
+          name="keywords"
+          content="YEIDA real estate leadership, property dealers Noida, Pawan Kumar Mishra, Aarti Mishra, real estate experts Delhi NCR, Greater Noida realtors"
+        />
+        <meta
+          name="author"
+          content="SKD Propworld - YEIDA Real Estate Experts"
+        />
+        <link rel="canonical" href="https://skdpropworld.com/team" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Meet the Leaders Behind YEIDA’s Real Estate Success | Noida, Gr. Noida & Delhi"
+        />
+        <meta
+          property="og:description"
+          content="Explore the profiles of Er. Pawan Kumar Mishra and Mrs. Aarti Mishra – leading figures in Noida and Delhi NCR’s real estate transformation."
+        />
+        <meta property="og:url" content="https://skdpropworld.com/team" />
+
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary" />
+        <meta
+          name="twitter:title"
+          content="Top Real Estate Leaders in YEIDA, Noida & Delhi NCR | SKD Propworld"
+        />
+        <meta
+          name="twitter:description"
+          content="Get to know our core team of real estate experts making an impact across YEIDA, Noida, Greater Noida, and Delhi."
+        />
+      </Helmet>
+
       <section className="office-bearers text-center">
         <div className="container">
           <div className="text-center mb-4">
@@ -48,6 +93,7 @@ const OfficeBearers = () => {
                   <img
                     src={bearer.image}
                     alt={bearer.name}
+                    loading="lazy"
                     className="ob-card-img rounded-circle mx-auto mt-4"
                   />
                   <div className="ob-card-body">

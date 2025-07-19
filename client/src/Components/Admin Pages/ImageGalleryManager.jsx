@@ -213,7 +213,11 @@ const ImageGalleryManager = () => {
                   {img.mediaType === "video" ? (
                     <video src={img.url} className="media-thumb" muted />
                   ) : (
-                    <img src={img.url} alt={img.caption || "media"} />
+                    <img
+                      src={img.url}
+                      alt={img.caption || "media"}
+                      loading="lazy"
+                    />
                   )}
                   {img.caption && (
                     <span className="img-caption">{img.caption}</span>

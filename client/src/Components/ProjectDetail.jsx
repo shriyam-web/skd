@@ -7,6 +7,7 @@ import axios from "axios";
 import { TAG_META } from "./AllProjectsPage";
 import { Link } from "react-router-dom";
 import formatIndianPrice from "../utils/formatIndianPrice.js";
+import { Helmet } from "react-helmet-async";
 
 import {
   Container,
@@ -133,6 +134,56 @@ const ProjectDetail = () => {
 
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>{`${project?.title} | Property in ${project?.location} | SKD PropWorld`}</title>
+        <meta
+          name="description"
+          content={`Explore details of ${project?.title} located in ${project?.location}. Get price, amenities, features, and site photos. Trusted real estate by SKD PropWorld.`}
+        />
+        <meta
+          name="keywords"
+          content={`Real Estate, ${project?.location} property, ${project?.title}, YEIDA, Noida plots, SKD PropWorld projects`}
+        />
+        <meta name="author" content="SKD PropWorld" />
+        <link
+          rel="canonical"
+          href={`https://skdpropworld.com/projects/${
+            project?.slug || project?._id
+          }`}
+        />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta
+          property="og:title"
+          content={`${project?.title} - Real Estate Project in ${project?.location} | SKD PropWorld`}
+        />
+        <meta
+          property="og:description"
+          content={`Check out ${project?.title} in ${project?.location}. View prices, configurations, and features now.`}
+        />
+        <meta
+          property="og:url"
+          content={`https://skdpropworld.com/projects/${
+            project?.slug || project?._id
+          }`}
+        />
+        {/* Optional image tag — only if you're ready to use in future */}
+        {/* <meta property="og:image" content={project?.coverImageURL} /> */}
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta
+          name="twitter:title"
+          content={`${project?.title} in ${project?.location} | SKD PropWorld`}
+        />
+        <meta
+          name="twitter:description"
+          content={`Learn more about ${project?.title}, a top project in ${project?.location}.`}
+        />
+      </Helmet>
+
       <Navbar />
       {/* HERO SECTION */}
       <section className="hero-section position-relative">
@@ -156,6 +207,7 @@ const ProjectDetail = () => {
             src={project.bannerImage?.url || project.bannerImage}
             className="hero-img"
             alt="Project Banner"
+            loading="lazy"
           />
         </div>
 
@@ -167,6 +219,7 @@ const ProjectDetail = () => {
                 alt="Project Logo"
                 className="project-logo mb-3"
                 style={{ height: "60px", objectFit: "contain" }}
+                loading="lazy"
               />
             )}
 
@@ -721,6 +774,7 @@ const ProjectDetail = () => {
                   maxHeight: "90vh",
                   objectFit: "contain",
                 }}
+                loading="lazy"
               />
 
               {/* Previous Button */}

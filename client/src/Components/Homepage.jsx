@@ -12,7 +12,7 @@ import {
 
 import { Typewriter } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
-
+import { Helmet } from "react-helmet-async";
 import Navbar from "./Navbar";
 import SupportWidget from "./SupportWidget";
 import AllProjects from "./AllProjects";
@@ -171,6 +171,127 @@ const Homepage = () => {
 
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>
+          Top Property Dealer in YEIDA (Yamuna Expressway), Noida, Greater
+          Noida, Delhi, NCR | Buy, Sell, Rent Real Estate
+        </title>
+        <meta
+          name="title"
+          content="Top Property Dealer in YEIDA, Noida, Delhi, NCR | Buy, Sell, Rent Real Estate"
+        />
+        <meta
+          name="description"
+          content="Looking for trusted property dealers in YEIDA, Noida, Ghaziabad, Delhi, or Greater Noida? We offer best deals in flats, plots, commercial & residential properties."
+        />
+        <meta
+          name="keywords"
+          content="property dealer in Noida, YEIDA, Yamuna Expressway Industrial Development Area, real estate Delhi NCR, flats for sale Noida, Ghaziabad plots, Greater Noida commercial space, property agent Delhi, real estate broker NCR, land for sale Noida Extension, apartment near metro, 2BHK flat Noida, 3BHK apartment Ghaziabad, investment property Noida, buy rent sell Noida, property consultant Delhi NCR"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="language" content="English" />
+        <meta name="author" content="SKD PropWorld Private Limited" />
+        <meta name="distribution" content="global" />
+        <meta name="rating" content="general" />
+        <meta name="coverage" content="Worldwide" />
+        <meta name="expires" content="never" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="googlebot" content="index, follow" />
+        <meta name="theme-color" content="#ffffff" />
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://skdpropworld.com/" />
+        <meta
+          property="og:title"
+          content="Top Property Dealer in YEIDA, Greater Noida, Noida, Delhi, New Delhi, Delhi NCR"
+        />
+        <meta
+          property="og:description"
+          content="Search residential, commercial and rental properties in YEIDA, Yamuna Expressway, Noida, Delhi, Ghaziabad. Verified listings. Expert consultants."
+        />
+        "image": "https://via.placeholder.com/1200x630.png?text=SKD+PropWorld"
+        <meta
+          property="og:image"
+          content="https://via.placeholder.com/1200x630.png?text=SKD+PropWorld"
+        />
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://x.com/skd_propworld" />
+        <meta
+          property="twitter:title"
+          content="Top Property Dealer in YEIDA, Greater Noida, Noida, Delhi, NCR"
+        />
+        <meta
+          property="twitter:description"
+          content="Buy, sell, or rent properties in YEIDA, Noida, Greater Noida, Delhi NCR with top real estate consultants. Affordable pricing, verified listings, easy process."
+        />
+        {/* <meta
+          property="twitter:image"
+          content="https://skdpropworld.com/twitter-image.jpg"
+        /> */}
+        {/* Geo Tags */}
+        <meta name="geo.region" content="IN-UP" />
+        <meta
+          name="geo.placename"
+          content="YEIDA, Yamuna Expressway, Noida, Delhi, Ghaziabad, Greater Noida"
+        />
+        <meta name="geo.position" content="28.5355;77.3910" />
+        <meta name="ICBM" content="28.5355, 77.3910" />
+        {/* Contact Info */}
+        <meta
+          name="contact"
+          content="email:info@skdpropworld.com, phone:+91-9091010909"
+        />
+        <meta
+          name="address"
+          content="7th & 8th Floor,Kaisons, Alpha Square, Alpha 1 Commercial Belt, Greater Noida, Uttar Pradesh, 201308, India"
+        />
+        <link rel="canonical" href="https://skdpropworld.com/" />
+        {/* Schema.org */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@id": "https://skdpropworld.com/#realestateagent",
+
+            "@type": "RealEstateAgent",
+            name: "SKD PropWorld Private Limited",
+            url: "https://skdpropworld.com/",
+            logo: "https://skdpropworld.com/Skd%20Propworld%20Logo4.png",
+            // image: "https://skdpropworld.com/og-image.jpg",
+            description:
+              "We help you buy, sell, and rent property in YEIDA (Yamuna Expressway Industrial Development Area), Delhi NCR, Noida, Ghaziabad, and Greater Noida.",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress:
+                "7th & 8th Floor,Kaisons, Alpha Square, Alpha 1 Commercial Belt, Greater Noida, Uttar Pradesh, 201308, India",
+              addressLocality: "Greater Noida",
+              addressRegion: "UP",
+              postalCode: "201308",
+              addressCountry: "INDIA",
+            },
+            sameAs: [
+              "https://www.facebook.com/skdprp",
+              "http://instagram.com/official.skdpropworld/",
+              "https://www.linkedin.com/company/skd-propworld",
+              "https://x.com/skd_propworld",
+              "https://www.youtube.com/channel/UCBqqQkxHtycbgChxmW_JwAA",
+            ],
+            contactPoint: {
+              "@type": "ContactPoint",
+              telephone: "+91-9091010909",
+              contactType: "Customer Service",
+              areaServed: "IN",
+              availableLanguage: "en",
+            },
+          })}
+        </script>
+        {/* Favicon */}
+        <link rel="icon" href="/TitleLogo.ico" />
+      </Helmet>
+      {/* **************************************** */}
+      {/* the text above is for SEO */}
       <Navbar />
       <div className="homepage-hero">
         {/* Social Icons */}
@@ -374,10 +495,10 @@ const Homepage = () => {
                         <p className="mb-2">
                           📞 <strong>Call:</strong>{" "}
                           <a
-                            href="tel:+919876543210"
+                            href="tel:+919091010909"
                             className="text-decoration-none text-dark"
                           >
-                            +91 98765 43210
+                            +91 9091010909
                           </a>
                         </p>
                         <p className="mb-2">
@@ -392,7 +513,7 @@ const Homepage = () => {
                         <p className="mb-0">
                           💬 <strong>WhatsApp:</strong>{" "}
                           <a
-                            href="https://wa.me/919876543210"
+                            href="https://wa.me/919091010909"
                             className="text-decoration-none text-success"
                             target="_blank"
                             rel="noreferrer"
@@ -425,6 +546,7 @@ const Homepage = () => {
                           src={project?.bannerImage?.url}
                           alt={project.heading}
                           className="w-100"
+                          loading="lazy"
                           style={{ height: "200px", objectFit: "cover" }}
                         />
                         <div className="p-3">

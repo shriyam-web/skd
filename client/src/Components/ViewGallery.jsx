@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import Footer from "../Footer";
 import SupportWidget from "./SupportWidget";
 import { useMemo } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ViewGallery = () => {
   const [images, setImages] = useState([]);
@@ -75,6 +76,50 @@ const ViewGallery = () => {
   }, [images]);
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>
+          Gallery | Real Estate Projects, Events & Site Visits - SKD PropWorld
+        </title>
+        <meta
+          name="title"
+          content="Gallery | Real Estate Projects, Events & Site Visits - SKD PropWorld"
+        />
+        <meta
+          name="description"
+          content="Explore our real estate photo & video gallery featuring project developments, property views, client site visits, and events by SKD PropWorld."
+        />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://www.skdpropworld.com/gallery"
+        />
+        <meta
+          property="og:title"
+          content="Gallery | Real Estate Projects, Events & Site Visits - SKD PropWorld"
+        />
+        <meta
+          property="og:description"
+          content="Explore our real estate photo & video gallery featuring project developments, property views, client site visits, and events by SKD PropWorld."
+        />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+        <meta
+          name="twitter:url"
+          content="https://www.skdpropworld.com/gallery"
+        />
+        <meta
+          name="twitter:title"
+          content="Gallery | Real Estate Projects, Events & Site Visits - SKD PropWorld"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore our real estate photo & video gallery featuring project developments, property views, client site visits, and events by SKD PropWorld."
+        />
+      </Helmet>
       <Navbar />
       <div className="container-fluid p-5 py-4 containerhunmai">
         <h2 className="text-center golden-heading mb-4 mt-4">Gallery</h2>
@@ -102,6 +147,7 @@ const ViewGallery = () => {
                       src={img.url}
                       alt={img.caption || "Gallery"}
                       className="gallery-thumb"
+                      loading="lazy"
                     />
                   )}
 
@@ -134,6 +180,7 @@ const ViewGallery = () => {
                   src={selectedImage.url}
                   alt="Zoomed"
                   className="img-fluid rounded"
+                  loading="lazy"
                 />
               )
             ) : (

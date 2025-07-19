@@ -4,6 +4,7 @@ import "./MapBrowser.css";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 import SupportWidget from "./SupportWidget";
+import { Helmet } from "react-helmet-async";
 
 const MapBrowser = () => {
   const API = import.meta.env.VITE_API_BASE_URL;
@@ -79,6 +80,44 @@ const MapBrowser = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Explore Real Estate Maps | SKD Propworld</title>
+        <meta
+          name="description"
+          content="Browse sector-wise and pocket-wise real estate maps across Noida, Greater Noida & YEIDA. Discover available plots & layout insights."
+        />
+        <meta
+          name="keywords"
+          content="Noida maps, Greater Noida map, YEIDA pocket layout, sector-wise real estate, property map viewer"
+        />
+        <link rel="canonical" href="https://skdpropworld.com/maps" />
+
+        {/* Open Graph Tags */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Explore Real Estate Maps – SKD Propworld"
+        />
+        <meta
+          property="og:description"
+          content="Visualize plots and layouts by project, sector and pocket. Get a better understanding of location plans before buying."
+        />
+        <meta property="og:url" content="https://skdpropworld.com/maps" />
+
+        {/* No og:image added intentionally */}
+
+        {/* Minimal Twitter card */}
+        <meta name="twitter:card" content="summary" />
+        <meta
+          name="twitter:title"
+          content="Real Estate Maps – Sector & Pocket Layouts"
+        />
+        <meta
+          name="twitter:description"
+          content="Interactive real estate map browser for better investment decisions."
+        />
+      </Helmet>
+
       <Navbar />
       <div className="mapbrowser-container">
         <h2 className="mapbrowser-heading">Explore Our Maps</h2>
@@ -125,7 +164,12 @@ const MapBrowser = () => {
                 onClick={() => setSelectedProject(projectName)}
               >
                 {logo && (
-                  <img src={logo} alt="logo" className="map-logo-preview" />
+                  <img
+                    src={logo}
+                    alt="logo"
+                    className="map-logo-preview"
+                    loading="lazy"
+                  />
                 )}
                 <h5>{projectName}</h5>
               </div>
@@ -172,6 +216,7 @@ const MapBrowser = () => {
               className="map-img"
               onClick={() => setShowZoom(true)} // 👈 enable zoom on click
               style={{ cursor: "zoom-in" }}
+              loading="lazy"
             />
             <small className="text-muted d-block mt-2">
               📍 Tap the map to zoom
@@ -201,6 +246,7 @@ const MapBrowser = () => {
             src={activeMap?.imageUrl}
             alt="Zoomed Map"
             className="zoomed-map"
+            loading="lazy"
           />
         </div>
       )}

@@ -8,6 +8,7 @@ import Navbar from "./Navbar";
 import Footer from "../Footer";
 import formatIndianPrice from "../utils/formatIndianPrice.js";
 import SupportWidget from "./SupportWidget";
+import { Helmet } from "react-helmet-async";
 
 /* ──────────── config / constants (top‑level) ──────────── */
 const API_BASE = import.meta.env.VITE_API_BASE_URL;
@@ -217,6 +218,32 @@ const AllProjectsPage = () => {
   /* ──────────── render ──────────── */
   return (
     <>
+      <Helmet>
+        <title>
+          All Property Projects in YEIDA, Noida, Greater Noida, Delhi &
+          Ghaziabad | Flats, Plots, Commercial Spaces
+        </title>
+        <meta
+          name="description"
+          content="Explore a wide range of residential, commercial, and industrial property projects in YEIDA, Noida, Greater Noida, Delhi, and Ghaziabad. Search by location, property type, or status."
+        />
+        <link rel="canonical" href="https://www.skdpropworld.com/projects" />
+
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="All Property Projects in YEIDA, Noida, Greater Noida, Delhi & Ghaziabad"
+        />
+        <meta
+          property="og:description"
+          content="Discover plots, flats, villas, and commercial spaces in prime Delhi NCR locations including YEIDA and Greater Noida. SKD PropWorld - trusted real estate experts."
+        />
+        <meta
+          property="og:url"
+          content="https://www.skdpropworld.com/projects"
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navbar />
       <div className="container-fluid py-5">
         <div className="row">
@@ -377,6 +404,7 @@ const AllProjectsPage = () => {
                         variant="top"
                         src={p.bannerImage?.url}
                         className="project-card-img"
+                        loading="lazy"
                       />
 
                       <Card.Body className="d-flex flex-column">

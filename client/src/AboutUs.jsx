@@ -6,10 +6,39 @@ import Footer from "./Footer";
 import LeadForm from "./Components/LeadForm";
 import Testimonials from "./Testimonials";
 import SupportWidget from "./Components/SupportWidget";
+import { Helmet } from "react-helmet-async";
 
 const AboutUs = () => {
   return (
     <>
+      <Helmet>
+        <title>About Us | SKD Propworld - Global Real Estate Experts</title>
+        <meta
+          name="description"
+          content="Learn about SKD Propworld — a trusted global real estate leader offering investment advisory, sales, and relocation services across India (Noida, Greater Noida, YEIDA, Delhi, Ghaziabad, New Delhi, Delhi NCR), USA, UK, UAE, Singapore, and Canada."
+        />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="About SKD Propworld | Real Estate Advisors & Experts"
+        />
+        <meta
+          property="og:description"
+          content="Explore SKD Propworld's mission, vision, and leadership in global real estate markets. Building value, trust, and relationships worldwide."
+        />
+        <meta property="og:url" content="https://skdpropworld.com/about" />
+
+        {/* Twitter Meta */}
+        {/* <meta name="twitter:card" content="summary_large_image" /> */}
+        <meta name="twitter:title" content="About Us | SKD Propworld" />
+        <meta
+          name="twitter:description"
+          content="Discover how SKD Propworld is transforming real estate through innovation, trust, and global expertise."
+        />
+      </Helmet>
+
       <Navbar />
 
       <div className="aboutus-page">

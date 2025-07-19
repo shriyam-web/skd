@@ -182,6 +182,7 @@ const AdminSignupForm = () => {
               src={img}
               alt="Signup visual"
               style={{ width: "60vh", height: "100%", objectFit: "cover" }}
+              loading="lazy"
             />
           </div>
         </div>

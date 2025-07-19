@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./AllProjects.css";
 import formatIndianPrice from "../utils/formatIndianPrice.js";
 import DOMPurify from "dompurify";
+import { Helmet } from "react-helmet-async";
 
 const AllProjects = () => {
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
@@ -105,6 +106,7 @@ const AllProjects = () => {
         variant="top"
         src={proj.bannerImage?.url}
         className="project-card-img"
+        loading="lazy"
       />
 
       <Card.Body>
@@ -201,46 +203,76 @@ const AllProjects = () => {
   );
 
   return (
-    <div className="all-projects-wrapper">
-      <h2 className="all-projects-title mt-3">Explore All Active Projects</h2>
-      <div className="all-projects-search">
-        <Form.Control
-          type="text"
-          placeholder="Search by title or location..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+    <>
+      <Helmet>
+        <title>
+          All Property Projects in YEIDA, Noida, Greater Noida, Delhi &
+          Ghaziabad | SKD PropWorld
+        </title>
+
+        <meta
+          name="description"
+          content="Discover top residential and commercial property projects across YEIDA (Yamuna Expressway), Noida, Greater Noida, Delhi & Ghaziabad. Get verified listings, expert guidance, and best deals at SKD PropWorld."
         />
-      </div>
 
-      {/* Loader */}
-      {loading ? (
-        <div className="text-center py-5">
-          <Spinner animation="border" variant="warning" />
+        <link rel="canonical" href="https://skdpropworld.com/projects" />
+
+        {/* Open Graph Tags */}
+        <meta
+          property="og:title"
+          content="Property Projects in YEIDA, Noida, Greater Noida, Delhi & Ghaziabad"
+        />
+        <meta
+          property="og:description"
+          content="Browse flats, plots, shops, and office spaces across Delhi NCR including YEIDA, Noida, Greater Noida & Ghaziabad. Expert advice and site visits from SKD PropWorld."
+        />
+        <meta property="og:url" content="https://skdpropworld.com/projects" />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" />
+      </Helmet>
+      <div className="all-projects-wrapper">
+        <h2 className="all-projects-title mt-3">Explore All Active Projects</h2>
+        <div className="all-projects-search">
+          <Form.Control
+            type="text"
+            placeholder="Search by title or location..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
         </div>
-      ) : filteredProjects.length === 0 ? (
-        <div className="text-center no-results">
-          <p>No matching projects found. Recheck your internet connection</p>
-        </div>
-      ) : isScrollMode ? (
-        <div className="all-projects-scroll-wrapper">
-          <div className="all-projects-scroll auto-scroll">
-            {displayProjects.map(renderCard)}
+
+        {/* Loader */}
+        {loading ? (
+          <div className="text-center py-5">
+            <Spinner animation="border" variant="warning" />
           </div>
-        </div>
-      ) : (
-        <div className="all-projects-grid">
-          {filteredProjects.map(renderCard)}
-        </div>
-      )}
+        ) : filteredProjects.length === 0 ? (
+          <div className="text-center no-results">
+            <p>No matching projects found. Recheck your internet connection</p>
+          </div>
+        ) : isScrollMode ? (
+          <div className="all-projects-scroll-wrapper">
+            <div className="all-projects-scroll auto-scroll">
+              {displayProjects.map(renderCard)}
+            </div>
+          </div>
+        ) : (
+          <div className="all-projects-grid">
+            {filteredProjects.map(renderCard)}
+          </div>
+        )}
 
-      {!loading && filteredProjects.length > 0 && (
-        <div className="text-center mt-3 pt-1">
-          <Link to="/projects">
-            <Button className="btn-viewall">View All Projects</Button>
-          </Link>
-        </div>
-      )}
-    </div>
+        {!loading && filteredProjects.length > 0 && (
+          <div className="text-center mt-3 pt-1">
+            <Link to="/projects">
+              <Button className="btn-viewall">View All Projects</Button>
+            </Link>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

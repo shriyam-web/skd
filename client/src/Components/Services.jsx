@@ -3,10 +3,54 @@ import Navbar from "./Navbar";
 import Footer from "../Footer";
 import LeadForm from "./LeadForm";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>
+          Our Services | Buy, Sell, Consult Real Estate - SKD Propworld
+        </title>
+        <meta
+          name="title"
+          content="Our Services | Buy, Sell, Consult Real Estate - SKD Propworld"
+        />
+        <meta
+          name="description"
+          content="Explore SKD Propworld’s real estate services including property buying, selling, and professional consulting. Trusted solutions across YEIDA, Noida, Greater Noida & Delhi NCR."
+        />
+        <meta
+          name="keywords"
+          content="SKD Propworld, real estate services, buy property, sell property, property consultants, Noida, Greater Noida, YEIDA, Delhi NCR"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English" />
+        <meta name="author" content="SKD Propworld" />
+
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Our Services | SKD Propworld" />
+        <meta
+          property="og:description"
+          content="Buy, sell, or consult with SKD Propworld for expert real estate guidance in Noida, YEIDA, Greater Noida, and Delhi NCR."
+        />
+        <meta
+          property="og:url"
+          content="https://www.skdpropworld.com/services"
+        />
+
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Our Services | SKD Propworld" />
+        <meta
+          name="twitter:description"
+          content="Explore real estate services by SKD Propworld - trusted for property buying, selling, and consulting in Noida, YEIDA & Delhi NCR."
+        />
+      </Helmet>
+
       <Navbar />
       <div className="container-fluid  text-white py-5">
         <div className="container text-center">
