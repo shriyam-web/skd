@@ -136,14 +136,18 @@ const ProjectDetail = () => {
     <>
       <Helmet>
         {/* Primary Meta Tags */}
-        <title>{`${project?.title} | Property in ${project?.location} | SKD PropWorld`}</title>
+        <title>
+          {" "}
+          Projects |{" "}
+          {`${project?.heading} | Property in ${project?.location} | SKD PropWorld`}
+        </title>
         <meta
           name="description"
-          content={`Explore details of ${project?.title} located in ${project?.location}. Get price, amenities, features, and site photos. Trusted real estate by SKD PropWorld.`}
+          content={`Explore details of ${project?.heading} located in ${project?.location}. Get price, amenities, features, and site photos. Trusted real estate by SKD PropWorld.`}
         />
         <meta
           name="keywords"
-          content={`Real Estate, ${project?.location} property, ${project?.title}, YEIDA, Noida plots, SKD PropWorld projects`}
+          content={`Real Estate, ${project?.location} property, ${project?.heading}, YEIDA, Noida plots, SKD PropWorld projects`}
         />
         <meta name="author" content="SKD PropWorld" />
         <link
@@ -157,11 +161,11 @@ const ProjectDetail = () => {
         <meta property="og:type" content="article" />
         <meta
           property="og:title"
-          content={`${project?.title} - Real Estate Project in ${project?.location} | SKD PropWorld`}
+          content={`${project?.heading} - Real Estate Project in ${project?.location} | SKD PropWorld`}
         />
         <meta
           property="og:description"
-          content={`Check out ${project?.title} in ${project?.location}. View prices, configurations, and features now.`}
+          content={`Check out ${project?.heading} in ${project?.location}. View prices, configurations, and features now.`}
         />
         <meta
           property="og:url"
@@ -176,11 +180,11 @@ const ProjectDetail = () => {
         <meta name="twitter:card" content="summary" />
         <meta
           name="twitter:title"
-          content={`${project?.title} in ${project?.location} | SKD PropWorld`}
+          content={`${project?.heading} in ${project?.location} | SKD PropWorld`}
         />
         <meta
           name="twitter:description"
-          content={`Learn more about ${project?.title}, a top project in ${project?.location}.`}
+          content={`Learn more about ${project?.heading}, a top project in ${project?.location}.`}
         />
       </Helmet>
 
