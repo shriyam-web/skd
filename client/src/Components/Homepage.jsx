@@ -174,12 +174,12 @@ const Homepage = () => {
       <Helmet>
         {/* Primary Meta Tags */}
         <title>
-          Top Property Dealer in YEIDA (Yamuna Expressway), Noida, Greater
-          Noida, Delhi, NCR | Buy, Sell, Rent Real Estate
+          SKD PropWorld | Top Property Dealer in Noida, YEIDA (Yamuna
+          Authority), Greater Noida, Delhi
         </title>
         <meta
           name="title"
-          content="Top Property Dealer in YEIDA, Noida, Delhi, NCR | Buy, Sell, Rent Real Estate"
+          content="Top Property Dealer in YEIDA, Noida, Delhi, NCR | Buy, Sell, Rent Real Estate Plots, House, Villa, Flat, Commercial, Studio Apartments"
         />
         <meta
           name="description"
@@ -187,7 +187,7 @@ const Homepage = () => {
         />
         <meta
           name="keywords"
-          content="property dealer in Noida, YEIDA, Yamuna Expressway Industrial Development Area, real estate Delhi NCR, flats for sale Noida, Ghaziabad plots, Greater Noida commercial space, property agent Delhi, real estate broker NCR, land for sale Noida Extension, apartment near metro, 2BHK flat Noida, 3BHK apartment Ghaziabad, investment property Noida, buy rent sell Noida, property consultant Delhi NCR"
+          content="property dealer in Noida, YEIDA, Yamuna Expressway Industrial Development Area,YEIDA Authority, real estate Delhi NCR, flats for sale Noida, Ghaziabad plots, Greater Noida commercial space, property agent Delhi, real estate broker NCR, land for sale Noida Extension, apartment near metro, 2BHK flat Noida, 3BHK apartment Ghaziabad, investment property Noida, buy rent sell Noida, property consultant Delhi NCR"
         />
         <meta name="robots" content="index, follow" />
         <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -574,7 +574,9 @@ const Homepage = () => {
       <GlobalPresence />
       <PrimeWorkLocations />
       <Testimonials />
+      <Stats />
       <LeadForm />
+
       <Footer />
     </>
   );

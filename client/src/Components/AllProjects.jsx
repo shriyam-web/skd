@@ -79,60 +79,40 @@ const AllProjects = () => {
 
   const displayList = search ? filtered : projects; // Recap removed
 
-  // useEffect(() => {
-  //   if (!isScrollMode || !scrollRef.current) return;
-
-  //   const container = scrollRef.current;
-  //   let animationId;
-  //   const scrollSpeed = 0.5;
-
-  //   // Start from middle set
-  //   container.scrollLeft = container.scrollWidth / 3;
-
-  //   const scroll = () => {
-  //     if (!container) return;
-
-  //     container.scrollLeft += scrollSpeed;
-
-  //     const third = container.scrollWidth / 3;
-  //     if (container.scrollLeft >= third * 2) {
-  //       container.scrollLeft = third;
-  //     }
-
-  //     animationId = requestAnimationFrame(scroll);
-  //   };
-
-  //   animationId = requestAnimationFrame(scroll);
-
-  //   const pause = () => cancelAnimationFrame(animationId);
-  //   const resume = () => (animationId = requestAnimationFrame(scroll));
-
-  //   container.addEventListener("mouseenter", pause);
-  //   container.addEventListener("mouseleave", resume);
-
-  //   return () => {
-  //     cancelAnimationFrame(animationId);
-  //     container.removeEventListener("mouseenter", pause);
-  //     container.removeEventListener("mouseleave", resume);
-  //   };
-  // }, [isScrollMode]);
   useEffect(() => {
     if (!isScrollMode || !scrollRef.current) return;
 
     const container = scrollRef.current;
-    let animationId;
     const scrollSpeed = 0.5;
+    let animationId;
     let paused = false;
-
-    container.scrollLeft = container.scrollWidth / 3;
 
     const scroll = () => {
       if (!container || paused) return;
-      container.scrollLeft += scrollSpeed;
 
-      const third = container.scrollWidth / 3;
-      if (container.scrollLeft >= third * 2) {
-        container.scrollLeft = third;
+      container.scrollLeft += scrollSpeed;
+      const maxScrollLeft = container.scrollWidth - container.clientWidth;
+
+      if (container.scrollLeft >= maxScrollLeft) {
+        paused = true;
+
+        // Add fade-out animation
+        container.classList.add("fade-out");
+
+        setTimeout(() => {
+          container.scrollLeft = 0;
+          container.classList.remove("fade-out");
+          container.classList.add("fade-in");
+
+          // Remove fade-in after it's done
+          setTimeout(() => {
+            container.classList.remove("fade-in");
+            paused = false;
+            animationId = requestAnimationFrame(scroll);
+          }, 600); // same as fade-in duration
+        }, 600); // same as fade-out duration
+
+        return;
       }
 
       animationId = requestAnimationFrame(scroll);
@@ -144,7 +124,9 @@ const AllProjects = () => {
       paused = true;
       cancelAnimationFrame(animationId);
     };
+
     const resume = () => {
+      if (!paused) return;
       paused = false;
       animationId = requestAnimationFrame(scroll);
     };
@@ -246,13 +228,27 @@ const AllProjects = () => {
         )}
 
         <Card.Text className="text-success fw-semibold mt-2">
-          Starting from {formatIndianPrice(proj.pricingPlans?.[0]?.price ?? 0)}*
-          {proj.pricingPlans?.[0]?.priceType === "PER_UNIT" && (
-            <span className="text-muted small">
-              {" "}
-              (per {proj.pricingPlans[0].unit || "unit"})
-            </span>
-          )}
+          {(() => {
+            const totalPlans = proj.pricingPlans?.filter(
+              (p) => p.priceType === "TOTAL"
+            );
+            const minPrice =
+              totalPlans && totalPlans.length > 0
+                ? Math.min(...totalPlans.map((p) => p.price))
+                : proj.pricingPlans?.[0]?.price ?? 0;
+
+            return (
+              <>
+                Starting from {formatIndianPrice(minPrice)}*
+                {proj.pricingPlans?.[0]?.priceType === "PER_UNIT" && (
+                  <span className="text-muted small">
+                    {" "}
+                    (per {proj.pricingPlans[0].unit || "unit"})
+                  </span>
+                )}
+              </>
+            );
+          })()}
         </Card.Text>
 
         <Link
@@ -268,7 +264,7 @@ const AllProjects = () => {
   return (
     <>
       <Helmet>
-        <title>All Property Projects | SKD PropWorld</title>
+        {/* <title>All Property Projects | SKD PropWorld</title> */}
         <meta
           name="description"
           content="Browse top residential and commercial projects in NCR."

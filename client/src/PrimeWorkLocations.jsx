@@ -20,10 +20,10 @@ const PrimeWorkLocations = () => {
   return (
     <>
       <Helmet>
-        <title>
+        {/* <title>
           Prime Property Locations in YEIDA, Noida, Greater Noida, Delhi NCR |
           SKD Propworld
-        </title>
+        </title> */}
         <meta
           name="description"
           content="Explore SKD Propworld's prime real estate locations including YEIDA, Noida, Greater Noida, Delhi, Gurugram, Ghaziabad and more. Click to view projects by location."

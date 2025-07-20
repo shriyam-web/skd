@@ -38,10 +38,10 @@ const OfficeBearers = () => {
     <>
       <Helmet>
         {/* Primary Meta Tags */}
-        <title>
+        {/* <title>
           YEIDA Property Experts | Leadership Team in Noida, Greater Noida &
           Delhi
-        </title>
+        </title> */}
         <meta
           name="description"
           content="Meet our trusted real estate leaders driving success across YEIDA, Noida, Greater Noida, and Delhi NCR – including Er. Pawan Kumar Mishra (MD) and Mrs. Aarti Mishra (Director)."

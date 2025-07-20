@@ -17,6 +17,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import "./ControlProjects.css";
+import { Helmet } from "react-helmet-async";
 
 const ControlProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -270,6 +271,9 @@ const ControlProjects = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Admin | Project Control </title>
+      </Helmet>
       <ToastContainer
         position="top-left"
         autoClose={3000}

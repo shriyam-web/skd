@@ -91,59 +91,6 @@ const CareerSKD = () => {
   if (formSubmitted) {
     return (
       <>
-        <Helmet>
-          {/* Page Title */}
-          <title>Career Opportunities at SKD Propworld Pvt. Ltd.</title>
-
-          {/* Meta Description */}
-          <meta
-            name="description"
-            content="Apply for exciting career opportunities at SKD Propworld Pvt. Ltd. Join our team and grow your career in real estate across Delhi NCR."
-          />
-
-          {/* Keywords */}
-          <meta
-            name="keywords"
-            content="career, SKD Propworld, job openings, sales executive, real estate jobs, join SKD, career in Delhi NCR, hiring now"
-          />
-
-          {/* Canonical */}
-          <link rel="canonical" href="https://www.skdpropworld.com/careers" />
-
-          {/* Open Graph */}
-          <meta
-            property="og:title"
-            content="Careers at SKD Propworld Pvt. Ltd."
-          />
-          <meta
-            property="og:description"
-            content="Looking for a career in real estate? SKD Propworld Pvt. Ltd. is hiring! Explore current job openings and apply online today."
-          />
-          <meta
-            property="og:image"
-            content="https://www.skdpropworld.com/assets/career-banner.jpg"
-          />
-          <meta
-            property="og:url"
-            content="https://www.skdpropworld.com/careers"
-          />
-          <meta property="og:type" content="website" />
-
-          {/* Twitter Card */}
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta
-            name="twitter:title"
-            content="Careers at SKD Propworld Pvt. Ltd."
-          />
-          <meta
-            name="twitter:description"
-            content="Join the team at SKD Propworld. Check out current job opportunities and apply today!"
-          />
-          <meta
-            name="twitter:image"
-            content="https://www.skdpropworld.com/assets/career-banner.jpg"
-          />
-        </Helmet>
         <div
           className="modal fade show d-block"
           tabIndex="-1"
@@ -182,6 +129,59 @@ const CareerSKD = () => {
 
   return (
     <>
+      <Helmet>
+        {/* Page Title */}
+        <title>Career Opportunities at SKD Propworld Pvt. Ltd.</title>
+
+        {/* Meta Description */}
+        <meta
+          name="description"
+          content="Apply for exciting career opportunities at SKD Propworld Pvt. Ltd. Join our team and grow your career in real estate across Delhi NCR."
+        />
+
+        {/* Keywords */}
+        <meta
+          name="keywords"
+          content="career, SKD Propworld, job openings, sales executive, real estate jobs, join SKD, career in Delhi NCR, hiring now"
+        />
+
+        {/* Canonical */}
+        <link rel="canonical" href="https://www.skdpropworld.com/careers" />
+
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content="Careers at SKD Propworld Pvt. Ltd."
+        />
+        <meta
+          property="og:description"
+          content="Looking for a career in real estate? SKD Propworld Pvt. Ltd. is hiring! Explore current job openings and apply online today."
+        />
+        <meta
+          property="og:image"
+          content="https://www.skdpropworld.com/assets/career-banner.jpg"
+        />
+        <meta
+          property="og:url"
+          content="https://www.skdpropworld.com/careers"
+        />
+        <meta property="og:type" content="website" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Careers at SKD Propworld Pvt. Ltd."
+        />
+        <meta
+          name="twitter:description"
+          content="Join the team at SKD Propworld. Check out current job opportunities and apply today!"
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.skdpropworld.com/assets/career-banner.jpg"
+        />
+      </Helmet>
       <Navbar />
       <div className="career-split container-fluid px-md-5 py-5 ml-3">
         <div className="row">

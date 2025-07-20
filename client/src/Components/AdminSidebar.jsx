@@ -105,7 +105,7 @@ const AdminSidebar = ({ adminName, remainingTime }) => {
     },
     {
       path: "/admin/control-projects",
-      label: "Projects Visibility",
+      label: "Project Manager",
       icon: "bi-folder-plus",
     },
     {
@@ -146,7 +146,8 @@ const AdminSidebar = ({ adminName, remainingTime }) => {
       className="d-flex flex-column bg-light shadow-sm"
       style={{
         width: "260px",
-        height: "100vh",
+        height: "100%",
+        // height: "100vh",
         borderRight: "1px solid #ddd",
       }}
     >

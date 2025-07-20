@@ -35,7 +35,8 @@
 
   /* ✨ NEW LINES */
   width: 100%;
-  max-width: 1400px;
+  max-width: 1500px;
+  /* max-width: 100%; */
   margin: 0 auto;
 }
 
@@ -93,7 +94,7 @@
 .project-card,
 .recap-strip {
   flex: 0 0 auto;
-  width: 400px;
+  width: 370px;
   /* min-width: 400px; */
   max-width: 80%;
   border-radius: 16px;
@@ -324,7 +325,7 @@
 /* === Responsive === */
 @media (max-width: 768px) {
   .project-card {
-    max-width: 350px;
+    max-width: 320px;
   }
 
   /* .all-projects-wrapper {
@@ -402,4 +403,14 @@
 
 .scroll-arrow-right {
   right: 10px;
+}
+
+/* This is boom effect */
+.fade-out {
+  transition: opacity 0.6s ease;
+  opacity: 0;
+}
+.fade-in {
+  transition: opacity 0.6s ease;
+  opacity: 1;
 }

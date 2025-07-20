@@ -11,6 +11,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import Navbar from "./Components/Navbar";
 import Footer from "./Footer";
 import SupportWidget from "./Components/SupportWidget";
+import { Helmet } from "react-helmet-async";
 
 const AdminSignupForm = () => {
   const [formData, setFormData] = useState({
@@ -72,6 +73,10 @@ const AdminSignupForm = () => {
 
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>Admin | Registration </title>
+      </Helmet>
       <Navbar />
       <div className="container mt-3" style={{ maxWidth: "940px" }}>
         <div

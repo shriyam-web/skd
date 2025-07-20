@@ -10,6 +10,7 @@ import axios from "axios";
 import { Link } from "react-router-dom"; // Make sure this is imported
 import { Modal, Button } from "react-bootstrap";
 import { LogOut } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 import {
   ResponsiveContainer,
@@ -106,6 +107,10 @@ function AdminDashboard() {
 
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>Admin | Dashboard </title>
+      </Helmet>
       <div className="d-flex p-4">
         {/* <AdminSidebar adminName={admin?.name} remainingTime={remainingTime} /> */}
 

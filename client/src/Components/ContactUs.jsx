@@ -43,10 +43,10 @@ const ContactUs = () => {
 
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
-        <meta
+        {/* <meta
           property="og:title"
           content="Contact SKD Propworld | Property Dealer in Noida, YEIDA, Greater Noida"
-        />
+        /> */}
         <meta
           property="og:description"
           content="Looking for property advice or want to visit our office? Reach out to SKD Propworld via phone, email, or WhatsApp. We’re here to help!"

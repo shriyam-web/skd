@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect } from "react";
 import "./AdminProfile.css";
+import { Helmet } from "react-helmet-async";
 
 const AdminProfile = () => {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
@@ -146,6 +147,9 @@ const AdminProfile = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Admin | Profile </title>
+      </Helmet>
       <div className="container-fluid px-0 mx-0">
         <div className="row g-0">
           <div

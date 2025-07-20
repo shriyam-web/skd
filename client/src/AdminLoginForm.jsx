@@ -9,6 +9,7 @@ import Navbar from "./Components/Navbar";
 import loginImg from "../public/login.gif"; // adjust if needed
 import Footer from "./Footer";
 import SupportWidget from "./Components/SupportWidget";
+import { Helmet } from "react-helmet-async";
 
 function AdminLoginForm() {
   const [email, setEmail] = useState("");
@@ -60,6 +61,10 @@ function AdminLoginForm() {
 
   return (
     <>
+      <Helmet>
+        {/* Primary Meta Tags */}
+        <title>Admin | Login</title>
+      </Helmet>
       <Navbar />
       <div className="container mt-5" style={{ maxWidth: "850px" }}>
         <div

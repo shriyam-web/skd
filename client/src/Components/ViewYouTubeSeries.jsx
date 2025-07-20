@@ -17,9 +17,9 @@ const ViewYouTubeSeries = () => {
   return (
     <>
       <Helmet>
-        <title>
+        {/* <title>
           Real Estate Podcast | Invest Wisely with SKD Propworld YouTube Series
-        </title>
+        </title> */}
         <meta
           name="description"
           content="Unlocking Real Estate: Dive into trends, expert tips, and stories that help you invest wisely. Explore the SKD Propworld YouTube podcast series now."

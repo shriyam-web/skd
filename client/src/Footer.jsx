@@ -46,9 +46,9 @@ const Footer = () => {
   return (
     <>
       <Helmet>
-        <title>
+        {/* <title>
           Contact Us | SKD Propworld – Real Estate Experts in India & Abroad
-        </title>
+        </title> */}
         <meta
           name="description"
           content="Get in touch with SKD Propworld. Call us, email us, or visit us. Connect via Facebook, Instagram, LinkedIn, YouTube & X. Your global real estate partner."
@@ -58,7 +58,7 @@ const Footer = () => {
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
-          content="Contact SKD Propworld | Connect on Social Media & Visit Us"
+          // content="Contact SKD Propworld | Connect on Social Media & Visit Us"
         />
         <meta
           property="og:description"

@@ -1,3 +1,18 @@
+.filter-sidebar {
+  position: sticky;
+  top: 80px; /* adjust as per your navbar height */
+  z-index: 99;
+}
+.project-card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
 .project-card {
-  min-width: 360px;
+  flex: 1 1 calc(33.33% - 20px);
+  max-width: calc(33.33% - 20px);
+  min-width: 300px;
+  box-sizing: border-box;
 }

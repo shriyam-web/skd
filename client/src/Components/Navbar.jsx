@@ -67,9 +67,9 @@ const Navbar = () => {
   return (
     <>
       <Helmet>
-        <title>
+        {/* <title>
           SKD Propworld | Real Estate in Noida, Greater Noida, YEIDA
-        </title>
+        </title> */}
         <meta
           name="description"
           content="Explore top real estate projects across Noida, Greater Noida, YEIDA, and Delhi-NCR with SKD Propworld. Find residential, commercial, and investment properties with verified data."

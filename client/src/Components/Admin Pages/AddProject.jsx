@@ -4,6 +4,7 @@ import { Form, Button, Card, Row, Col, Alert } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AddProject.css"; // ⬅️ add just after the Bootstrap import
 import confetti from "canvas-confetti";
+import { Helmet } from "react-helmet-async";
 
 // ✅ Get the secret once from env
 // ✅ ONLY use import.meta.env in Vite
@@ -445,6 +446,9 @@ const AddProject = () => {
   if (!isAuthenticated) {
     return (
       <>
+        <Helmet>
+          <title>Super Admin | Add Project </title>
+        </Helmet>
         <Card className="p-4 mt-4 ">
           <h3>Secret Login</h3>
           {loginError && <Alert variant="danger">{loginError}</Alert>}

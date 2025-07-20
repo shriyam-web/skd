@@ -8,6 +8,7 @@ import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import "./ProjectSpecificLeads.css";
 import useAutoLogout from "../../hooks/useAutoLogout";
+import { Helmet } from "react-helmet-async";
 
 const ProjectSpecificLeads = () => {
   const [leads, setLeads] = useState([]);
@@ -209,182 +210,195 @@ Date: ${new Date(lead.createdAt).toLocaleString("en-GB", {
   };
 
   return (
-    <div className="p-4 text-white project-leads-page">
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h3 className="fw-bold">Project Specific Leads 📈</h3>
-        <div className="d-flex gap-2">
-          <button className="btn btn-outline-success" onClick={exportToPDF}>
-            📄 Export PDF
-          </button>
-          <button className="btn btn-outline-primary" onClick={exportToExcel}>
-            📊 Export Excel
-          </button>
-          <button className="btn btn-outline-light" onClick={fetchLeads}>
-            🔄 Refresh
-          </button>
-        </div>
-      </div>
-
-      <div className="mb-3 d-flex gap-3">
-        <span className="badge bg-info fs-6">
-          📅 Today's Leads: <strong>{todayCount}</strong>
-        </span>
-        <span className="badge bg-secondary fs-6">
-          📊 Total Leads: <strong>{leads.length}</strong>
-        </span>
-      </div>
-
-      <select
-        className="form-select w-auto mb-3"
-        onChange={(e) => {
-          const selected = e.target.value;
-          if (selected === "all") {
-            setFilteredLeads(leads);
-          } else {
-            setFilteredLeads(
-              leads.filter((lead) => lead.projectName === selected)
-            );
-          }
-        }}
-      >
-        <option value="all" className="allprojectheading">
-          All Projects
-        </option>
-        {[...new Set(leads.map((lead) => lead.projectName))].map((project) => (
-          <option key={project} value={project}>
-            {project}
-          </option>
-        ))}
-      </select>
-
-      <div className="mb-3">
-        <input
-          type="text"
-          value={search}
-          onChange={handleSearch}
-          placeholder="🔍 Search by name, email or project"
-          className="form-control"
-        />
-      </div>
-
-      {loading && <div className="alert alert-info">Loading leads...</div>}
-      {error && <div className="alert alert-danger">{error}</div>}
-
-      {!loading && filteredLeads.length > 0 && (
-        <>
-          <div className="mb-2">
-            <span className="badge bg-success me-2">Today</span>
-            <span className="badge bg-warning text-dark me-2">Yesterday</span>
-            <span className="badge bg-secondary">Older</span>
+    <>
+    <Helmet>
+      <title>Admin | Project Leads</title>
+    </Helmet>
+      <div className="p-4 text-white project-leads-page">
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <h3 className="fw-bold">Project Specific Leads 📈</h3>
+          <div className="d-flex gap-2">
+            <button className="btn btn-outline-success" onClick={exportToPDF}>
+              📄 Export PDF
+            </button>
+            <button className="btn btn-outline-primary" onClick={exportToExcel}>
+              📊 Export Excel
+            </button>
+            <button className="btn btn-outline-light" onClick={fetchLeads}>
+              🔄 Refresh
+            </button>
           </div>
+        </div>
 
-          <div
-            className="table-responsive"
-            style={{
-              maxHeight: "52vh",
-              overflowY: "auto",
-              borderRadius: "10px",
-            }}
-          >
-            <table className="table table-dark table-hover table-bordered fixed-table">
-              <thead className="table-light text-dark">
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Project Name</th>
-                  <th>Remark</th>
-                  <th>Status</th>
-                  <th>⭐</th>
+        <div className="mb-3 d-flex gap-3">
+          <span className="badge bg-info fs-6">
+            📅 Today's Leads: <strong>{todayCount}</strong>
+          </span>
+          <span className="badge bg-secondary fs-6">
+            📊 Total Leads: <strong>{leads.length}</strong>
+          </span>
+        </div>
 
-                  <th>Date</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredLeads.map((lead, index) => (
-                  <tr
-                    key={lead._id}
-                    className={`${getLeadRowClass(lead.createdAt)} ${
-                      lead.starred ? "border-start border-warning border-4" : ""
-                    }`}
-                  >
-                    <td>{index + 1}</td>
-                    <td className="name-col">{lead.name}</td>
-                    <td className="email-col">{lead.email}</td>
-                    <td>{lead.phone}</td>
-                    <td>{lead.projectName}</td>
-                    <td className="remark-col" title={lead.remark || "-"}>
-                      {lead.remark || "-"}
-                    </td>
+        <select
+          className="form-select w-auto mb-3"
+          onChange={(e) => {
+            const selected = e.target.value;
+            if (selected === "all") {
+              setFilteredLeads(leads);
+            } else {
+              setFilteredLeads(
+                leads.filter((lead) => lead.projectName === selected)
+              );
+            }
+          }}
+        >
+          <option value="all" className="allprojectheading">
+            All Projects
+          </option>
+          {[...new Set(leads.map((lead) => lead.projectName))].map(
+            (project) => (
+              <option key={project} value={project}>
+                {project}
+              </option>
+            )
+          )}
+        </select>
 
-                    <td>
-                      <button
-                        className={`btn btn-sm ${
-                          lead.status === "Contacted"
-                            ? "btn-success"
-                            : "btn-outline-secondary"
-                        }`}
-                        onClick={() =>
-                          toggleStatus(
-                            lead._id,
-                            lead.status === "Pending" ? "Contacted" : "Pending"
-                          )
-                        }
-                      >
-                        {lead.status}
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        className={`btn btn-sm ${
-                          lead.starred ? "btn-warning" : "btn-outline-warning"
-                        }`}
-                        onClick={() => toggleStarred(lead._id, !lead.starred)}
-                      >
-                        ⭐
-                      </button>
-                    </td>
-                    <td>
-                      {new Date(lead.createdAt).toLocaleString("en-GB", {
-                        day: "2-digit",
-                        month: "2-digit",
-                        year: "numeric",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        hour12: true,
-                      })}
-                    </td>
-                    <td className="actions-col align-middle">
-                      <div className="d-flex flex-wrap gap-2 mb-2 h-100 align-items-stretch">
+        <div className="mb-3">
+          <input
+            type="text"
+            value={search}
+            onChange={handleSearch}
+            placeholder="🔍 Search by name, email or project"
+            className="form-control"
+          />
+        </div>
+
+        {loading && <div className="alert alert-info">Loading leads...</div>}
+        {error && <div className="alert alert-danger">{error}</div>}
+
+        {!loading && filteredLeads.length > 0 && (
+          <>
+            <div className="mb-2">
+              <span className="badge bg-success me-2">Today</span>
+              <span className="badge bg-warning text-dark me-2">Yesterday</span>
+              <span className="badge bg-secondary">Older</span>
+            </div>
+
+            <div
+              className="table-responsive"
+              style={{
+                maxHeight: "52vh",
+                overflowY: "auto",
+                borderRadius: "10px",
+              }}
+            >
+              <table className="table table-dark table-hover table-bordered fixed-table">
+                <thead className="table-light text-dark">
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Project Name</th>
+                    <th>Remark</th>
+                    <th>Status</th>
+                    <th>⭐</th>
+
+                    <th>Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredLeads.map((lead, index) => (
+                    <tr
+                      key={lead._id}
+                      className={`${getLeadRowClass(lead.createdAt)} ${
+                        lead.starred
+                          ? "border-start border-warning border-4"
+                          : ""
+                      }`}
+                    >
+                      <td>{index + 1}</td>
+                      <td className="name-col">{lead.name}</td>
+                      <td className="email-col">{lead.email}</td>
+                      <td>{lead.phone}</td>
+                      <td>{lead.projectName}</td>
+                      <td className="remark-col" title={lead.remark || "-"}>
+                        {lead.remark || "-"}
+                      </td>
+
+                      <td>
                         <button
                           className={`btn btn-sm ${
-                            copiedRowId === lead._id
-                              ? "btn-success text-white"
-                              : "btn-outline-dark"
+                            lead.status === "Contacted"
+                              ? "btn-success"
+                              : "btn-outline-secondary"
                           }`}
-                          onClick={() => handleCopyRow(lead)}
+                          onClick={() =>
+                            toggleStatus(
+                              lead._id,
+                              lead.status === "Pending"
+                                ? "Contacted"
+                                : "Pending"
+                            )
+                          }
                         >
-                          {copiedRowId === lead._id ? "✅ Copied!" : "📋 Copy"}
+                          {lead.status}
                         </button>
-                      </div>
+                      </td>
+                      <td>
+                        <button
+                          className={`btn btn-sm ${
+                            lead.starred ? "btn-warning" : "btn-outline-warning"
+                          }`}
+                          onClick={() => toggleStarred(lead._id, !lead.starred)}
+                        >
+                          ⭐
+                        </button>
+                      </td>
+                      <td>
+                        {new Date(lead.createdAt).toLocaleString("en-GB", {
+                          day: "2-digit",
+                          month: "2-digit",
+                          year: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          hour12: true,
+                        })}
+                      </td>
+                      <td className="actions-col align-middle">
+                        <div className="d-flex flex-wrap gap-2 mb-2 h-100 align-items-stretch">
+                          <button
+                            className={`btn btn-sm ${
+                              copiedRowId === lead._id
+                                ? "btn-success text-white"
+                                : "btn-outline-dark"
+                            }`}
+                            onClick={() => handleCopyRow(lead)}
+                          >
+                            {copiedRowId === lead._id
+                              ? "✅ Copied!"
+                              : "📋 Copy"}
+                          </button>
+                        </div>
 
-                      <button
-                        className="btn btn-sm btn-danger"
-                        onClick={() => handleDelete(lead._id)}
-                      >
-                        🗑 Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      )}
-    </div>
+                        <button
+                          className="btn btn-sm btn-danger"
+                          onClick={() => handleDelete(lead._id)}
+                        >
+                          🗑 Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

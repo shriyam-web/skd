@@ -5,6 +5,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import "./ImageGalleryManager.css";
 import { useNavigate } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa"; // YouTube icon
+import { Helmet } from "react-helmet-async";
 
 /**
  * ImageGalleryManager – category‑aware version
@@ -172,211 +173,226 @@ const ImageGalleryManager = () => {
 
   /* ───────────────── JSX ───────────────── */
   return (
-    <div className="container mycontainer">
-      <div className="row">
-        <div className="col-sm-7">
-          <h2 className="text-white golden-heading p-4">Gallery Manager</h2>
+    <>
+      <Helmet>
+        <title>Admin | Gallery Manager</title>
+      </Helmet>
+      <div className="container mycontainer">
+        <div className="row">
+          <div className="col-sm-7">
+            <h2 className="text-white golden-heading p-4">Gallery Manager</h2>
+          </div>
+          <div className="col-sm-5 mt-2 p-3 gap-3 d-flex justify-content-end ">
+            <Button
+              variant="success"
+              onClick={() => {
+                resetUploadForm();
+                setShowUploadModal(true);
+              }}
+            >
+              + Add Gallery Media
+            </Button>
+            <Button
+              variant="danger"
+              onClick={() => navigate("/admin/youtube-manager")}
+            >
+              <FaYoutube className="youtube-icon" /> <br /> &nbsp; Manage
+              YouTube Videos <br />
+              (Unlocking Real Estate)
+            </Button>
+          </div>
         </div>
-        <div className="col-sm-5 mt-2 p-3 gap-3 d-flex justify-content-end ">
-          <Button
-            variant="success"
+
+        <div className=" mb-3"></div>
+
+        {/* CATEGORY SECTIONS */}
+        {categories.map((cat) => (
+          <section key={cat} className="category-section">
+            <h3 className="category-heading text-white mb-2">{cat}</h3>
+
+            {/* ⬇️  ONLY the extra wrapper changed */}
+            <div className="scroll-box">
+              <div className="image-grid mt-3 ">
+                {imagesByCategory[cat].map((img) => (
+                  <div className="image-card" key={img._id} title={img.caption}>
+                    {img.mediaType === "video" ? (
+                      <video src={img.url} className="media-thumb" muted />
+                    ) : (
+                      <img
+                        src={img.url}
+                        alt={img.caption || "media"}
+                        loading="lazy"
+                      />
+                    )}
+                    {img.caption && (
+                      <span className="img-caption">{img.caption}</span>
+                    )}
+                    <button
+                      className="delete-btn"
+                      onClick={() => confirmDelete(img._id)}
+                    >
+                      &times;
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        ))}
+
+        {/* Global add‑card for brand‑new category */}
+        <div className="image-grid justify-content-center mb-4">
+          <div
+            className="image-card add-card"
             onClick={() => {
-              resetUploadForm();
               setShowUploadModal(true);
+              resetUploadForm();
             }}
           >
-            + Add Gallery Media
-          </Button>
-          <Button
-            variant="danger"
-            onClick={() => navigate("/admin/youtube-manager")}
-          >
-            <FaYoutube className="youtube-icon" /> <br /> &nbsp; Manage YouTube
-            Videos <br />
-            (Unlocking Real Estate)
-          </Button>
-        </div>
-      </div>
-
-      <div className=" mb-3"></div>
-
-      {/* CATEGORY SECTIONS */}
-      {categories.map((cat) => (
-        <section key={cat} className="category-section">
-          <h3 className="category-heading text-white mb-2">{cat}</h3>
-
-          {/* ⬇️  ONLY the extra wrapper changed */}
-          <div className="scroll-box">
-            <div className="image-grid mt-3 ">
-              {imagesByCategory[cat].map((img) => (
-                <div className="image-card" key={img._id} title={img.caption}>
-                  {img.mediaType === "video" ? (
-                    <video src={img.url} className="media-thumb" muted />
-                  ) : (
-                    <img
-                      src={img.url}
-                      alt={img.caption || "media"}
-                      loading="lazy"
-                    />
-                  )}
-                  {img.caption && (
-                    <span className="img-caption">{img.caption}</span>
-                  )}
-                  <button
-                    className="delete-btn"
-                    onClick={() => confirmDelete(img._id)}
-                  >
-                    &times;
-                  </button>
-                </div>
-              ))}
-            </div>
+            <div className="plus-sign">+</div>
           </div>
-        </section>
-      ))}
-
-      {/* Global add‑card for brand‑new category */}
-      <div className="image-grid justify-content-center mb-4">
-        <div
-          className="image-card add-card"
-          onClick={() => {
-            setShowUploadModal(true);
-            resetUploadForm();
-          }}
-        >
-          <div className="plus-sign">+</div>
         </div>
-      </div>
 
-      {/* ───────────── Upload Modal ───────────── */}
-      <Modal
-        show={showUploadModal}
-        onHide={() => setShowUploadModal(false)}
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Add Media</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="formCategoryToggle" className="mb-3">
-              <Form.Label>Category</Form.Label>
+        {/* ───────────── Upload Modal ───────────── */}
+        <Modal
+          show={showUploadModal}
+          onHide={() => setShowUploadModal(false)}
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Add Media</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form>
+              <Form.Group controlId="formCategoryToggle" className="mb-3">
+                <Form.Label>Category</Form.Label>
 
-              {/* pill‑style toggle */}
-              <div className="category-toggle">
-                <label
-                  className={`toggle-option ${
-                    !isAddingNewCategory ? "active" : ""
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="categoryMode"
-                    value="existing"
-                    checked={!isAddingNewCategory}
-                    onChange={() => setIsAddingNewCategory(false)}
+                {/* pill‑style toggle */}
+                <div className="category-toggle">
+                  <label
+                    className={`toggle-option ${
+                      !isAddingNewCategory ? "active" : ""
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="categoryMode"
+                      value="existing"
+                      checked={!isAddingNewCategory}
+                      onChange={() => setIsAddingNewCategory(false)}
+                    />
+                    Select from existing
+                  </label>
+
+                  <label
+                    className={`toggle-option ${
+                      isAddingNewCategory ? "active" : ""
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="categoryMode"
+                      value="new"
+                      checked={isAddingNewCategory}
+                      onChange={() => {
+                        setIsAddingNewCategory(true);
+                        setSelectedCategory("");
+                      }}
+                    />
+                    Add new category
+                  </label>
+                </div>
+
+                {/* input based on toggle */}
+                {!isAddingNewCategory ? (
+                  <Form.Select
+                    className="mt-3"
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                  >
+                    <option value="">— Select category —</option>
+                    {categories.map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
+                    ))}
+                  </Form.Select>
+                ) : (
+                  <Form.Control
+                    className="mt-3"
+                    type="text"
+                    placeholder="e.g. Bedroom"
+                    value={newCategory}
+                    onChange={(e) => setNewCategory(e.target.value)}
                   />
-                  Select from existing
-                </label>
+                )}
+              </Form.Group>
 
-                <label
-                  className={`toggle-option ${
-                    isAddingNewCategory ? "active" : ""
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    name="categoryMode"
-                    value="new"
-                    checked={isAddingNewCategory}
-                    onChange={() => {
-                      setIsAddingNewCategory(true);
-                      setSelectedCategory("");
-                    }}
-                  />
-                  Add new category
-                </label>
-              </div>
-
-              {/* input based on toggle */}
-              {!isAddingNewCategory ? (
-                <Form.Select
-                  className="mt-3"
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                >
-                  <option value="">— Select category —</option>
-                  {categories.map((c) => (
-                    <option key={c} value={c}>
-                      {c}
-                    </option>
-                  ))}
-                </Form.Select>
-              ) : (
+              <Form.Group controlId="formCaption" className="mb-3">
+                <Form.Label>Caption (optional)</Form.Label>
                 <Form.Control
-                  className="mt-3"
                   type="text"
-                  placeholder="e.g. Bedroom"
-                  value={newCategory}
-                  onChange={(e) => setNewCategory(e.target.value)}
+                  placeholder="Add a short caption"
+                  value={caption}
+                  onChange={(e) => setCaption(e.target.value)}
                 />
-              )}
-            </Form.Group>
+              </Form.Group>
 
-            <Form.Group controlId="formCaption" className="mb-3">
-              <Form.Label>Caption (optional)</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Add a short caption"
-                value={caption}
-                onChange={(e) => setCaption(e.target.value)}
-              />
-            </Form.Group>
+              <Form.Group controlId="formFile" className="mb-3">
+                <Form.Label>Image / Video File</Form.Label>
+                <Form.Control
+                  type="file"
+                  accept="image/*,video/*"
+                  onChange={handleFileChange}
+                />
+              </Form.Group>
+            </Form>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => setShowUploadModal(false)}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="primary"
+              onClick={handleUpload}
+              disabled={uploading}
+            >
+              {uploading ? "Uploading…" : "Upload"}
+            </Button>
+          </Modal.Footer>
+        </Modal>
 
-            <Form.Group controlId="formFile" className="mb-3">
-              <Form.Label>Image / Video File</Form.Label>
-              <Form.Control
-                type="file"
-                accept="image/*,video/*"
-                onChange={handleFileChange}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowUploadModal(false)}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={handleUpload} disabled={uploading}>
-            {uploading ? "Uploading…" : "Upload"}
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        {/* Delete Modal */}
+        <Modal
+          show={showDeleteModal}
+          onHide={() => setShowDeleteModal(false)}
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Confirm Delete</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Are you sure you want to delete this media file?
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => setShowDeleteModal(false)}
+            >
+              Cancel
+            </Button>
+            <Button variant="danger" onClick={deleteImage}>
+              Delete
+            </Button>
+          </Modal.Footer>
+        </Modal>
 
-      {/* Delete Modal */}
-      <Modal
-        show={showDeleteModal}
-        onHide={() => setShowDeleteModal(false)}
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Confirm Delete</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Are you sure you want to delete this media file?
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={deleteImage}>
-            Delete
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
-      <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
-    </div>
+        <Toaster position="top-center" toastOptions={{ duration: 3000 }} />
+      </div>
+    </>
   );
 };
 

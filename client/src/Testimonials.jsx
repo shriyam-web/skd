@@ -101,9 +101,9 @@ const Testimonials = () => {
   return (
     <>
       <Helmet>
-        <title>
+        {/* <title>
           Client Testimonials | Verified Google Reviews | SKD Propworld
-        </title>
+        </title> */}
         <meta
           name="description"
           content="Read verified Google reviews from satisfied customers of SKD Propworld. Discover why people trust us for their property investments across NCR."

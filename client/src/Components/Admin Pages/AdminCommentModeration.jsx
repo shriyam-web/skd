@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { FaCheck, FaTrash, FaReply } from "react-icons/fa";
 import "./AdminCommentModeration.css"; // Create this file for custom CSS
 // import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const AdminCommentModeration = () => {
   const [pendingComments, setPendingComments] = useState([]);
@@ -101,181 +102,191 @@ const AdminCommentModeration = () => {
   };
 
   return (
-    <div className="container p-4">
-      <h3 className="mb-3 text-white">
-        {" "}
-        <strong>Pending Comments</strong>
-      </h3>
-      {showApproved ? (
-        <>
-          <h4 className="text-white mt-4">Approved Comments</h4>
-          <Button
-            variant="warning"
-            size="sm"
-            className="mb-2"
-            onClick={() => setShowApproved(false)}
-          >
-            Hide Approved Comments
-          </Button>
-          <div className="scrollable-table-container2">
-            <Table striped bordered hover>
-              <thead className="custom-thead">
-                <tr>
-                  <th>#</th>
-                  <th>Blog Title</th>
-                  <th>Commenter</th>
-                  <th>Comment</th>
-                  <th>Replies</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {approvedComments.map((comment, idx) => (
-                  <tr key={comment.commentId} className="comment-row">
-                    <td>{idx + 1}</td>
-                    <td>{comment.blogTitle}</td>
-                    <td>{comment.name}</td>
-                    <td>{comment.comment}</td>
-                    <td>
-                      {comment.replies?.length > 0 ? (
-                        <div className="p-2 border bg-light rounded">
-                          <strong>Admin Reply:</strong>{" "}
-                          {comment.replies[0].reply}
-                        </div>
-                      ) : (
-                        "No reply"
-                      )}
-                    </td>
-                    <td>
-                      <Button
-                        size="sm"
-                        variant="danger"
-                        onClick={() =>
-                          handleDelete(comment.blogId, comment.commentId)
-                        }
-                      >
-                        <FaTrash /> Delete
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="secondary"
-                        className="ms-2"
-                        onClick={() => handleReplyOpen(comment)}
-                      >
-                        <FaReply />{" "}
-                        {comment.replies?.length > 0 ? "Edit" : "Reply"}
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </div>
-        </>
-      ) : pendingComments.length === 0 ? (
-        <div className="text-white">
-          <p>No pending comments.</p>
-          <Button variant="info" size="sm" onClick={fetchApprovedComments}>
-            View all approved comments
-          </Button>
-        </div>
-      ) : (
-        <Table striped bordered hover responsive>
-          <thead className="custom-thead">
-            <tr>
-              <th>#</th>
-              <th>Blog Title</th>
-              <th>Commenter</th>
-              <th>Comment</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {pendingComments.map((comment, idx) => (
-              <tr key={comment.commentId} className="comment-row">
-                <td>{idx + 1}</td>
-                <td>{comment.blogTitle}</td>
-                <td>{comment.name}</td>
-                <td>
-                  {comment.comment}
-                  {comment.replies && comment.replies.length > 0 && (
-                    <div className="mt-2 p-2 border bg-light rounded">
-                      <strong>Admin Reply:</strong> {comment.replies[0].reply}
-                      <Button
-                        size="sm"
-                        variant="outline-secondary"
-                        onClick={() => handleReplyOpen(comment)}
-                        className="ms-2"
-                      >
-                        Edit
-                      </Button>
-                    </div>
-                  )}
-                </td>
-                <td className="d-flex gap-2 flex-wrap align-items-stretch">
-                  <Button
-                    size="sm"
-                    variant="success"
-                    onClick={() =>
-                      handleApprove(comment.blogId, comment.commentId)
-                    }
-                  >
-                    <FaCheck /> Approve
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="danger"
-                    onClick={() =>
-                      handleDelete(comment.blogId, comment.commentId)
-                    }
-                  >
-                    <FaTrash /> Delete
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="secondary"
-                    onClick={() => handleReplyOpen(comment)}
-                  >
-                    <FaReply /> {comment.replies?.length > 0 ? "Edit" : "Reply"}
-                  </Button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
+    <>
+      <Helmet>
+        <title>Admin | Comment Moderation</title>
+      </Helmet>
 
-      {/* Reply Modal */}
-      <Modal
-        show={showReplyModal}
-        onHide={() => setShowReplyModal(false)}
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>Reply to {currentComment?.name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form.Group controlId="replyText">
-            <Form.Label>Your Reply</Form.Label>
-            <Form.Control
-              as="textarea"
-              rows={4}
-              value={replyText}
-              onChange={(e) => setReplyText(e.target.value)}
-              placeholder="Type your reply here..."
-            />
-          </Form.Group>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowReplyModal(false)}>
-            Cancel
-          </Button>
-          <Button variant="primary" onClick={handleReplySubmit}>
-            Save Reply
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
+      <div className="container p-4">
+        <h3 className="mb-3 text-white">
+          {" "}
+          <strong>Pending Comments</strong>
+        </h3>
+        {showApproved ? (
+          <>
+            <h4 className="text-white mt-4">Approved Comments</h4>
+            <Button
+              variant="warning"
+              size="sm"
+              className="mb-2"
+              onClick={() => setShowApproved(false)}
+            >
+              Hide Approved Comments
+            </Button>
+            <div className="scrollable-table-container2">
+              <Table striped bordered hover>
+                <thead className="custom-thead">
+                  <tr>
+                    <th>#</th>
+                    <th>Blog Title</th>
+                    <th>Commenter</th>
+                    <th>Comment</th>
+                    <th>Replies</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {approvedComments.map((comment, idx) => (
+                    <tr key={comment.commentId} className="comment-row">
+                      <td>{idx + 1}</td>
+                      <td>{comment.blogTitle}</td>
+                      <td>{comment.name}</td>
+                      <td>{comment.comment}</td>
+                      <td>
+                        {comment.replies?.length > 0 ? (
+                          <div className="p-2 border bg-light rounded">
+                            <strong>Admin Reply:</strong>{" "}
+                            {comment.replies[0].reply}
+                          </div>
+                        ) : (
+                          "No reply"
+                        )}
+                      </td>
+                      <td>
+                        <Button
+                          size="sm"
+                          variant="danger"
+                          onClick={() =>
+                            handleDelete(comment.blogId, comment.commentId)
+                          }
+                        >
+                          <FaTrash /> Delete
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          className="ms-2"
+                          onClick={() => handleReplyOpen(comment)}
+                        >
+                          <FaReply />{" "}
+                          {comment.replies?.length > 0 ? "Edit" : "Reply"}
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </div>
+          </>
+        ) : pendingComments.length === 0 ? (
+          <div className="text-white">
+            <p>No pending comments.</p>
+            <Button variant="info" size="sm" onClick={fetchApprovedComments}>
+              View all approved comments
+            </Button>
+          </div>
+        ) : (
+          <Table striped bordered hover responsive>
+            <thead className="custom-thead">
+              <tr>
+                <th>#</th>
+                <th>Blog Title</th>
+                <th>Commenter</th>
+                <th>Comment</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pendingComments.map((comment, idx) => (
+                <tr key={comment.commentId} className="comment-row">
+                  <td>{idx + 1}</td>
+                  <td>{comment.blogTitle}</td>
+                  <td>{comment.name}</td>
+                  <td>
+                    {comment.comment}
+                    {comment.replies && comment.replies.length > 0 && (
+                      <div className="mt-2 p-2 border bg-light rounded">
+                        <strong>Admin Reply:</strong> {comment.replies[0].reply}
+                        <Button
+                          size="sm"
+                          variant="outline-secondary"
+                          onClick={() => handleReplyOpen(comment)}
+                          className="ms-2"
+                        >
+                          Edit
+                        </Button>
+                      </div>
+                    )}
+                  </td>
+                  <td className="d-flex gap-2 flex-wrap align-items-stretch">
+                    <Button
+                      size="sm"
+                      variant="success"
+                      onClick={() =>
+                        handleApprove(comment.blogId, comment.commentId)
+                      }
+                    >
+                      <FaCheck /> Approve
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="danger"
+                      onClick={() =>
+                        handleDelete(comment.blogId, comment.commentId)
+                      }
+                    >
+                      <FaTrash /> Delete
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => handleReplyOpen(comment)}
+                    >
+                      <FaReply />{" "}
+                      {comment.replies?.length > 0 ? "Edit" : "Reply"}
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
+
+        {/* Reply Modal */}
+        <Modal
+          show={showReplyModal}
+          onHide={() => setShowReplyModal(false)}
+          centered
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Reply to {currentComment?.name}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form.Group controlId="replyText">
+              <Form.Label>Your Reply</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={4}
+                value={replyText}
+                onChange={(e) => setReplyText(e.target.value)}
+                placeholder="Type your reply here..."
+              />
+            </Form.Group>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => setShowReplyModal(false)}
+            >
+              Cancel
+            </Button>
+            <Button variant="primary" onClick={handleReplySubmit}>
+              Save Reply
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </div>
+    </>
   );
 };
 

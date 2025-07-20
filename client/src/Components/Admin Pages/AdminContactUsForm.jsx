@@ -8,6 +8,7 @@ import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import "./AdminContactUsForm.css"; // If you have any custom styles
 import useAutoLogout from "../../hooks/useAutoLogout";
+import { Helmet } from "react-helmet-async";
 
 const AdminContactUsForm = () => {
   const [leads, setLeads] = useState([]);
@@ -223,164 +224,169 @@ Starred: ${lead.starred ? "Yes ⭐" : "No"}
   };
 
   return (
-    <div
-      className="p-4  text-white"
-      // style={{ backgroundColor: "#1e1e1e", minHeight: "100vh" }}
-    >
-      <div className="d-flex justify-content-between align-items-center mb-3">
-        <h3 className="fw-bold">Contact Us Form Responses 📝</h3>
-        <div className="d-flex gap-2">
-          <button className="btn btn-outline-success" onClick={exportToPDF}>
-            📄 Export PDF
-          </button>
-          <button className="btn btn-outline-primary" onClick={exportToExcel}>
-            📊 Export Excel
-          </button>
-          <button className="btn btn-outline-light" onClick={fetchLeads}>
-            🔄 Refresh
-          </button>
+    <>
+      <Helmet>
+        <title>Admin | Contact Us Reponses</title>
+      </Helmet>
+      <div
+        className="p-4  text-white"
+        // style={{ backgroundColor: "#1e1e1e", minHeight: "100vh" }}
+      >
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <h3 className="fw-bold">Contact Us Form Responses 📝</h3>
+          <div className="d-flex gap-2">
+            <button className="btn btn-outline-success" onClick={exportToPDF}>
+              📄 Export PDF
+            </button>
+            <button className="btn btn-outline-primary" onClick={exportToExcel}>
+              📊 Export Excel
+            </button>
+            <button className="btn btn-outline-light" onClick={fetchLeads}>
+              🔄 Refresh
+            </button>
+          </div>
         </div>
-      </div>
 
-      <div className="mb-3 d-flex gap-3">
-        <span className="badge bg-info fs-6">
-          📅 Today's Leads: <strong>{todayCount}</strong>
-        </span>
-        <span className="badge bg-secondary fs-6">
-          📊 Total Leads: <strong>{leads.length}</strong>
-        </span>
-      </div>
+        <div className="mb-3 d-flex gap-3">
+          <span className="badge bg-info fs-6">
+            📅 Today's Leads: <strong>{todayCount}</strong>
+          </span>
+          <span className="badge bg-secondary fs-6">
+            📊 Total Leads: <strong>{leads.length}</strong>
+          </span>
+        </div>
 
-      <div className="mb-3">
-        <input
-          type="text"
-          value={search}
-          onChange={handleSearch}
-          placeholder="🔍 Search by name, email or property type"
-          className="form-control"
-        />
-      </div>
+        <div className="mb-3">
+          <input
+            type="text"
+            value={search}
+            onChange={handleSearch}
+            placeholder="🔍 Search by name, email or property type"
+            className="form-control"
+          />
+        </div>
 
-      {loading && <div className="alert alert-info">Loading leads...</div>}
-      {error && <div className="alert alert-danger">{error}</div>}
+        {loading && <div className="alert alert-info">Loading leads...</div>}
+        {error && <div className="alert alert-danger">{error}</div>}
 
-      {!loading && filteredLeads.length > 0 && (
-        <>
-          <div className="mb-2">
-            <span className="badge bg-success me-2">Today</span>
-            <span className="badge bg-warning text-dark me-2">Yesterday</span>
-            <span className="badge bg-secondary">Older</span>
-          </div>
+        {!loading && filteredLeads.length > 0 && (
+          <>
+            <div className="mb-2">
+              <span className="badge bg-success me-2">Today</span>
+              <span className="badge bg-warning text-dark me-2">Yesterday</span>
+              <span className="badge bg-secondary">Older</span>
+            </div>
 
-          <div
-            className="table-responsive"
-            style={{
-              maxHeight: "60vh",
-              overflowY: "auto",
-              borderRadius: "10px",
-            }}
-          >
-            <table
-              className="table table-dark table-hover table-bordered rounded overflow-hidden"
-              style={{ tableLayout: "auto", wordWrap: "break-word" }}
+            <div
+              className="table-responsive"
+              style={{
+                maxHeight: "60vh",
+                overflowY: "auto",
+                borderRadius: "10px",
+              }}
             >
-              <thead className="table-light text-dark">
-                <tr>
-                  <th>#</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Property Type</th>
-                  <th>Message</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredLeads.map((lead, index) => (
-                  <tr
-                    key={lead._id}
-                    className={getLeadRowClass(lead.createdAt)}
-                  >
-                    <td>{index + 1}</td>
-                    <td className="name-col">{lead.name}</td>
-                    <td className="email-col">{lead.email}</td>
-                    <td>{lead.phone}</td>
-                    <td>{lead.propertyType}</td>
-                    <td className="message-col">{lead.message || "—"}</td>
-                    <td>
-                      {new Date(lead.createdAt).toLocaleString("en-GB", {
-                        day: "2-digit",
-                        month: "2-digit",
-                        year: "numeric",
-                        hour: "2-digit",
-                        minute: "2-digit",
-                        hour12: true,
-                      })}
-                    </td>
-                    <td>
-                      <span
-                        className={`badge ${
-                          lead.status === "Contacted"
-                            ? "bg-success"
-                            : "bg-warning text-dark"
-                        }`}
-                      >
-                        {lead.status}
-                      </span>
-                    </td>
-                    <td className="actions-col d-flex flex-wrap gap-2">
-                      <button
-                        className={`btn btn-sm ${
-                          lead.starred
-                            ? "btn-primary text-white"
-                            : "btn-outline-primary"
-                        }`}
-                        onClick={() => toggleStar(lead._id)}
-                      >
-                        {lead.starred ? "⭐ Starred" : "☆ Star"}
-                      </button>
-
-                      <button
-                        className={`btn btn-sm small ${
-                          lead.status === "Contacted"
-                            ? "btn-warning text-dark"
-                            : "btn-success"
-                        }`}
-                        onClick={() => toggleStatus(lead._id, lead.status)}
-                      >
-                        {lead.status === "Contacted"
-                          ? "Mark Pending"
-                          : "Mark Contacted"}
-                      </button>
-
-                      <button
-                        className={`btn btn-sm small ${
-                          copiedRowId === lead._id
-                            ? "btn-success text-white"
-                            : "btn-outline-dark"
-                        }`}
-                        onClick={() => handleCopyRow(lead)}
-                      >
-                        {copiedRowId === lead._id ? "✅ Copied!" : "📋 Copy"}
-                      </button>
-
-                      <button
-                        className="btn btn-sm btn-danger small"
-                        onClick={() => handleDelete(lead._id)}
-                      >
-                        🗑 Delete
-                      </button>
-                    </td>
+              <table
+                className="table table-dark table-hover table-bordered rounded overflow-hidden"
+                style={{ tableLayout: "auto", wordWrap: "break-word" }}
+              >
+                <thead className="table-light text-dark">
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Property Type</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </>
-      )}
-    </div>
+                </thead>
+                <tbody>
+                  {filteredLeads.map((lead, index) => (
+                    <tr
+                      key={lead._id}
+                      className={getLeadRowClass(lead.createdAt)}
+                    >
+                      <td>{index + 1}</td>
+                      <td className="name-col">{lead.name}</td>
+                      <td className="email-col">{lead.email}</td>
+                      <td>{lead.phone}</td>
+                      <td>{lead.propertyType}</td>
+                      <td className="message-col">{lead.message || "—"}</td>
+                      <td>
+                        {new Date(lead.createdAt).toLocaleString("en-GB", {
+                          day: "2-digit",
+                          month: "2-digit",
+                          year: "numeric",
+                          hour: "2-digit",
+                          minute: "2-digit",
+                          hour12: true,
+                        })}
+                      </td>
+                      <td>
+                        <span
+                          className={`badge ${
+                            lead.status === "Contacted"
+                              ? "bg-success"
+                              : "bg-warning text-dark"
+                          }`}
+                        >
+                          {lead.status}
+                        </span>
+                      </td>
+                      <td className="actions-col d-flex flex-wrap gap-2">
+                        <button
+                          className={`btn btn-sm ${
+                            lead.starred
+                              ? "btn-primary text-white"
+                              : "btn-outline-primary"
+                          }`}
+                          onClick={() => toggleStar(lead._id)}
+                        >
+                          {lead.starred ? "⭐ Starred" : "☆ Star"}
+                        </button>
+
+                        <button
+                          className={`btn btn-sm small ${
+                            lead.status === "Contacted"
+                              ? "btn-warning text-dark"
+                              : "btn-success"
+                          }`}
+                          onClick={() => toggleStatus(lead._id, lead.status)}
+                        >
+                          {lead.status === "Contacted"
+                            ? "Mark Pending"
+                            : "Mark Contacted"}
+                        </button>
+
+                        <button
+                          className={`btn btn-sm small ${
+                            copiedRowId === lead._id
+                              ? "btn-success text-white"
+                              : "btn-outline-dark"
+                          }`}
+                          onClick={() => handleCopyRow(lead)}
+                        >
+                          {copiedRowId === lead._id ? "✅ Copied!" : "📋 Copy"}
+                        </button>
+
+                        <button
+                          className="btn btn-sm btn-danger small"
+                          onClick={() => handleDelete(lead._id)}
+                        >
+                          🗑 Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 

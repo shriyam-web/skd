@@ -3,6 +3,7 @@ import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./MapManager.css";
+import { Helmet } from "react-helmet-async";
 
 const MapManager = () => {
   const API = import.meta.env.VITE_API_BASE_URL;
@@ -164,6 +165,9 @@ const MapManager = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Admin | Maps Manager</title>
+      </Helmet>
       {/* <div className="p-4 text-white heading"> Create Map </div> */}
       {/* <div className="mapmgr-container py-4"> */}
       <div className="mapmgr-card border-light mb-4 py-4">

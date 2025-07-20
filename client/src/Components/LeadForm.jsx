@@ -96,9 +96,9 @@ const LeadForm = () => {
   return (
     <>
       <Helmet>
-        <title>
+        {/* <title>
           Lead Form – Get in Touch for Real Estate Deals | SKD Propworld
-        </title>
+        </title> */}
         <meta
           name="description"
           content="Fill out our lead form to get exclusive updates, property insights, and early access to the best real estate deals across Noida, YEIDA, and Greater Noida."
