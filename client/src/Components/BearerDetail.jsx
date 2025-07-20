@@ -108,7 +108,7 @@ const BearerDetail = () => {
       </Helmet>
       <Navbar />
       <div className="container-fluid py-5 bearer-detail">
-        <h2 className="text-center text-warnin fw-bold mb-5">
+        <h2 className="text-center text-warning fw-bold mb-5">
           Meet The Office Bearers
         </h2>
 

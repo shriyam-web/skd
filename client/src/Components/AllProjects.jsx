@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Card, Button, Form, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -9,10 +9,11 @@ import { Helmet } from "react-helmet-async";
 
 const AllProjects = () => {
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
-  const [visibleProjects, setVisibleProjects] = useState([]);
-  const [filteredProjects, setFilteredProjects] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [projects, setProjects] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
+  const scrollRef = useRef(null);
 
   const ribbonIcons = {
     "Hot Deal": "fa-fire",
@@ -30,7 +31,7 @@ const AllProjects = () => {
     "Premium Property": "fa-gem",
   };
 
-  const ribbonColorClass = {
+  const ribbonColors = {
     "Hot Deal": "tag-red",
     Trending: "tag-blue",
     "New Launch": "tag-blue",
@@ -47,45 +48,78 @@ const AllProjects = () => {
   };
 
   useEffect(() => {
-    const fetchVisibleProjects = async () => {
+    const fetchProjects = async () => {
       try {
-        const res = await axios.get(`${API_BASE}/api/admin/projects`);
-        const filtered = res.data.filter((p) => p.visible);
-        setVisibleProjects(filtered);
-        setFilteredProjects(filtered);
+        const { data } = await axios.get(`${API_BASE}/api/admin/projects`);
+        const visible = data.filter((p) => p.visible);
+        setProjects(visible);
+        setFiltered(visible);
       } catch (err) {
-        console.error("❌ Error fetching visible projects", err);
+        console.error("Failed to fetch projects", err);
       } finally {
         setLoading(false);
       }
     };
-    fetchVisibleProjects();
-  }, []);
+    fetchProjects();
+  }, [API_BASE]);
 
   useEffect(() => {
-    const filtered = visibleProjects.filter(
-      (proj) =>
-        proj.heading.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        proj.location.toLowerCase().includes(searchTerm.toLowerCase())
+    const result = projects.filter(
+      ({ heading, location }) =>
+        heading.toLowerCase().includes(search.toLowerCase()) ||
+        location.toLowerCase().includes(search.toLowerCase())
     );
-    const uniqueFiltered = Array.from(
-      new Map(filtered.map((p) => [p._id, p])).values()
-    );
-    setFilteredProjects(uniqueFiltered);
-  }, [searchTerm, visibleProjects]);
+    setFiltered(result);
+  }, [search, projects]);
 
-  const isScrollMode = !searchTerm && visibleProjects.length >= 5;
-  const displayProjects = searchTerm
-    ? filteredProjects
-    : [...visibleProjects, ...visibleProjects];
+  const isScrollMode = !search && projects.length >= 3;
 
-  const renderCard = (proj, index) => (
-    <Card key={`${proj._id}-${index}`} className="project-card">
-      {/* ✅ Ribbon */}
+  const displayList = search ? filtered : projects; // Recap removed
+
+  useEffect(() => {
+    if (!isScrollMode || !scrollRef.current) return;
+
+    const container = scrollRef.current;
+    let animationId;
+    const scrollSpeed = 0.5;
+
+    // Start from middle set
+    container.scrollLeft = container.scrollWidth / 3;
+
+    const scroll = () => {
+      if (!container) return;
+
+      container.scrollLeft += scrollSpeed;
+
+      const third = container.scrollWidth / 3;
+      if (container.scrollLeft >= third * 2) {
+        container.scrollLeft = third;
+      }
+
+      animationId = requestAnimationFrame(scroll);
+    };
+
+    animationId = requestAnimationFrame(scroll);
+
+    const pause = () => cancelAnimationFrame(animationId);
+    const resume = () => (animationId = requestAnimationFrame(scroll));
+
+    container.addEventListener("mouseenter", pause);
+    container.addEventListener("mouseleave", resume);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      container.removeEventListener("mouseenter", pause);
+      container.removeEventListener("mouseleave", resume);
+    };
+  }, [isScrollMode]);
+
+  const renderProjectCard = (proj, idx) => (
+    <Card key={`${proj._id}-${idx}`} className="project-card">
       {proj.ribbonTag && (
         <div
           className={`project-tag-badge ${
-            ribbonColorClass[proj.ribbonTag] || "tag-default"
+            ribbonColors[proj.ribbonTag] || "tag-default"
           }`}
         >
           <i
@@ -95,7 +129,6 @@ const AllProjects = () => {
         </div>
       )}
 
-      {/* ✅ SKD Top Pick Badge */}
       {proj.isSKDPick === "YES" && (
         <div className="skd-project-card-badge">
           <i className="fas fa-gem me-1" /> SKD Top Pick
@@ -107,72 +140,55 @@ const AllProjects = () => {
         src={proj.bannerImage?.url}
         className="project-card-img"
         loading="lazy"
+        alt={proj.heading}
       />
 
       <Card.Body>
-        {/* Title & Location */}
         <Card.Title className="project-title">{proj.heading}</Card.Title>
         <Card.Text className="project-location">
-          <i className="fas fa-map-marker-alt text-danger me-1"></i>
+          <i className="fas fa-map-marker-alt text-danger me-1" />
           {proj.location}
         </Card.Text>
 
-        {/* Project Status */}
         {proj.projectStatus && (
           <Card.Text className="project-meta">
-            {/* <i className="fas fa-tasks me-1 text-info"></i> */}
             <strong>Status:</strong>{" "}
             <span
               className={`badge bg-${
                 proj.projectStatus === "READY_TO_MOVE" ? "success" : "warning"
               } text-dark`}
             >
-              {proj.projectStatus.replace(/_/g, " ").toUpperCase()}
+              {proj.projectStatus.replace(/_/g, " ")}
             </span>
           </Card.Text>
         )}
 
-        {/* Property Type */}
         {proj.propertyType && (
           <Card.Text className="project-meta">
-            <i className="fas fa-layer-group me-1 text-secondary"></i>{" "}
-            {/* for Type */}
+            <i className="fas fa-layer-group me-1 text-secondary" />
             <strong>Type:</strong> {proj.propertyType}
           </Card.Text>
         )}
 
-        {/* RERA Number */}
         {proj.reraNumber && (
           <Card.Text className="project-meta">
             <strong>RERA:</strong> {proj.reraNumber}
           </Card.Text>
         )}
 
-        {/* //optionally hidden */}
-        {/* USP */}
         {proj.usp && (
           <Card.Text className="project-usp">
             <strong>USP:</strong>{" "}
             {Array.isArray(proj.usp) ? proj.usp.join(", ") : proj.usp}
           </Card.Text>
         )}
-        {/* Connectivity */}
-        {/* {proj.connectivity && proj.connectivity.length > 0 && (
-          <Card.Text className="project-meta">
-            <i className="fas fa-road me-1 text-primary"></i>{" "}
-            
-            <strong>Connectivity:</strong> {proj.connectivity.join(", ")}
-          </Card.Text>
-        )} */}
-        {/* optionally hidden */}
 
         {proj.aboutContent && (
-          <div className="project-about text-muted small mt-2">
+          <div className="project-about small text-muted">
             <h6 className="mb-1">
               <strong>About:</strong>
             </h6>
             <div
-              style={{ lineHeight: "1.3em" }}
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(
                   proj.aboutContent.length > 130
@@ -184,19 +200,21 @@ const AllProjects = () => {
           </div>
         )}
 
-        {/* Price */}
-        <Card.Text className="text-success fw-semibold">
-          Starting from {formatIndianPrice(proj.pricingPlans?.[0]?.price ?? 0)}*{" "}
+        <Card.Text className="text-success fw-semibold mt-2">
+          Starting from {formatIndianPrice(proj.pricingPlans?.[0]?.price ?? 0)}*
           {proj.pricingPlans?.[0]?.priceType === "PER_UNIT" && (
             <span className="text-muted small">
-              (per {proj.pricingPlans?.[0]?.unit || "unit"})
+              {" "}
+              (per {proj.pricingPlans[0].unit || "unit"})
             </span>
           )}
         </Card.Text>
 
-        {/* Button */}
-        <Link to={`/projects/${proj.slug}`} className="btn-wrapper">
-          <Button className="btn-detail">View in Detail</Button>
+        <Link
+          to={`/projects/${proj.slug}`}
+          className="btn-wrapper d-block mt-3"
+        >
+          <Button className="btn-details">View in Detail</Button>
         </Link>
       </Card.Body>
     </Card>
@@ -205,66 +223,58 @@ const AllProjects = () => {
   return (
     <>
       <Helmet>
-        <title>
-          All Property Projects in YEIDA, Noida, Greater Noida, Delhi &
-          Ghaziabad | SKD PropWorld
-        </title>
-
+        <title>All Property Projects | SKD PropWorld</title>
         <meta
           name="description"
-          content="Discover top residential and commercial property projects across YEIDA (Yamuna Expressway), Noida, Greater Noida, Delhi & Ghaziabad. Get verified listings, expert guidance, and best deals at SKD PropWorld."
+          content="Browse top residential and commercial projects in NCR."
         />
-
         <link rel="canonical" href="https://skdpropworld.com/projects" />
-
-        {/* Open Graph Tags */}
-        <meta
-          property="og:title"
-          content="Property Projects in YEIDA, Noida, Greater Noida, Delhi & Ghaziabad"
-        />
-        <meta
-          property="og:description"
-          content="Browse flats, plots, shops, and office spaces across Delhi NCR including YEIDA, Noida, Greater Noida & Ghaziabad. Expert advice and site visits from SKD PropWorld."
-        />
-        <meta property="og:url" content="https://skdpropworld.com/projects" />
-        <meta property="og:type" content="website" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary" />
       </Helmet>
+
       <div className="all-projects-wrapper">
-        <h2 className="all-projects-title mt-3">Explore All Active Projects</h2>
-        <div className="all-projects-search">
+        <h2 className="all-projects-title">Explore All Active Projects</h2>
+
+        <div className="all-projects-search mb-3">
           <Form.Control
             type="text"
             placeholder="Search by title or location..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
 
-        {/* Loader */}
         {loading ? (
           <div className="text-center py-5">
             <Spinner animation="border" variant="warning" />
           </div>
-        ) : filteredProjects.length === 0 ? (
+        ) : filtered.length === 0 ? (
           <div className="text-center no-results">
-            <p>No matching projects found. Recheck your internet connection</p>
+            <p>No matching projects found.</p>
           </div>
         ) : isScrollMode ? (
           <div className="all-projects-scroll-wrapper">
-            <div className="all-projects-scroll auto-scroll">
-              {displayProjects.map(renderCard)}
+            <div className="all-projects-scroll" ref={scrollRef}>
+              {displayList.map((proj, idx) =>
+                proj.recap ? (
+                  <div
+                    key={`recap-${idx}`}
+                    className="recap-strip d-flex justify-content-center align-items-center"
+                  >
+                    🔁 ReCap
+                  </div>
+                ) : (
+                  renderProjectCard(proj, idx)
+                )
+              )}
             </div>
           </div>
         ) : (
           <div className="all-projects-grid">
-            {filteredProjects.map(renderCard)}
+            {filtered.map(renderProjectCard)}
           </div>
         )}
 
-        {!loading && filteredProjects.length > 0 && (
+        {!loading && filtered.length > 0 && (
           <div className="text-center mt-3 pt-1">
             <Link to="/projects">
               <Button className="btn-viewall">View All Projects</Button>

@@ -351,7 +351,7 @@ const Homepage = () => {
           </h1>
 
           {/* Search Card */}
-          <div className="search-card mx-auto marginniche" ref={searchAreaRef}>
+          <div className="search-card mx-auto " ref={searchAreaRef}>
             <Nav
               variant="tabs"
               activeKey={activeTab}

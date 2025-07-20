@@ -9,6 +9,7 @@ import Footer from "../Footer";
 import formatIndianPrice from "../utils/formatIndianPrice.js";
 import SupportWidget from "./SupportWidget";
 import { Helmet } from "react-helmet-async";
+import "./AllProjectsPage.css";
 
 /* ──────────── config / constants (top‑level) ──────────── */
 const API_BASE = import.meta.env.VITE_API_BASE_URL;

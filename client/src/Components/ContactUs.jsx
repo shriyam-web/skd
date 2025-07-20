@@ -100,7 +100,7 @@ const ContactUs = () => {
             </a>
           </div>
 
-          <div className="contact-info">
+          <div className="contact-infos">
             <div>
               <FaPhone className="icon" /> +91 90910 10909
             </div>

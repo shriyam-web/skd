@@ -9,7 +9,7 @@
   position: absolute; /* or fixed */
 }
 /* .marginniche {
-  padding-bottom: 300px;
+  margin-bottom: 300px;
 } */
 
 /* Optional shadow when scrolling */
@@ -22,7 +22,7 @@
 .homepage-hero {
   background: linear-gradient(90deg, #2b2b2b 0%, #3c3a3a 40%, #c5a253 100%);
   color: #fff;
-  height: 45vh;
+  height: 60vh;
   padding: 7rem 1rem 2rem;
   text-align: center;
   position: relative;
