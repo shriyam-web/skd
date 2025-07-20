@@ -34,8 +34,8 @@
   scrollbar-color: #ffc107 #eee;
 
   /* ✨ NEW LINES */
-  width: 100%;
-  max-width: 1500px;
+  width: 90%;
+  max-width: 1400px;
   /* max-width: 100%; */
   margin: 0 auto;
 }
@@ -325,7 +325,7 @@
 /* === Responsive === */
 @media (max-width: 768px) {
   .project-card {
-    max-width: 320px;
+    max-width: 290px;
   }
 
   /* .all-projects-wrapper {
