@@ -206,6 +206,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.mar {
+  padding-top: 80px !important;
+}
 
 /* === Buttons === */
 .btn-details {

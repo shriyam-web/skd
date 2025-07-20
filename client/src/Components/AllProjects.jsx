@@ -231,8 +231,8 @@ const AllProjects = () => {
         <link rel="canonical" href="https://skdpropworld.com/projects" />
       </Helmet>
 
-      <div className="all-projects-wrapper">
-        <h2 className="all-projects-title">Explore All Active Projects</h2>
+      <div className="all-projects-wrapper mar">
+        <h2 className="all-projects-title ">Explore All Active Projects</h2>
 
         <div className="all-projects-search mb-3">
           <Form.Control
