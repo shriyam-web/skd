@@ -18,14 +18,54 @@
   max-width: 400px;
   margin: 0 auto 20px;
 }
-
+.scroll-arrow-right {
+  right: 0;
+}
 /* === Horizontal Scroll Section === */
 .all-projects-scroll-wrapper {
   overflow-x: auto;
+  /* scroll-behavior: smooth; */
+  white-space: nowrap;
   overflow-y: hidden;
   padding-bottom: 10px;
   scrollbar-width: thin;
+  position: relative;
+  padding: 20px 0;
   scrollbar-color: #ffc107 #eee;
+
+  /* ✨ NEW LINES */
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.scroll-btnss {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffd700;
+  border: none;
+  font-size: 2rem;
+  margin-top: 500px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.scroll-leftss {
+  left: 0;
+  /* margin-left: 20px; */
+}
+
+.scroll-rightss {
+  right: 0;
+  /* margin-right: 20px; */
+}
+
+.scroll-btnss:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .all-projects-scroll-wrapper::-webkit-scrollbar {
@@ -55,7 +95,7 @@
   flex: 0 0 auto;
   width: 400px;
   /* min-width: 400px; */
-  max-width: 100%;
+  max-width: 80%;
   border-radius: 16px;
   overflow: hidden;
   background: #fff;
@@ -314,4 +354,52 @@
 /* Extra small devices (mobiles in portrait) */
 @media (max-width: 576px) {
   /* Styles for 576px and below */
+}
+/* *8888888888888888888888888888888888888888888888888 */
+
+.scroll-container-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.all-projects-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #ffc107 #eee;
+  padding: 20px 40px; /* make space for arrows */
+}
+
+.all-projects-scroll {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+}
+
+.scroll-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.scroll-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.scroll-arrow-left {
+  left: 10px;
+}
+
+.scroll-arrow-right {
+  right: 10px;
 }

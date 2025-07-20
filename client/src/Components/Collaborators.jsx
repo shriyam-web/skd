@@ -15,6 +15,7 @@ const collaboratorLogos = [
   "/Collaborators/Sobha.png",
   "/Collaborators/dlf.png",
   "/Collaborators/Gaurs.png",
+  "/Collaborators/Arihant.png",
 ];
 
 const Collaborators = () => {

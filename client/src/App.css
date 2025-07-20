@@ -22,7 +22,7 @@ body {
 
 /* ===========  NAVBAR  =========== */
 .skd-navbar {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   letter-spacing: 0.4px;
   top: 0;
   z-index: 1030;
@@ -37,6 +37,28 @@ body {
     opacity: 1;
   }
 }
+/* Prevent wrapping in mid-sized screens (like narrow laptops) */
+@media (max-width: 1199.98px) and (min-width: 992px) {
+  .skd-navbar .navbar-nav {
+    gap: 2px;
+  }
+
+  .skd-menu-item {
+    font-size: 0.6rem; /* Smaller font */
+    padding: 4px 6px; /* Less padding */
+    white-space: nowrap; /* Keep text in one line */
+  }
+
+  .skd-logo-size {
+    max-width: 180px;
+    max-height: 30px;
+    /* Optional: reduce logo if needed */
+  }
+}
+.skd-menu-item {
+  white-space: nowrap;
+}
+
 .skd-navbar {
   transition: background 0.4s ease, box-shadow 0.4s ease;
 }
@@ -140,7 +162,7 @@ body {
   }
 }
 .skd-navbar .dropdown-item {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   padding: 10px 16px;
   color: #111;

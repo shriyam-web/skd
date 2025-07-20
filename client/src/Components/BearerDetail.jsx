@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet-async";
 
 const profiles = [
   {
-    name: "Er. Pawan Kumar Mishra",
+    name: "Er. Pawan Mishra",
     title: "Managing Director",
     image: "/md_sir.jpg",
     hashId: "pawan-sir",

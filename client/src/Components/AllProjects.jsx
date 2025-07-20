@@ -46,6 +46,9 @@ const AllProjects = () => {
     "Budget Friendly": "tag-cyan",
     "Premium Property": "tag-purple",
   };
+  // const scrollRef = useRef(null);
+  const animationRef = useRef();
+  const pausedRef = useRef(false);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -76,19 +79,55 @@ const AllProjects = () => {
 
   const displayList = search ? filtered : projects; // Recap removed
 
+  // useEffect(() => {
+  //   if (!isScrollMode || !scrollRef.current) return;
+
+  //   const container = scrollRef.current;
+  //   let animationId;
+  //   const scrollSpeed = 0.5;
+
+  //   // Start from middle set
+  //   container.scrollLeft = container.scrollWidth / 3;
+
+  //   const scroll = () => {
+  //     if (!container) return;
+
+  //     container.scrollLeft += scrollSpeed;
+
+  //     const third = container.scrollWidth / 3;
+  //     if (container.scrollLeft >= third * 2) {
+  //       container.scrollLeft = third;
+  //     }
+
+  //     animationId = requestAnimationFrame(scroll);
+  //   };
+
+  //   animationId = requestAnimationFrame(scroll);
+
+  //   const pause = () => cancelAnimationFrame(animationId);
+  //   const resume = () => (animationId = requestAnimationFrame(scroll));
+
+  //   container.addEventListener("mouseenter", pause);
+  //   container.addEventListener("mouseleave", resume);
+
+  //   return () => {
+  //     cancelAnimationFrame(animationId);
+  //     container.removeEventListener("mouseenter", pause);
+  //     container.removeEventListener("mouseleave", resume);
+  //   };
+  // }, [isScrollMode]);
   useEffect(() => {
     if (!isScrollMode || !scrollRef.current) return;
 
     const container = scrollRef.current;
     let animationId;
     const scrollSpeed = 0.5;
+    let paused = false;
 
-    // Start from middle set
     container.scrollLeft = container.scrollWidth / 3;
 
     const scroll = () => {
-      if (!container) return;
-
+      if (!container || paused) return;
       container.scrollLeft += scrollSpeed;
 
       const third = container.scrollWidth / 3;
@@ -101,8 +140,14 @@ const AllProjects = () => {
 
     animationId = requestAnimationFrame(scroll);
 
-    const pause = () => cancelAnimationFrame(animationId);
-    const resume = () => (animationId = requestAnimationFrame(scroll));
+    const pause = () => {
+      paused = true;
+      cancelAnimationFrame(animationId);
+    };
+    const resume = () => {
+      paused = false;
+      animationId = requestAnimationFrame(scroll);
+    };
 
     container.addEventListener("mouseenter", pause);
     container.addEventListener("mouseleave", resume);
@@ -233,7 +278,6 @@ const AllProjects = () => {
 
       <div className="all-projects-wrapper ">
         <h2 className="all-projects-title ">Explore All Active Projects</h2>
-
         <div className="all-projects-search mb-3">
           <Form.Control
             type="text"
@@ -242,7 +286,6 @@ const AllProjects = () => {
             onChange={(e) => setSearch(e.target.value)}
           />
         </div>
-
         {loading ? (
           <div className="text-center py-5">
             <Spinner animation="border" variant="warning" />
@@ -252,35 +295,106 @@ const AllProjects = () => {
             <p>No matching projects found.</p>
           </div>
         ) : isScrollMode ? (
-          <div className="all-projects-scroll-wrapper">
-            <div className="all-projects-scroll" ref={scrollRef}>
-              {displayList.map((proj, idx) =>
-                proj.recap ? (
-                  <div
-                    key={`recap-${idx}`}
-                    className="recap-strip d-flex justify-content-center align-items-center"
-                  >
-                    🔁 ReCap
-                  </div>
-                ) : (
-                  renderProjectCard(proj, idx)
-                )
-              )}
+          <div className="scroll-container-wrapper">
+            {/* Left Arrow */}
+            {/* <button
+              className="scroll-arrow scroll-arrow-left"
+              onClick={() => {
+                if (!scrollRef.current) return;
+                pausedRef.current = true;
+                cancelAnimationFrame(animationRef.current);
+
+                scrollRef.current.scrollBy({
+                  left: -400,
+                  behavior: "smooth",
+                });
+
+                setTimeout(() => {
+                  pausedRef.current = false;
+                  animationRef.current = requestAnimationFrame(
+                    function scroll() {
+                      if (!scrollRef.current || pausedRef.current) return;
+                      scrollRef.current.scrollLeft += 0.5;
+
+                      const third = scrollRef.current.scrollWidth / 3;
+                      if (scrollRef.current.scrollLeft >= third * 2) {
+                        scrollRef.current.scrollLeft = third;
+                      }
+
+                      animationRef.current = requestAnimationFrame(scroll);
+                    }
+                  );
+                }, 2000);
+              }}
+            >
+              &#8249;
+            </button> */}
+
+            {/* Scrollable Projects */}
+            <div className="all-projects-scroll-wrapper" ref={scrollRef}>
+              <div className="all-projects-scroll">
+                {displayList.map((proj, idx) =>
+                  proj.recap ? (
+                    <div
+                      key={`recap-${idx}`}
+                      className="recap-strip d-flex justify-content-center align-items-center"
+                    >
+                      🔁 ReCap
+                    </div>
+                  ) : (
+                    renderProjectCard(proj, idx)
+                  )
+                )}
+              </div>
             </div>
+
+            {/* Right Arrow */}
+            {/* <button
+              className="scroll-arrow scroll-arrow-right"
+              onClick={() => {
+                if (!scrollRef.current) return;
+                pausedRef.current = true;
+                cancelAnimationFrame(animationRef.current);
+
+                scrollRef.current.scrollBy({
+                  left: 400,
+                  behavior: "smooth",
+                });
+
+                setTimeout(() => {
+                  pausedRef.current = false;
+                  animationRef.current = requestAnimationFrame(
+                    function scroll() {
+                      if (!scrollRef.current || pausedRef.current) return;
+                      scrollRef.current.scrollLeft += 0.5;
+
+                      const third = scrollRef.current.scrollWidth / 3;
+                      if (scrollRef.current.scrollLeft >= third * 2) {
+                        scrollRef.current.scrollLeft = third;
+                      }
+
+                      animationRef.current = requestAnimationFrame(scroll);
+                    }
+                  );
+                }, 2000);
+              }}
+            >
+              &#8250;
+            </button> */}
           </div>
         ) : (
           <div className="all-projects-grid">
             {filtered.map(renderProjectCard)}
           </div>
-        )}
+        )}{" "}
+        <br />
+        <center>
+          <Link to="/projects" className="btn-viewall">
+            Go to Projects
+          </Link>
 
-        {!loading && filtered.length > 0 && (
-          <div className="text-center mt-3 pt-1">
-            <Link to="/projects">
-              <Button className="btn-viewall">View All Projects</Button>
-            </Link>
-          </div>
-        )}
+          {/* <button>View All Projects</button> */}
+        </center>
       </div>
     </>
   );
