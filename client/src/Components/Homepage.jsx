@@ -301,8 +301,9 @@ const Homepage = () => {
       </Helmet>
       {/* **************************************** */}
       {/* the text above is for SEO */}
-      <Navbar />
+
       <div className="homepage-hero">
+        <Navbar />
         {/* Inject dynamic seasonal background */}
         <div
           className="seasonal-background-wrapper"

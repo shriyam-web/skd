@@ -274,7 +274,6 @@ const AllProjects = () => {
 
       <div className="all-projects-wrapper ">
         {" "}
-        <br /> <br /> <br />
         <h2 className="all-projects-title ">Explore All Active Projects</h2>
         <div className="all-projects-search mb-3">
           <Form.Control
