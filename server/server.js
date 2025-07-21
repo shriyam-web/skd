@@ -6,7 +6,7 @@ const path = require("path");
 const { SitemapStream, streamToPromise } = require("sitemap");
 const { createGzip } = require("zlib");
 const sitemap = require("./routes/sitemap");
-
+const htmlSnippetRoutes = require("./routes/htmlSnippet");
 const app = express();
 app.use(cors());
 
@@ -14,7 +14,8 @@ app.use(cors());
 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
-
+// Register the HTML snippet route
+app.use("/api/snippet", htmlSnippetRoutes);
 // ⬇️ Serve frontend build in production
 // if (process.env.NODE_ENV === "production") {
 //   const __dirname = path.resolve();
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 //   });
 // }
 app.use("/", sitemap); // <-- mount it
+app.use("/api", require("./routes/htmlSnippet"));
 
 console.log("→ Mounting /api/admin");
 app.use("/api/admin", require("./routes/adminRoutes"));

@@ -1,0 +1,36 @@
+/* Fullscreen Wrapper */
+.loading-spinner-wrapper {
+  height: 100vh;
+  width: 100vw;
+  background-color: #262525;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050; /* On top of most elements */
+  flex-direction: column;
+}
+
+/* Larger Spinner */
+.spinner-lg {
+  width: 4rem;
+  height: 4rem;
+  border-width: 0.4em;
+}
+
+/* Text Fade-in Animation */
+.fade-in-text {
+  animation: fadeIn 1.2s ease-in-out infinite alternate;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0.3;
+    transform: translateY(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

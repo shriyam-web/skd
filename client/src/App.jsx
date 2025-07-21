@@ -194,6 +194,8 @@ function App() {
             }
           />
 
+          <Route path="/loading" element={<LoadingSpinner />}></Route>
+
           <Route
             path="/admin/login"
             element={

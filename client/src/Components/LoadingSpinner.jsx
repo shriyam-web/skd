@@ -1,13 +1,14 @@
 import React from "react";
+import "./LoadingSpinner.css";
 
 function LoadingSpinner() {
   return (
-    <div className="flex justify-center items-center min-h-[200px]">
-      <div className="relative w-16 h-16">
-        <div className="absolute inset-0 rounded-full border-4 border-t-transparent border-blue-500 animate-spin"></div>
-        <div className="absolute inset-2 bg-white rounded-full flex items-center justify-center">
-          <span className="text-blue-500 font-semibold text-sm">Loading</span>
-        </div>
+    <div className="loading-spinner-wrapper d-flex justify-content-center align-items-center">
+      <div className="spinner-border text-warning spinner-lg" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+      <div className="loading-text mt-3 ms-3">
+        <h5 className="text-warning fw-semibold fade-in-text">Loading...</h5>
       </div>
     </div>
   );

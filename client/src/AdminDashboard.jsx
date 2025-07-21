@@ -4,6 +4,7 @@ import useAutoLogout from "./hooks/useAutoLogout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AdminSidebar from "./Components/AdminSidebar";
+import confetti from "canvas-confetti";
 import "./AdminDashboard.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -21,6 +22,7 @@ import {
   Bar,
   CartesianGrid,
 } from "recharts";
+import { useRef } from "react";
 
 function AdminDashboard() {
   const { admin } = useAuth();
@@ -34,15 +36,89 @@ function AdminDashboard() {
   const [leadChartData, setLeadChartData] = useState([]);
   const [chartRange, setChartRange] = useState(7); // Default 7 days
   const [showChartModal, setShowChartModal] = useState(false);
+  const [editingSnippetId, setEditingSnippetId] = useState(null);
 
   const [pendingComments, setPendingComments] = useState([]);
   const [loadingActions, setLoadingActions] = useState(true);
   const [todayLeads, setTodayLeads] = useState(0);
   const [todayCareers, setTodayCareers] = useState(0);
+  const [showFestivalModal, setShowFestivalModal] = useState(false);
+  const [htmlSnippet, setHtmlSnippet] = useState("");
+  const confettiRef = useRef(null);
+  const [existingSnippets, setExistingSnippets] = useState([]);
+
+  const fetchSnippets = async () => {
+    try {
+      const res = await axios.get(
+        `${import.meta.env.VITE_API_BASE_URL}/api/snippet/all`
+      );
+      setExistingSnippets(res.data || []);
+    } catch (err) {
+      console.error("Failed to fetch snippets:", err);
+    }
+  };
+
+  const triggerButtonConfetti = () => {
+    if (!confettiRef.current) return;
+
+    const rect = confettiRef.current.getBoundingClientRect();
+
+    confetti({
+      particleCount: 100,
+      spread: 80,
+      origin: {
+        x: (rect.left + rect.width / 2) / window.innerWidth,
+        y: (rect.top + rect.height / 2) / window.innerHeight,
+      },
+      scalar: 0.9,
+      colors: ["#ff007f", "#ffd700", "#7fff00", "#00bfff", "#ff4500"],
+    });
+  };
+
+  const handleDeleteSnippet = async (id) => {
+    try {
+      await axios.delete(
+        `${import.meta.env.VITE_API_BASE_URL}/api/snippet/${id}`
+      );
+      fetchSnippets(); // Refresh
+    } catch (err) {
+      console.error("Error deleting snippet:", err);
+    }
+  };
+
+  const handleSaveHtmlSnippet = async () => {
+    try {
+      if (editingSnippetId) {
+        await axios.put(
+          `${
+            import.meta.env.VITE_API_BASE_URL
+          }/api/snippet/${editingSnippetId}`,
+          { htmlCode: htmlSnippet }
+        );
+        console.log("Snippet updated");
+      } else {
+        await axios.post(
+          `${import.meta.env.VITE_API_BASE_URL}/api/snippet/save-snippet`,
+          { htmlCode: htmlSnippet }
+        );
+        console.log("Snippet created");
+      }
+
+      fetchSnippets();
+      setShowFestivalModal(false);
+      setHtmlSnippet("");
+      setEditingSnippetId(null);
+    } catch (err) {
+      console.error("Error saving snippet:", err);
+    }
+  };
 
   useEffect(() => {
     fetchDashboardStats();
   }, [chartRange]);
+  useEffect(() => {
+    fetchSnippets();
+  }, []);
 
   const fetchDashboardStats = async () => {
     try {
@@ -329,6 +405,18 @@ function AdminDashboard() {
                 </button>
               </div>
             </div>
+            <div
+              className="my-4 position-relative festival-button-wrapper"
+              ref={confettiRef}
+            >
+              <button
+                className="btn btn-lg fw-bold w-100 text-warning festival-celebrate-button shadow"
+                onClick={() => setShowFestivalModal(true)}
+                onMouseEnter={triggerButtonConfetti}
+              >
+                🎊 Festival Ahead? Change the Website Feel →
+              </button>
+            </div>
 
             <ToastContainer />
           </div>
@@ -390,6 +478,77 @@ function AdminDashboard() {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <Modal
+        show={showFestivalModal}
+        onHide={() => setShowFestivalModal(false)}
+        centered
+        size="lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            🎨{" "}
+            {editingSnippetId
+              ? "Edit Festival HTML"
+              : "Add Custom Festival HTML"}
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <label className="form-label fw-semibold">
+            Paste HTML code (e.g. canvas animation, confetti, fireworks, etc.):
+          </label>
+          <textarea
+            className="form-control"
+            rows={6}
+            placeholder="<canvas id='fireworks'>...</canvas>"
+            value={htmlSnippet}
+            onChange={(e) => setHtmlSnippet(e.target.value)}
+          ></textarea>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button
+            variant="secondary"
+            onClick={() => setShowFestivalModal(false)}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            onClick={handleSaveHtmlSnippet}
+            disabled={!htmlSnippet.trim()}
+          >
+            Save Snippet
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {existingSnippets.map((snippet, idx) => (
+        <div key={idx} className="mb-3 position-relative border rounded p-2">
+          <div dangerouslySetInnerHTML={{ __html: snippet.htmlCode }}></div>
+
+          <div className="position-absolute top-0 end-0 m-2 d-flex gap-2">
+            <Button
+              size="sm"
+              variant="secondary"
+              onClick={() => {
+                setHtmlSnippet(snippet.htmlCode);
+                setEditingSnippetId(snippet._id);
+                setShowFestivalModal(true);
+              }}
+            >
+              Edit
+            </Button>
+
+            <Button
+              size="sm"
+              variant="danger"
+              onClick={() => handleDeleteSnippet(snippet._id)}
+            >
+              ×
+            </Button>
+          </div>
+        </div>
+      ))}
     </>
   );
 }
