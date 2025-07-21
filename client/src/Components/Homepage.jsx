@@ -174,7 +174,7 @@ const Homepage = () => {
       <Helmet>
         {/* Primary Meta Tags */}
         <title>
-          SKD PropWorld | Top Property Dealer in Noida, YEIDA (Yamuna
+          Home | SKD PropWorld | Top Property Dealer in Noida, YEIDA (Yamuna
           Authority), Greater Noida, Delhi
         </title>
         <meta

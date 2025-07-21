@@ -1,4 +1,4 @@
-.filter-sidebar {
+.app-filter-sidebar {
   position: sticky;
   top: 80px; /* adjust as per your navbar height */
   z-index: 99;

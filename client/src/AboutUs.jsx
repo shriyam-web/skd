@@ -105,7 +105,7 @@ const AboutUs = () => {
                   one that focuses on personalized service, strategic advice,
                   and cutting-edge technology.”
                 </p>
-                <p className="fw-semibold mt-4">- Er. Pawan Kumar Mishra</p>
+                <p className="fw-semibold mt-4">- Er. Pawan Mishra</p>
               </div>
               <div className="col-lg-6 d-none d-lg-block"></div>
             </div>

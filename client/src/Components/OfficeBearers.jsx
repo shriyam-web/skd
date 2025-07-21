@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 
 const bearers = [
   {
-    name: "Er. Pawan Kumar Mishra",
+    name: "Er. Pawan Mishra",
     title: "Managing Director",
     image: "/md.jpeg.jpg",
     description:
