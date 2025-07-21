@@ -148,7 +148,7 @@ const AdminProfile = () => {
   return (
     <>
       <Helmet>
-        <title>Admin | Profile </title>
+        <title>Admin | Profile & Site Mode </title>
       </Helmet>
       <div className="container-fluid px-0 mx-0">
         <div className="row g-0">

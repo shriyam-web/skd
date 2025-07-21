@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 
-const useAutoLogout = (timeout = 5 * 60 * 1000) => {
+const useAutoLogout = (timeout = 10 * 60 * 1000) => {
   const { logout } = useAuth();
   const navigate = useNavigate();
   const [timeLeft, setTimeLeft] = useState(timeout);
