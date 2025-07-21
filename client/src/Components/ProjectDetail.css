@@ -262,8 +262,7 @@ body {
 
 .bg-2 {
   background-color: #1e1e1e !important;
-
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 .premium-card {
@@ -302,7 +301,12 @@ body {
     transform: scale(1);
   }
 }
-
+.modalform {
+  border-radius: 0px !important;
+}
+.labelwa {
+  color: white !important;
+}
 @media (max-width: 768px) {
   .hero-gradient-overlay {
     padding: 40px;
@@ -369,6 +373,7 @@ form .form-control:focus {
     background: black;
     height: 100vh;
     overflow: hidden;
+    border-radius: 0px !important;
   }
 
   body.modal-open {

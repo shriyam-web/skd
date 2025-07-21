@@ -654,7 +654,12 @@ const ProjectDetail = () => {
         </section>
       )}
       {/* POPUP FORM */}
-      <Modal show={showModal} onHide={handleClose} centered className="">
+      <Modal
+        show={showModal}
+        onHide={handleClose}
+        centered
+        className="modalform"
+      >
         <Modal.Header closeButton className="bg-warning text-white">
           <Modal.Title className="text-dark bg-warning">
             Fill the form to proceed
@@ -671,12 +676,12 @@ const ProjectDetail = () => {
 
             {/* Project Name (Disabled) */}
             <Form.Group className="mb-3">
-              <Form.Label>Project</Form.Label>
+              <Form.Label className="labelwa">Project</Form.Label>
               <Form.Control type="text" value={project.heading} disabled />
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Your Name</Form.Label>
+              <Form.Label className="labelwa">Your Name</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter your name"
@@ -689,7 +694,7 @@ const ProjectDetail = () => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label className="labelwa">Email Address</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Enter your email"
@@ -702,7 +707,7 @@ const ProjectDetail = () => {
             </Form.Group>
 
             <Form.Group>
-              <Form.Label>Mobile Number</Form.Label>
+              <Form.Label className="labelwa">Mobile Number</Form.Label>
               <Form.Control
                 type="tel"
                 placeholder="Enter your phone"
@@ -715,7 +720,7 @@ const ProjectDetail = () => {
             </Form.Group>
 
             <Form.Group className="mt-3">
-              <Form.Label>Remark (optional)</Form.Label>
+              <Form.Label className="labelwa">Remark (optional)</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}

@@ -64,5 +64,5 @@
   width: 100%;
   height: 200px; /* adjust as needed */
   object-fit: cover;
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
