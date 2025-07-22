@@ -3,6 +3,7 @@
   bottom: 25px;
   right: 25px;
   z-index: 9999;
+  cursor: grab; /* 👈 Optional, indicates draggable */
 }
 
 .support-widget .support-box {
@@ -18,6 +19,7 @@
   padding: 10px 14px;
   border-radius: 50px;
   font-weight: bold;
+  /* animation: pulse 1.8s infinite, wiggle 5s infinite !important; */
   display: flex;
   align-items: center;
   gap: 8px;
@@ -122,5 +124,33 @@
   100% {
     transform: scale(0.9);
     opacity: 0;
+  }
+}
+
+.support-toggle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  transform: skewX(-20deg);
+  animation: shine 2.8s infinite;
+  z-index: 2;
+  border-radius: 50px;
+}
+
+@keyframes shine {
+  0% {
+    left: -20%;
+  }
+  100% {
+    left: 125%;
   }
 }

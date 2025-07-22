@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const ProjectEnquiry = require("../models/ProjectEnquiry");
+const { sendProjectEnquiryEmail } = require("../utils/sendEmail");
 
 // POST /api/project-enquiry
 router.post("/", async (req, res) => {
@@ -17,13 +18,33 @@ router.post("/", async (req, res) => {
       phone,
       projectId,
       projectName,
-      remark, // ✅ added
+      remark,
     });
 
     await enquiry.save();
-    res.status(201).json({ message: "Project enquiry submitted" });
+
+    try {
+      await sendProjectEnquiryEmail({
+        name,
+        email,
+        phone,
+        remark,
+        projectId,
+        projectName,
+      });
+
+      console.log("📩 Project enquiry received:", req.body);
+
+      return res.status(200).json({
+        success: true,
+        message: "Enquiry sent and saved successfully.",
+      });
+    } catch (err) {
+      console.error("❌ Email sending failed:", err);
+      return res.status(500).json({ error: "Enquiry saved but email failed." });
+    }
   } catch (error) {
-    console.error("Error submitting enquiry:", error);
+    console.error("❌ Error saving enquiry:", error);
     res.status(500).json({ message: "Server error" });
   }
 });

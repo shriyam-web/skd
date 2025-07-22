@@ -325,7 +325,7 @@
 /* === Responsive === */
 @media (max-width: 768px) {
   .project-card {
-    max-width: 290px;
+    max-width: 280px;
   }
 
   /* .all-projects-wrapper {

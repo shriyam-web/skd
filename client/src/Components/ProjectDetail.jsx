@@ -85,13 +85,16 @@ const ProjectDetail = () => {
 
     try {
       await axios.post(`${API_BASE}/api/project-enquiry`, {
-        ...formData,
-        projectId: project.projectId,
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        projectId: project._id,
         projectName: project.heading,
+        remark: formData.remark,
       });
 
       toast.success("Form submitted successfully!");
-      setFormData({ name: "", email: "", phone: "" });
+      setFormData({ name: "", email: "", phone: "", remark: "" });
       handleClose();
     } catch (err) {
       console.error("Submission error:", err);

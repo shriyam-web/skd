@@ -311,7 +311,7 @@ const Homepage = () => {
         ></div>
         <Container className="homepage-container text-center text-light">
           <Container className="text-center mt-3 ">
-            <h1 className="hero-heading ">
+            <h1 className="hero-heading pt-4">
               Find
               <span className="highlights">
                 <Typewriter
@@ -390,7 +390,7 @@ const Homepage = () => {
                   <Form.Control
                     type="text"
                     className="skd-search-input"
-                    placeholder="Search by city or project or press Search to view all"
+                    placeholder="Search by city or project name"
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                     onKeyDown={(e) =>
@@ -544,7 +544,7 @@ const Homepage = () => {
         </Container>
       </div>
       {/* Rest of the site */}
-      <SupportWidget />
+      {/* <SupportWidget /> */}
       {/* <Stats /> */}
       {/* <div style={{ marginTop: "10px" }}> */}
 

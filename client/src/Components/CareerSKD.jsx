@@ -107,12 +107,12 @@ const CareerSKD = () => {
               <h5 className="mt-3 text-success">
                 Your form has been submitted!
               </h5>
-              <p className="text-white">
+              <p className="text-dark">
                 We'll review your application and update you via email from
                 <br />
                 <strong>hr@skdpropworld.com</strong>.
               </p>
-              <p className="text-white">We hope to work with you soon!</p>
+              <p className="text-dark">We hope to work with you soon!</p>
               <button
                 type="button"
                 className="btn btn-outline-secondary mt-2"

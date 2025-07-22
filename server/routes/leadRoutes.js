@@ -80,6 +80,6 @@ router.put("/star/:id", async (req, res) => {
     res.status(500).json({ error: "Error toggling star" });
   }
 });
-const sendEmail = require("../utils/sendEmail"); // ✅ Correct path
+const { sendEmail } = require("../utils/sendEmail"); // ✅ Correct destructuring
 
 module.exports = router;

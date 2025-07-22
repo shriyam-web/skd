@@ -101,6 +101,6 @@
   }
 
   .collaborator-slider {
-    width: 90%; /* make slider take more width on small screens */
+    width: 100%; /* make slider take more width on small screens */
   }
 }

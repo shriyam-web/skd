@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaPhone, FaWhatsapp, FaEnvelope, FaHeadset } from "react-icons/fa";
 import "./SupportWidget.css";
 import { Helmet } from "react-helmet-async";
+import Draggable from "react-draggable"; // ✅ New import
 
 const SupportWidget = () => {
   const [open, setOpen] = useState(false);
@@ -48,37 +49,42 @@ const SupportWidget = () => {
           content="Get real estate help with SKD Propworld. Talk to our team on call, WhatsApp or email for quick support."
         />
       </Helmet>
+      {/* ✅ Wrap this in Draggable */}
+      <Draggable>
+        <div className="support-widget ">
+          <div className={`support-box ${open ? "open" : ""}`}>
+            <button
+              className="support-toggle support-toggle glow-ring"
+              onClick={() => setOpen(!open)}
+            >
+              <FaHeadset className="icon" />
+              <span className="blink-text">We're here</span>
+            </button>
 
-      <div className="support-widget ">
-        <div className={`support-box ${open ? "open" : ""}`}>
-          <button
-            className="support-toggle support-toggle glow-ring"
-            onClick={() => setOpen(!open)}
-          >
-            <FaHeadset className="icon" />
-            <span className="blink-text">We're here</span>
-          </button>
-
-          {open && (
-            <div className="support-options">
-              <a href="tel:+919091010909" className="support-option">
-                <FaPhone /> +91 9091010909
-              </a>
-              <a
-                href="https://wa.me/919091010909"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="support-option"
-              >
-                <FaWhatsapp /> WhatsApp Chat
-              </a>
-              <a href="mailto:info@skdpropworld.com" className="support-option">
-                <FaEnvelope /> info@skdpropworld.com
-              </a>
-            </div>
-          )}
+            {open && (
+              <div className="support-options">
+                <a href="tel:+919091010909" className="support-option">
+                  <FaPhone /> +91 9091010909
+                </a>
+                <a
+                  href="https://wa.me/919091010909"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="support-option"
+                >
+                  <FaWhatsapp /> WhatsApp Chat
+                </a>
+                <a
+                  href="mailto:info@skdpropworld.com"
+                  className="support-option"
+                >
+                  <FaEnvelope /> info@skdpropworld.com
+                </a>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      </Draggable>
     </>
   );
 };
