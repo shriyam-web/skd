@@ -29,11 +29,6 @@ const ViewGallery = () => {
     }
   };
 
-  // const openModal = (img) => {
-  //   setSelectedImage(img);
-  //   setShowModal(true);
-  // };
-
   const openModal = (img) => {
     const index = images.findIndex((i) => i._id === img._id);
     setSelectedIndex(index);
@@ -141,6 +136,7 @@ const ViewGallery = () => {
                       className="gallery-thumb"
                       muted
                       playsInline
+                      alt="video-media"
                     />
                   ) : (
                     <img
@@ -174,6 +170,7 @@ const ViewGallery = () => {
                   className="img-fluid rounded"
                   controls
                   autoPlay
+                  alt="video play"
                 />
               ) : (
                 <img

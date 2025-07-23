@@ -409,6 +409,7 @@ const AllProjectsPage = () => {
                         src={p.bannerImage?.url}
                         className="app-project-img"
                         loading="lazy"
+                        alt="project-photos"
                       />
 
                       <Card.Body className="d-flex flex-column">

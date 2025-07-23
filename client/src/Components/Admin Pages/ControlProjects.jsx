@@ -836,7 +836,7 @@ const ControlProjects = () => {
                             <Image
                               src={img?.url || img}
                               className="thumb"
-                              loading="lazy"
+                              loading="lazy" alt="gallery-image"
                             />
                             <Button
                               size="sm"

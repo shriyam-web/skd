@@ -26,15 +26,14 @@ import SupportWidget from "./SupportWidget";
 import NotFound from "./NotFound";
 
 const ProjectDetail = () => {
-  // const { id } = useParams();
+
   const { slug } = useParams();
   const [project, setProject] = useState(null);
   const [showModal, setShowModal] = useState(false);
   // selectedImg: jis image par click hua hai uska URL
   const [selectedImgIndex, setSelectedImgIndex] = useState(null);
 
-  // const handleImgOpen = (url) => setSelectedImg(url);
-  // const handleImgClose = () => setSelectedImg(null);
+
 
   const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
@@ -42,7 +41,6 @@ const ProjectDetail = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // const res = await axios.get(`${API_BASE}/api/admin/projects/${id}`);
         const res = await axios.get(
           `${API_BASE}/api/admin/projects/slug/${slug}`
         );
@@ -441,6 +439,7 @@ const ProjectDetail = () => {
                       className="gallery-img rounded"
                       onClick={() => handleImgOpen(i)}
                       style={{ cursor: "zoom-in" }}
+                      alt="gallery-images"
                     />
                   </Card>
                 </Col>
@@ -639,6 +638,7 @@ const ProjectDetail = () => {
                     <Card.Img
                       src={img?.url || img}
                       className="img-fluid blurred-img"
+                      alt="floor-image"
                     />
                     <Card.Footer className="text-center mt-2">
                       <Button

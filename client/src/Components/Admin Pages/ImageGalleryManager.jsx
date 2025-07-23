@@ -216,12 +216,18 @@ const ImageGalleryManager = () => {
                 {imagesByCategory[cat].map((img) => (
                   <div className="image-card" key={img._id} title={img.caption}>
                     {img.mediaType === "video" ? (
-                      <video src={img.url} className="media-thumb" muted />
+                      <video
+                        src={img.url}
+                        className="media-thumb"
+                        muted
+                        alt="videos"
+                      />
                     ) : (
                       <img
                         src={img.url}
                         alt={img.caption || "media"}
                         loading="lazy"
+                        
                       />
                     )}
                     {img.caption && (

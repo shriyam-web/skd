@@ -81,6 +81,7 @@ const Collaborators = () => {
                   alt={`Partner ${idx + 1}`}
                   className="logo-img"
                   loading="lazy"
+                 
                 />
               </div>
             ))}
