@@ -8,7 +8,7 @@ const { createGzip } = require("zlib");
 const sitemap = require("./routes/sitemap");
 const htmlSnippetRoutes = require("./routes/htmlSnippet");
 const app = express();
-const PORT = process.env.PORT || 443;
+const PORT = process.env.PORT || 8080;
 // app.use(cors());
 // app.use(
 //   cors({
@@ -34,7 +34,7 @@ app.use(
       "http://localhost:5173",
       "https://skd-test.vercel.app",
       "https://skd-testmode.vercel.app", // ✅ add this
-      "https://skd-production.up.railway.app/", // optional
+      "https://skd-production.up.railway.app", // optional
     ],
     credentials: true,
   })
