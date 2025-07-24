@@ -17,12 +17,24 @@ const PORT = process.env.PORT || 5000;
 //   })
 // );
 
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:5173",
+//       "https://skd-test.vercel.app", // frontend domain on Vercel
+//       "https://skd-production.up.railway.app", // backend self-origin (optional but safe)
+//     ],
+//     credentials: true,
+//   })
+// );
+
 app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://skd-test.vercel.app", // frontend domain on Vercel
-      "https://skd-production.up.railway.app", // backend self-origin (optional but safe)
+      "https://skd-test.vercel.app",
+      "https://skd-testmode.vercel.app", // ✅ add this
+      "https://honest-vision-production.up.railway.app", // optional
     ],
     credentials: true,
   })
