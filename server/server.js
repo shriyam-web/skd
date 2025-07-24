@@ -8,7 +8,7 @@ const { createGzip } = require("zlib");
 const sitemap = require("./routes/sitemap");
 const htmlSnippetRoutes = require("./routes/htmlSnippet");
 const app = express();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 443;
 // app.use(cors());
 // app.use(
 //   cors({
