@@ -107,7 +107,9 @@ app.use("/api/admin/youtube", require("./routes/youtubeVideos"));
 //     app.listen(5000, () => console.log("Server running on port 5000"));
 //   })
 //   .catch((err) => console.error("MongoDB connection error:", err));
-
+app.get("/api", (req, res) => {
+  res.send("✅ API is working fine!");
+});
 mongoose
   .connect(process.env.MONGO_URI, {
     dbName: "SkdData",
