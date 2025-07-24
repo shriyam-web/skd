@@ -32,9 +32,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://skd-test.vercel.app",
-      "https://skd-testmode.vercel.app", // ✅ add this
-      "https://skd-production.up.railway.app", // optional
+      "https://skd-testmode.vercel.app",
+      "https://www.skdpropworld.com", // ✅ Now it's correct
     ],
     credentials: true,
   })
@@ -116,7 +115,9 @@ mongoose
   })
   .then(() => {
     console.log("✅ MongoDB connected successfully.");
-    app.listen(PORT,'0.0.0.0', () => console.log(`🚀 Server running on port ${PORT}`));
+    app.listen(PORT, "0.0.0.0", () =>
+      console.log(`🚀 Server running on port ${PORT}`)
+    );
   })
   .catch((err) => {
     console.error("❌ MongoDB connection error:", err.message);
