@@ -34,7 +34,7 @@ app.use(
       "http://localhost:5173",
       "https://skd-test.vercel.app",
       "https://skd-testmode.vercel.app", // ✅ add this
-      "https://honest-vision-production.up.railway.app", // optional
+      "https://skd-production.up.railway.app/", // optional
     ],
     credentials: true,
   })
