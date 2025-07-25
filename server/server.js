@@ -44,7 +44,7 @@ app.use(
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 // Register the HTML snippet route
-// app.use("/api/snippet", htmlSnippetRoutes);
+app.use("/api/snippet", htmlSnippetRoutes);
 // ⬇️ Serve frontend build in production
 // if (process.env.NODE_ENV === "production") {
 //   const __dirname = path.resolve();
