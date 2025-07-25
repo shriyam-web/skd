@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/sitemap.xml",
-      "destination": "https://skdpropworld.com/sitemap.xml"
+      "destination": "https://www.skdpropworld.com/sitemap.xml"
     },
     {
       "source": "/(.*)",
