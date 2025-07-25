@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/sitemap.xml", async (req, res) => {
   try {
-    const hostname = "https://skdpropworld.com";
+    const hostname = "https://www.skdpropworld.com";
 
     const staticPages = [
       "/", // Homepage
