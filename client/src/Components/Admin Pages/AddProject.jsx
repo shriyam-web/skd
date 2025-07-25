@@ -306,7 +306,7 @@ const AddProject = () => {
     }
 
     // Prepare form data with Cloudinary URLs
-    // ✅ Clean floorPlans and gallery to remove any null entries
+    // ✅ Clean floorPlans and gallery to remove any null entrie
     floorPlans = floorPlans.filter((fp) => fp && fp.url);
     gallery = gallery.filter((img) => img && img.url);
 
